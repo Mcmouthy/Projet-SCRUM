@@ -13,16 +13,16 @@ public class Joueur {
     private int rangCourse;
     private boolean expert;
     private boolean novice;
-    List<Card> main;
+    List<CarteMagieNoire> main;
 
     public Joueur(String nom) {
         this.nom=nom;
-        main = new ArrayList<Card>();
+        main = new ArrayList<CarteMagieNoire>();
     }
 
     public Joueur() {
         nom=null;
-        main = new ArrayList<Card>();
+        main = new ArrayList<CarteMagieNoire>();
     }
 
     public void setNom(String nom) {
@@ -49,13 +49,18 @@ public class Joueur {
         this.rangCourse = rangCourse;
     }
 
-    public void addCard(Card card) {
+    public void addCard(CarteMagieNoire card) {
         main.add(card);
     }
-    public void removeCard(Card card) {main.remove(card); }
+    public void removeCard(CarteMagieNoire card) {main.remove(card); }
     public void removeCardAtIndex(int i) {main.remove(i); }
 
-    public List<Card> getMain() {
+    public void utiliser()
+    {
+
+    }
+
+    public List<CarteMagieNoire> getMain() {
         return main;
     }
 }
