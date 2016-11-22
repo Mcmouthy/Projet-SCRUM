@@ -3,8 +3,6 @@ package Balai;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.naming.PartialResultException;
-
 import static org.junit.Assert.*;
 
 /**
@@ -19,11 +17,14 @@ public class TestUnitJoueur {
     }
 
     @Test
-    public void test(){
-
+    public void mainUnitTest(){
+        Joueur j = new Joueur();
+        Assert.assertTrue(j.getMain().isEmpty());
+        Card card = new Card(Card.Effet.LOOPING);
+        j.addCard(card);
+        Assert.assertEquals(j.getMain().size(), 1);
+        Assert.assertEquals(j.getMain().get(0), card);
+        j.removeCard(card);
+        Assert.assertEquals(j.getMain().size(), 0);
     }
-
-
-
-
 }

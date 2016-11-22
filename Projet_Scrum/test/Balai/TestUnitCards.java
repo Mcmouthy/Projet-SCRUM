@@ -9,12 +9,12 @@ public class TestUnitCards {
 
     @Test
     public void testUnitTypeCarte(){
-        Cards card = new Cards();
+        Card card = new Card();
     }
 
     @Test
     public void testUnitEffetCarte(){
-        Cards carte = new Cards();
+        Card carte = new Card();
         Joueur j = new Joueur();
         carte.attacheJoueur(j);
 
