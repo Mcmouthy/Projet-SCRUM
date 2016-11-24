@@ -70,4 +70,25 @@ public class TestUnitPartie {
         assertTrue(partie.getFin());
     }
 
+    @Test
+    public void testUnitComparePosition() {
+        Partie partie=new Partie();
+        Joueur j1, j2, j3;
+        j1 = new Joueur();
+        j2 = new Joueur();
+        j3 = new Joueur();
+
+        partie.ajouterJoueur(j1);
+        partie.ajouterJoueur(j2);
+        partie.ajouterJoueur(j3);
+        partie.init();
+        j1.setPosition(22);
+        j2.setPosition(21);
+        j3.setPosition(21);
+        partie.comparePosition();
+        assertEquals(j1.getRangCourse(),1);
+        assertEquals(j2.getRangCourse(),2);
+        assertEquals(j3.getRangCourse(),2);
+    }
+
 }
