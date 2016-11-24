@@ -32,7 +32,10 @@ public class Partie {
     public void deplaceJoueur(Joueur j, int i) throws SortieTableauException{
         if (j.getPosition()+i<-2) throw new SortieTableauException();
         else j.setPosition(j.getPosition() + i);
-        if (j.getPosition()>22) setFinPartie();
+        if (j.getPosition()>22) {
+            setFinPartie();
+            j.attributionPointArrive();
+        }
     }
 
     private void setFinPartie() {
