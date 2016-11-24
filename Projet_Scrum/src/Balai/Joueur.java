@@ -1,8 +1,5 @@
 package Balai;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by PC-Dylan on 22/11/2016.
  */
@@ -13,16 +10,17 @@ public class Joueur {
     private int rangCourse;
     private boolean expert;
     private boolean novice;
-    List<CarteMagieNoire> main;
+    private int points;
+
 
     public Joueur(String nom) {
         this.nom=nom;
-        main = new ArrayList<CarteMagieNoire>();
+        points=0;
     }
 
     public Joueur() {
         nom=null;
-        main = new ArrayList<CarteMagieNoire>();
+        points=0;
     }
 
     public void setNom(String nom) {
@@ -49,18 +47,16 @@ public class Joueur {
         this.rangCourse = rangCourse;
     }
 
-    public void addCard(CarteMagieNoire card) {
-        main.add(card);
-    }
-    public void removeCard(CarteMagieNoire card) {main.remove(card); }
-    public void removeCardAtIndex(int i) {main.remove(i); }
-
-    public void utiliser()
-    {
-
+    public void attributionPointArrive() {
+        setPoints(getPoints()+25-(getRangCourse()-1));
     }
 
-    public List<CarteMagieNoire> getMain() {
-        return main;
+    private void setPoints(int pts) {
+        points=pts;
     }
+
+    public int getPoints() {
+        return points;
+    }
+
 }
