@@ -20,7 +20,7 @@ public class TestUnitJoueur {
     public void mainUnitTest(){
         Joueur j = new Joueur();
         Assert.assertTrue(j.getMain().isEmpty());
-        Card card = new Card(Card.Effet.LOOPING);
+        CarteMagieNoire card = new CarteMagieNoire(CarteMagieNoire.Effet.LOOPING);
         j.addCard(card);
         Assert.assertEquals(j.getMain().size(), 1);
         Assert.assertEquals(j.getMain().get(0), card);
