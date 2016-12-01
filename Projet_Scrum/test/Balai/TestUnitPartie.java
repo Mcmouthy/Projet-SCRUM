@@ -1,5 +1,6 @@
 package Balai;
 
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -20,6 +21,8 @@ public class TestUnitPartie {
         partie.ajouterJoueur(j1);
         assertEquals(partie.getlistejoueur().get(0),j1);
     }
+
+
 
     @Test
     public void testUnitPartieInit(){
@@ -89,6 +92,18 @@ public class TestUnitPartie {
         assertEquals(j1.getRangCourse(),1);
         assertEquals(j2.getRangCourse(),2);
         assertEquals(j3.getRangCourse(),2);
+    }
+
+    @Test
+    public void testUnitTireCarte(){
+        Partie partie=new Partie();
+        Joueur j=new Joueur();
+        CarteMagieNoire carte;
+        partie.init(); //ajouter dans la fonction la création d'une pioche
+        carte=partie.tireCarte(j);
+        Assert.assertEquals(partie.getPioche().size(),26);
+        Assert.assertEquals(j.getMain().size(),1);
+        Assert.assertEquals(j.getMain().get(0),carte);
     }
 
 }
