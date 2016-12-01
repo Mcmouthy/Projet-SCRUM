@@ -1,9 +1,10 @@
-package Controller;
+package Balai.Controller;
 
 import Balai.Joueur;
 import Balai.Partie;
-import Vue.TestVue;
+import Balai.Vue.TestVue;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,10 +25,17 @@ public class TestController implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        partie.ajouterJoueur(new Joueur(vue.textField.getText()));
+        if (partie.getlistejoueur().size()<6 && ((((JButton)e.getSource()).getText()).equals("Ajouter"))){ //si on clique sur ajouter
+            partie.ajouterJoueur(new Joueur(vue.textField.getText()));
+            vue.actualise();
+        }
+        else if(((((JButton)e.getSource()).getText()).equals("Commencer"))){ //si on clique sur commencer
+            vue.panneau=vue.chargePlateau();
+            vue.add(vue.panneau);
 
-        System.out.println(partie.getlistejoueur().size());
-        vue.actualise();
+
+        }
+
 
     }
 
