@@ -39,7 +39,7 @@ public class TestVue extends JFrame{
             this.setLocationRelativeTo(null);
 
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            panneau=chargePlateau();
+            panneau=buildContentPane();
             this.add(panneau);
             //setController(controller);
 
