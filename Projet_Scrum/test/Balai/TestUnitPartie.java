@@ -100,8 +100,8 @@ public class TestUnitPartie {
         Joueur j=new Joueur();
         CarteMagieNoire carte;
         partie.init(); //ajouter dans la fonction la création d'une pioche
-        carte=partie.tireCarte(j);
-        Assert.assertEquals(partie.getPioche().size(),26);
+        carte=partie.piocher(j);
+        Assert.assertEquals(partie.getPioche().taille(),26);
         Assert.assertEquals(j.getMain().size(),1);
         Assert.assertEquals(j.getMain().get(0),carte);
     }

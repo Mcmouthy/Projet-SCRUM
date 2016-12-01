@@ -1,5 +1,6 @@
 package Balai;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
 public class Partie {
     private List<Joueur> listejoueur;
     private boolean fin;
+    private Pioche pioche = new Pioche();
 
     public Partie(){
         listejoueur= new ArrayList<>();
@@ -24,6 +26,7 @@ public class Partie {
     }
 
     public void init() {
+        pioche.init();
         for (Joueur j:listejoueur){
             j.setPosition(0);
         }
@@ -69,5 +72,13 @@ public class Partie {
             j.setRangCourse(cptAhead+1);
             listJ.add(indexJ,j);
         }
+    }
+
+    public Pioche getPioche() {
+        return pioche;
+    }
+
+    public CarteMagieNoire piocher(Joueur j) {
+        return j.addCarte(pioche.piocherCarte());
     }
 }

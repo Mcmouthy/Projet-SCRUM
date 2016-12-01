@@ -1,5 +1,7 @@
 package Balai;
 
+import java.util.ArrayList;
+
 /**
  * Created by PC-Dylan on 22/11/2016.
  */
@@ -11,6 +13,8 @@ public class Joueur {
     private boolean expert;
     private boolean novice;
     private int points;
+
+    private ArrayList<CarteMagieNoire> main = new ArrayList<>();
 
 
     public Joueur(String nom) {
@@ -57,6 +61,18 @@ public class Joueur {
 
     public int getPoints() {
         return points;
+    }
+
+
+    public ArrayList<CarteMagieNoire> getMain()
+    {
+        return main;
+    }
+
+    public CarteMagieNoire addCarte(CarteMagieNoire carte)
+    {
+        main.add(carte);
+        return carte;
     }
 
 }

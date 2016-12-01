@@ -15,9 +15,9 @@ public class TestUnitCards {
         CarteMagieNoire carteCourante;
         int nbAcrobatie=0;
         int nbSortilege=0;
-        Assert.assertEquals(pioche.getTaillePioche(),27); // il y a 27 cartes dans la pioches
+        Assert.assertEquals(pioche.taille(),27); // il y a 27 cartes dans la pioches
         for (int i=0;i<27;i++){
-            carteCourante =pioche.piocheCarte();
+            carteCourante =pioche.piocherCarte();
             if (carteCourante instanceof Acrobatie ){
                 nbAcrobatie+=1;
             }
@@ -49,7 +49,7 @@ public class TestUnitCards {
         int nbBrouillardMagique=0;
         int nbLooping=0;
         for (int i=0;i<27;i++){
-            carteCourante =pioche.pioheCarte();
+            carteCourante =pioche.piocherCarte();
             switch (carteCourante.getType()){
                 case TONNEAU:
                     nbTonneau+=1;
@@ -78,7 +78,7 @@ public class TestUnitCards {
                 case BLOCAGE:
                     nbBlocage+=1;
                     break;
-                case MAUVVAISSORT:
+                case MAUVAISSORT:
                     nbMauvaisSort+=1;
                     break;
                 case BROUILLARDMAGIQUE:
@@ -107,9 +107,9 @@ public class TestUnitCards {
 
     @Test
     public void testUnitEffetCarte(){
-        CarteMagieNoire carte = new CarteMagieNoire();
+        CarteMagieNoire carte = new Sortilege(Type.ATTRACTION);
         Joueur j = new Joueur();
-        carte.attacheJoueur(j);
+       // carte.attacheJoueur(j); // En réalité cette méthode n'est pas utile
 
     }
     @Test
