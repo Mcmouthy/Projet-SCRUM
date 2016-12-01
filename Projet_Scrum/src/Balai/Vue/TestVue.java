@@ -1,13 +1,15 @@
-package Vue;
+package Balai.Vue;
 
+import Balai.Controller.TestController;
 import Balai.Partie;
-import Controller.TestController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import static javax.swing.BoxLayout.Y_AXIS;
 
 /**
  * Created by Antonin on 24/11/2016.
@@ -18,7 +20,11 @@ public class TestVue extends JFrame{
         public JTextField textField;
         public JButton button;
         public JPanel panneau;
-
+        public JPanel panelInferieur;
+        public JButton commencer;
+        public JPanel plateau;
+        public JLabel[] nomJoueurs={new JLabel("Joueur 1 :"),new JLabel("Joueur 2 :"),new JLabel("Joueur 3 :"),new JLabel("Joueur 4 :"),new JLabel("Joueur 5 :"),new JLabel("Joueur 6 :")};
+        public JLabel[] casePlateau;
         public List<JLabel> liste;
 
 
@@ -33,42 +39,62 @@ public class TestVue extends JFrame{
             this.setLocationRelativeTo(null);
 
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            panneau=buildContentPane();
+            panneau=chargePlateau();
             this.add(panneau);
-            setController(controller);
+            //setController(controller);
 
 
             this.setVisible(true);
 
         }
+
         private JPanel buildContentPane(){
-            JPanel panel = new JPanel();
-            panel.setLayout(new FlowLayout());
+
+            panelInferieur = new JPanel();
+            panelInferieur.setLayout(new BoxLayout(panelInferieur,Y_AXIS));
+
             JLabel titre=new JLabel("Nom du joueur");
+
             button=new JButton("Ajouter");
+            button.setSize(30,15);
 
             textField = new JTextField();
             textField.setColumns(10);
-            panel.add(titre);
-            panel.add(textField);
-            panel.add(button);
+            textField.setSize(10,2);
+            panelInferieur.add(titre);
+            panelInferieur.add(textField);
+            panelInferieur.add(button);
             liste=new ArrayList<>();
+            for (int i=0;i<6;i++){
+                panelInferieur.add(nomJoueurs[i]);
+            }
+            commencer=new JButton("Commencer");
+            panelInferieur.add(commencer);
 
-
-
-            return panel;
+            return panelInferieur;
+        }
+        public JPanel chargePlateau(){ //création de la grille du plateau, j'arrive pas à l'afficher...
+            plateau=new JPanel();       //voir le controller pour des précisions
+            casePlateau=new JLabel[24];
+            plateau.setLayout(new GridLayout(6,4,2,2));
+            for (int i=0;i<24;i++){
+                casePlateau[i]=new JLabel(i-2+""); // on met les numéro dans les cases
+                plateau.add(casePlateau[i]);
+            }
+            
+            plateau.setBackground(Color.RED);
+            return plateau;
         }
         public void actualise(){
 
 
-            panneau.add(new JLabel("Joueur "+partie.getlistejoueur().size()+" "+partie.getlistejoueur().get(partie.getlistejoueur().size()-1).getNom()));
+            nomJoueurs[partie.getlistejoueur().size()-1].setText("Joueur "+partie.getlistejoueur().size()+" : "+partie.getlistejoueur().get(partie.getlistejoueur().size()-1).getNom());
 
-            this.add(panneau);
             SwingUtilities.updateComponentTreeUI(this);
         }
         public void setController(ActionListener listener){
             button.addActionListener(listener);
-
+            commencer.addActionListener(listener);
         }
 
 
