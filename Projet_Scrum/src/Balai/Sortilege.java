@@ -9,9 +9,10 @@ public class Sortilege extends CarteMagieNoire {
     {
         this.type = type;
     }
-
     public Type getType()
     {
         return type;
     }
+    public boolean isAcrobatie() {return false;}
+    public boolean isSortilege() {return true;}
 }

@@ -5,13 +5,31 @@ package Balai;
  */
 public class Acrobatie extends CarteMagieNoire {
 
-    public Acrobatie(Type type)
-    {
-        this.type = type;
+    private int value;
+
+    public Acrobatie(Type type) {
+        super(type);
+        switch (type) {
+            case TONNEAU:
+                value = 2;
+                break;
+            case VOLINVERSE:
+                value = 1;
+                break;
+            case LOOPING:
+                value = 3;
+                break;
+        }
     }
 
     public Type getType()
     {
         return type;
     }
+
+    public int getValue() {
+        return value;
+    }
+    public boolean isAcrobatie() {return true;}
+    public boolean isSortilege() {return false;}
 }

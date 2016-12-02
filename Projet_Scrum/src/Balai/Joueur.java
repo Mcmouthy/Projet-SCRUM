@@ -14,7 +14,8 @@ public class Joueur {
     private boolean novice;
     private int points;
 
-    private ArrayList<CarteMagieNoire> main = new ArrayList<>();
+    private ArrayList<Sortilege> main = new ArrayList<>();
+    private ArrayList<Acrobatie> mainAcrobatie = new ArrayList<>();
 
 
     public Joueur(String nom) {
@@ -63,16 +64,28 @@ public class Joueur {
         return points;
     }
 
+    public void addMainAcrobatie(Acrobatie carte) {
+        mainAcrobatie.add(carte);
+    }
 
-    public ArrayList<CarteMagieNoire> getMain()
+    public ArrayList<Sortilege> getMain()
     {
         return main;
     }
 
     public CarteMagieNoire addCarte(CarteMagieNoire carte)
     {
-        main.add(carte);
+        if (carte.isAcrobatie()) {
+            mainAcrobatie.add((Acrobatie)carte);
+        }
+        if (carte.isSortilege()) {
+            main.add((Sortilege)carte);
+        }
+
         return carte;
     }
 
+    public void calculerScoreAcrobatie() {
+        for (Acrobatie bonus : mainAcrobatie) setPoints(getPoints()+bonus.getValue());
+    }
 }

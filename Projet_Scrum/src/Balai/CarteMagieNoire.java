@@ -19,4 +19,6 @@ public abstract class CarteMagieNoire {
     }*/
 
     public abstract Type getType();
+    public abstract boolean isAcrobatie();
+    public abstract boolean isSortilege();
 }
