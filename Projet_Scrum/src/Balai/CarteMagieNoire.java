@@ -7,8 +7,8 @@ public abstract class CarteMagieNoire {
 
     protected Type type;
 
-    public CarteMagieNoire() {}
-    public CarteMagieNoire(Type type)
+    protected CarteMagieNoire() {}
+    protected CarteMagieNoire(Type type)
     {
         this.type = type;
     }
@@ -17,6 +17,13 @@ public abstract class CarteMagieNoire {
     {
         j.addCard(this);
     }*/
+
+    public static CarteMagieNoire carteFactory(Type type) throws MauvaisTypeCarteException {
+        if((type == Type.LOOPING) || (type == Type.VOLINVERSE) || (type == Type.TONNEAU))
+            return new Acrobatie(type);
+        else
+            return new Sortilege(type);
+    }
 
     public abstract Type getType();
     public abstract boolean isAcrobatie();

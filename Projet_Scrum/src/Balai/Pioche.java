@@ -21,44 +21,44 @@ public class Pioche {
     public void init() {
         cartes.clear();
 
-        cartes.add(new Acrobatie(Type.TONNEAU));
-        cartes.add(new Acrobatie(Type.TONNEAU));
-        cartes.add(new Acrobatie(Type.TONNEAU));
+        cartes.add(CarteMagieNoire.carteFactory(Type.TONNEAU));
+        cartes.add(CarteMagieNoire.carteFactory(Type.TONNEAU));
+        cartes.add(CarteMagieNoire.carteFactory(Type.TONNEAU));
 
-        cartes.add(new Sortilege(Type.RECTIFICATION));
-        cartes.add(new Sortilege(Type.RECTIFICATION));
+        cartes.add(CarteMagieNoire.carteFactory(Type.RECTIFICATION));
+        cartes.add(CarteMagieNoire.carteFactory(Type.RECTIFICATION));
 
-        cartes.add(new Acrobatie(Type.VOLINVERSE));
-        cartes.add(new Acrobatie(Type.VOLINVERSE));
-        cartes.add(new Acrobatie(Type.VOLINVERSE));
-        cartes.add(new Acrobatie(Type.VOLINVERSE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.VOLINVERSE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.VOLINVERSE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.VOLINVERSE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.VOLINVERSE));
 
-        cartes.add(new Sortilege(Type.ATTRACTION));
-        cartes.add(new Sortilege(Type.ATTRACTION));
+        cartes.add(CarteMagieNoire.carteFactory(Type.ATTRACTION));
+        cartes.add(CarteMagieNoire.carteFactory(Type.ATTRACTION));
 
-        cartes.add(new Sortilege(Type.DOUBLEJEU));
-        cartes.add(new Sortilege(Type.DOUBLEJEU));
-        cartes.add(new Sortilege(Type.DOUBLEJEU));
+        cartes.add(CarteMagieNoire.carteFactory(Type.DOUBLEJEU));
+        cartes.add(CarteMagieNoire.carteFactory(Type.DOUBLEJEU));
+        cartes.add(CarteMagieNoire.carteFactory(Type.DOUBLEJEU));
 
-        cartes.add(new Sortilege(Type.VENTARRIERE));
-        cartes.add(new Sortilege(Type.VENTARRIERE));
-        cartes.add(new Sortilege(Type.VENTARRIERE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.VENTARRIERE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.VENTARRIERE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.VENTARRIERE));
 
-        cartes.add(new Sortilege(Type.OUTILREPARE));
-        cartes.add(new Sortilege(Type.OUTILREPARE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.OUTILREPARE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.OUTILREPARE));
 
-        cartes.add(new Sortilege(Type.DECRET));
-        cartes.add(new Sortilege(Type.DECRET));
+        cartes.add(CarteMagieNoire.carteFactory(Type.DECRET));
+        cartes.add(CarteMagieNoire.carteFactory(Type.DECRET));
 
-        cartes.add(new Sortilege(Type.BLOCAGE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.BLOCAGE));
 
-        cartes.add(new Sortilege(Type.MAUVAISSORT));
+        cartes.add(CarteMagieNoire.carteFactory(Type.MAUVAISSORT));
 
-        cartes.add(new Sortilege(Type.BROUILLARDMAGIQUE));
-        cartes.add(new Sortilege(Type.BROUILLARDMAGIQUE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.BROUILLARDMAGIQUE));
+        cartes.add(CarteMagieNoire.carteFactory(Type.BROUILLARDMAGIQUE));
 
-        cartes.add(new Acrobatie(Type.LOOPING));
-        cartes.add(new Acrobatie(Type.LOOPING));
+        cartes.add(CarteMagieNoire.carteFactory(Type.LOOPING));
+        cartes.add(CarteMagieNoire.carteFactory(Type.LOOPING));
 
         Collections.shuffle(cartes);
     }

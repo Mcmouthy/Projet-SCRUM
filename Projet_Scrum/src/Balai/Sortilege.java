@@ -5,9 +5,11 @@ package Balai;
  */
 public class Sortilege extends CarteMagieNoire {
 
-    public Sortilege(Type type)
+    protected Sortilege(Type type)
     {
         this.type = type;
+
+        // GERER LES EXEPTIONS !!!!!!
     }
     public Type getType()
     {

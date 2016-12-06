@@ -89,7 +89,9 @@ public class TestVue extends JFrame{
 
 
             nomJoueurs[partie.getlistejoueur().size()-1].setText("Joueur "+partie.getlistejoueur().size()+" : "+partie.getlistejoueur().get(partie.getlistejoueur().size()-1).getNom());
-
+            panneau.removeAll();
+            panneau=chargePlateau();
+            setContentPane(panneau);
             SwingUtilities.updateComponentTreeUI(this);
         }
         public void setController(ActionListener listener){
