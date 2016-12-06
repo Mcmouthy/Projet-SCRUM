@@ -1,6 +1,7 @@
 package Balai.Vue;
 
 import Balai.Controller.TestController;
+import Balai.Joueur;
 import Balai.Partie;
 
 import javax.swing.*;
@@ -27,10 +28,12 @@ public class TestVue extends JFrame{
         public JLabel[] nomJoueurs={new JLabel("Joueur 1 :"),new JLabel("Joueur 2 :"),new JLabel("Joueur 3 :"),new JLabel("Joueur 4 :"),new JLabel("Joueur 5 :"),new JLabel("Joueur 6 :")};
         public JLabel[] casePlateau;
         public List<JLabel> liste;
-        public JPanel tabBord; //le tableau de bord depuis lequel le joueur peut se deplacer
+       // public JPanel tabBord; //le tableau de bord depuis lequel le joueur peut se deplacer
+        public JTextField moveValue; // la valeur de deplacement d'un joueur
+        public JTextPane position; //affiche la position actuelle du joueur
+        public JButton move;
 
-
-        public TestVue(Partie partie){
+    public TestVue(Partie partie){
             this.partie=partie;
             controller=new TestController(this,partie);
 
@@ -58,6 +61,7 @@ public class TestVue extends JFrame{
             JLabel titre=new JLabel("Nom du joueur");
 
             button=new JButton("Ajouter");
+            move=new JButton("Move");
             button.setSize(30,15);
 
             textField = new JTextField();
@@ -91,11 +95,13 @@ public class TestVue extends JFrame{
         public JPanel chargeTableauBord() {
             JPanel letabBord=new JPanel();
             JPanel panel=new JPanel();
-            JButton dep = new JButton("Move");
-            JTextField valeurDep = new JTextField("Entrer la valeur de votre déplacement");
+            moveValue = new JTextField("Entrer la valeur de votre déplacement");
             letabBord.setLayout(new BorderLayout());
-            letabBord.add((valeurDep), BorderLayout.NORTH);
-            letabBord.add((dep), BorderLayout.CENTER);
+            letabBord.add((moveValue), BorderLayout.NORTH);
+            letabBord.add((move), BorderLayout.CENTER);
+            position = new JTextPane();
+            position.setText("position = "+partie.getlistejoueur().get(0).getPosition());
+            letabBord.add((position), BorderLayout.SOUTH);
             panel.setSize(20, 5);
             panel.add(letabBord);
             return panel;
@@ -108,6 +114,7 @@ public class TestVue extends JFrame{
         }
         public void setController(ActionListener listener){
             button.addActionListener(listener);
+            move.addActionListener(listener);
             commencer.addActionListener(listener);
         }
         public void actualise() {
@@ -123,6 +130,8 @@ public class TestVue extends JFrame{
 
         public static void main(String[] args){
             Partie partie=new Partie();
+            Joueur j= new Joueur("DIEU");
+            partie.ajouterJoueur(j);
             TestVue vue=new TestVue(partie);
 
 
