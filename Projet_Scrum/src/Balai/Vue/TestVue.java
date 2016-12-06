@@ -79,14 +79,24 @@ public class TestVue extends JFrame{
 
             return panelInferieur;
         }
-        public JPanel chargePlateau(){ //création de la grille du plateau, j'arrive pas à l'afficher...
-            plateau=new JPanel();       //voir le controller pour des précisions
-            casePlateau=new JLabel[24];
+       public JPanel chargePlateau(){
+            plateau=new JPanel();
+            casePlateau=new JPanel[25];
             plateau.setLayout(new GridLayout(6,4,2,2));
-            for (int i=0;i<24;i++){
-                casePlateau[i]=new JLabel(i-2+""); // on met les numéro dans les cases
-                plateau.add(casePlateau[i]);
+            for (int i=0;i<25;i++){
+                casePlateau[i]=new JPanel();// on met les numéro dans les cases
+                casePlateau[i].setLayout(new BoxLayout(casePlateau[i],Y_AXIS));
+                casePlateau[i].add(new JLabel(i-2+""));
+                for (int j=0;j<partie.getlistejoueur().size();j++){
+                    if(partie.getlistejoueur().get(j).getPosition()==i-2){
+                        casePlateau[i].add(new JLabel(partie.getlistejoueur().get(j).getNom()));
+
+                    }
+                }
+                casePlateau[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                plateau.add(casePlateau[i],SwingConstants.CENTER);
             }
+            plateau.add(new JPanel().add(new JLabel("Arrivé"),SwingConstants.CENTER));
             
             plateau.setBackground(Color.RED);
             return plateau;
