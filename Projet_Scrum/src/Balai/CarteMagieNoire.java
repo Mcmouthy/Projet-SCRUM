@@ -18,7 +18,7 @@ public abstract class CarteMagieNoire {
         j.addCard(this);
     }*/
 
-    public static CarteMagieNoire carteFactory(Type type) throws MauvaisTypeCarteException {
+    public static CarteMagieNoire carteFactory(Type type) {
         if((type == Type.LOOPING) || (type == Type.VOLINVERSE) || (type == Type.TONNEAU))
             return new Acrobatie(type);
         else

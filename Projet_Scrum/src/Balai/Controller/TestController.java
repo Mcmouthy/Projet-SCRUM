@@ -28,12 +28,10 @@ public class TestController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (partie.getlistejoueur().size()<6 && ((((JButton)e.getSource()).getText()).equals("Ajouter"))){ //si on clique sur ajouter
             partie.ajouterJoueur(new Joueur(vue.textField.getText()));
-            vue.actualise();
+            vue.ajouteJoueur();
         }
         else if(((((JButton)e.getSource()).getText()).equals("Commencer"))){ //si on clique sur commencer
             vue.actualise();
-
-
 
         }
 

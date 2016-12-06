@@ -7,7 +7,7 @@ public class Acrobatie extends CarteMagieNoire {
 
     private int value;
 
-    protected Acrobatie(Type type) throws MauvaisTypeCarteException {
+    protected Acrobatie(Type type)  {
         super(type);
         switch (type) {
             case TONNEAU:
@@ -19,8 +19,6 @@ public class Acrobatie extends CarteMagieNoire {
             case LOOPING:
                 value = 3;
                 break;
-            default:
-                throw new MauvaisTypeCarteException();
         }
     }
 

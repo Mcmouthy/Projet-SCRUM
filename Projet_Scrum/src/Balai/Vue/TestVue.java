@@ -19,6 +19,7 @@ public class TestVue extends JFrame{
         private TestController controller;
         public JTextField textField;
         public JButton button;
+    public JPanel superPanneau;
         public JPanel panneau;
         public JPanel panelInferieur;
         public JButton commencer;
@@ -26,6 +27,7 @@ public class TestVue extends JFrame{
         public JLabel[] nomJoueurs={new JLabel("Joueur 1 :"),new JLabel("Joueur 2 :"),new JLabel("Joueur 3 :"),new JLabel("Joueur 4 :"),new JLabel("Joueur 5 :"),new JLabel("Joueur 6 :")};
         public JLabel[] casePlateau;
         public List<JLabel> liste;
+        public JPanel tabBord; //le tableau de bord depuis lequel le joueur peut se deplacer
 
 
         public TestVue(Partie partie){
@@ -39,9 +41,9 @@ public class TestVue extends JFrame{
             this.setLocationRelativeTo(null);
 
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            panneau=buildContentPane();
-            this.add(panneau);
-            //setController(controller);
+            superPanneau=buildContentPane();
+            this.add(superPanneau);
+            setController(controller);
 
 
             this.setVisible(true);
@@ -85,18 +87,35 @@ public class TestVue extends JFrame{
             plateau.setBackground(Color.RED);
             return plateau;
         }
-        public void actualise(){
+
+        public JPanel chargeTableauBord() {
+            JPanel letabBord=new JPanel();
+            JPanel panel=new JPanel();
+            JButton dep = new JButton("Move");
+            JTextField valeurDep = new JTextField("Entrer la valeur de votre déplacement");
+            letabBord.setLayout(new BorderLayout());
+            letabBord.add((valeurDep), BorderLayout.NORTH);
+            letabBord.add((dep), BorderLayout.CENTER);
+            panel.setSize(20, 5);
+            panel.add(letabBord);
+            return panel;
+        }
+        public void ajouteJoueur(){
 
 
             nomJoueurs[partie.getlistejoueur().size()-1].setText("Joueur "+partie.getlistejoueur().size()+" : "+partie.getlistejoueur().get(partie.getlistejoueur().size()-1).getNom());
-            panneau.removeAll();
-            panneau=chargePlateau();
-            setContentPane(panneau);
             SwingUtilities.updateComponentTreeUI(this);
         }
         public void setController(ActionListener listener){
             button.addActionListener(listener);
             commencer.addActionListener(listener);
+        }
+        public void actualise() {
+            superPanneau.removeAll();
+            superPanneau.add(chargePlateau());
+            superPanneau.add(chargeTableauBord());
+            setContentPane(superPanneau);
+            SwingUtilities.updateComponentTreeUI(this);
         }
 
 

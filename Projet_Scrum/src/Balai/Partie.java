@@ -10,11 +10,12 @@ import java.util.List;
 public class Partie {
     private List<Joueur> listejoueur;
     private boolean fin;
-    private Pioche pioche = new Pioche();
+    private Pioche pioche;
 
     public Partie(){
         listejoueur= new ArrayList<>();
         fin=false;
+        pioche = new Pioche();
     }
 
     public void ajouterJoueur(Joueur j1) {
