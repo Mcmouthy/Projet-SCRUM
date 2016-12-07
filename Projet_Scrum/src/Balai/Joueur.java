@@ -73,13 +73,12 @@ public class Joueur {
         return main;
     }
 
-    public CarteMagieNoire addCarte(CarteMagieNoire carte)
-    {
+    public CarteMagieNoire addCarte(CarteMagieNoire carte) {
         if (carte.isAcrobatie()) {
-            mainAcrobatie.add((Acrobatie)carte);
+            mainAcrobatie.add((Acrobatie) carte);
         }
         if (carte.isSortilege()) {
-            main.add((Sortilege)carte);
+            main.add((Sortilege) carte);
         }
 
         return carte;

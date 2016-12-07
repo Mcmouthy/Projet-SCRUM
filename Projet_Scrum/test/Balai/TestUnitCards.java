@@ -127,4 +127,10 @@ public class TestUnitCards {
         Assert.assertTrue(carteS.isSortilege());
     }
 
+    @Test
+    public void testUnitGetValueAcrobatie() {
+        CarteMagieNoire c = new Acrobatie(Type.TONNEAU);
+        Assert.assertEquals(((Acrobatie)c).getValue(), 2);
+    }
+
 }
