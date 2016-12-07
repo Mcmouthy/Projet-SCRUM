@@ -117,5 +117,14 @@ public class TestUnitCards {
         CarteMagieNoire carte = new Sortilege(Type.ATTRACTION);
         Assert.assertTrue(carte.toString().equals("ATTRACTION"));
     }
+    @Test
+    public void testUnitCardsIsAcrobatie() {
+        CarteMagieNoire carteA = new Acrobatie(Type.LOOPING);
+        CarteMagieNoire carteS = new Sortilege(Type.ATTRACTION);
+        Assert.assertTrue(carteA.isAcrobatie());
+        Assert.assertFalse(carteS.isAcrobatie());
+        Assert.assertFalse(carteA.isSortilege());
+        Assert.assertTrue(carteS.isSortilege());
+    }
 
 }

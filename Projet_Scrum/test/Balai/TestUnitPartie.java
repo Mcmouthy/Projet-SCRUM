@@ -102,8 +102,15 @@ public class TestUnitPartie {
         partie.init(); //ajouter dans la fonction la création d'une pioche
         carte=partie.piocher(j);
         Assert.assertEquals(partie.getPioche().taille(),26);
-        Assert.assertEquals(j.getMain().size(),1);
-        Assert.assertEquals(j.getMain().get(0),carte);
+        if (carte.isSortilege()) {
+            Assert.assertEquals(j.getMain().size(),1);
+            Assert.assertEquals(j.getMain().get(0),carte);
+        }
+        else if (carte.isAcrobatie()) {
+            Assert.assertEquals(j.getMainAcrobatie().size(),1);
+            Assert.assertEquals(j.getMainAcrobatie().get(0),carte);
+        }
+
     }
 
 }

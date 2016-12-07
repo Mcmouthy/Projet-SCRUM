@@ -88,4 +88,8 @@ public class Joueur {
     public void calculerScoreAcrobatie() {
         for (Acrobatie bonus : mainAcrobatie) setPoints(getPoints()+bonus.getValue());
     }
+
+    public ArrayList<Acrobatie> getMainAcrobatie() {
+        return mainAcrobatie;
+    }
 }
