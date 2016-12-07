@@ -36,6 +36,33 @@ public class TestUnitJoueur {
 
     }
 
+    @Test
+    public void testUnitAddCarteAcrobatie(){
+        Joueur j = new Joueur("polo");
+        Acrobatie a= new Acrobatie(Type.LOOPING);
+        assertTrue(a.equals(j.addCarte(a)));
+        assertTrue(j.getMainAcrobatie().size()==1);
+        assertTrue(j.getMainAcrobatie().get(0).isAcrobatie());
+    }
+
+    @Test
+    public void testUnitAddCarteSortilege(){
+        Joueur j = new Joueur("polo");
+        Sortilege s= new Sortilege(Type.BROUILLARDMAGIQUE);
+        assertTrue(s.equals(j.addCarte(s)));
+        assertTrue(j.getMain().size()==1);
+        assertTrue(j.getMain().get(0).isSortilege());
+    }
+
+    @Test
+    public void testUnitcalculerScoreAccrobatie(){
+        Joueur j= new Joueur("paul");
+        Acrobatie a = new Acrobatie(Type.LOOPING);
+        j.addMainAcrobatie(a);
+        j.calculerScoreAcrobatie();
+        assertTrue(j.getPoints()==3);
+    }
+
 
 
 
