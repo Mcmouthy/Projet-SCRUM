@@ -7,6 +7,7 @@ import Balai.Vue.TestVue;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,6 +37,7 @@ public class TestController implements ActionListener{
             vue.actualise();
 
         }
+
         if (((((JButton)e.getSource()).getText()).equals("Move"))) {
             System.out.println(partie.getlistejoueur().get(0).getPosition());
             try {
@@ -56,6 +58,19 @@ public class TestController implements ActionListener{
                 popupMoveInterdit.setVisible(true);
             }
         }
+
+        if (((((JButton)e.getSource()).getText()).equals("Piocher une carte"))) {
+            partie.piocher(partie.getlistejoueur().get(0));
+            String libelleCartePiochee=partie.getlistejoueur().get(0).getMain().get(partie.getlistejoueur().get(0).getMain().size()-1).toString();
+            //vue.main.setText(vue.main.getText()+"\n"+libelleCartePiochee);
+            vue.main.add(vue.ajoutCarteMain(libelleCartePiochee), BorderLayout.CENTER);
+            SwingUtilities.updateComponentTreeUI(vue.main);
+            SwingUtilities.updateComponentTreeUI(vue.superPanneau);
+        }
+
+
+
+
 
 
     }

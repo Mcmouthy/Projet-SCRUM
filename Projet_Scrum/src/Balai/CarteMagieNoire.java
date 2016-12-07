@@ -28,4 +28,8 @@ public abstract class CarteMagieNoire {
     public abstract Type getType();
     public abstract boolean isAcrobatie();
     public abstract boolean isSortilege();
+    public String toString() {
+        Type t=this.getType();
+        return t.toString();
+    }
 }

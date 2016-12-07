@@ -113,8 +113,9 @@ public class TestUnitCards {
 
     }
     @Test
-    public void test(){
-
+    public void testUnitCardsToString() {
+        CarteMagieNoire carte = new Sortilege(Type.ATTRACTION);
+        Assert.assertTrue(carte.toString().equals("ATTRACTION"));
     }
 
 }

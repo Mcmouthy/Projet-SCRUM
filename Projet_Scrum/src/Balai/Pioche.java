@@ -60,12 +60,22 @@ public class Pioche {
         cartes.add(CarteMagieNoire.carteFactory(Type.LOOPING));
         cartes.add(CarteMagieNoire.carteFactory(Type.LOOPING));
 
-        Collections.shuffle(cartes);
+        this.melanger();
+
+    }
+    public void melanger(){
+
+        ArrayList<CarteMagieNoire> nouvelle = new ArrayList<>(this.cartes);
+        Collections.shuffle(nouvelle);
+        this.cartes.clear();
+        this.cartes=nouvelle;
     }
 
     public CarteMagieNoire piocherCarte() {
         int i = rand.nextInt(taille());
-        return cartes.remove(i);
+        CarteMagieNoire c = cartes.get(i);
+        cartes.remove(i);
+        return c;
     }
 
     public int taille() {

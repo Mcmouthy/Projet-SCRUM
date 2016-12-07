@@ -26,12 +26,15 @@ public class TestVue extends JFrame{
         public JButton commencer;
         public JPanel plateau;
         public JLabel[] nomJoueurs={new JLabel("Joueur 1 :"),new JLabel("Joueur 2 :"),new JLabel("Joueur 3 :"),new JLabel("Joueur 4 :"),new JLabel("Joueur 5 :"),new JLabel("Joueur 6 :")};
-        public JLabel[] casePlateau;
+        public JPanel[] casePlateau;
         public List<JLabel> liste;
        // public JPanel tabBord; //le tableau de bord depuis lequel le joueur peut se deplacer
         public JTextField moveValue; // la valeur de deplacement d'un joueur
         public JTextPane position; //affiche la position actuelle du joueur
         public JButton move;
+        public JPanel main;
+        public JButton piocher;
+        public JTextPane bonus;
 
     public TestVue(Partie partie){
             this.partie=partie;
@@ -61,8 +64,13 @@ public class TestVue extends JFrame{
             JLabel titre=new JLabel("Nom du joueur");
 
             button=new JButton("Ajouter");
-            move=new JButton("Move");
             button.setSize(30,15);
+            move=new JButton("Move");
+            main=new JPanel();
+            main.setSize(100,50);
+            piocher=new JButton("Piocher une carte");
+            bonus=new JTextPane();
+
 
             textField = new JTextField();
             textField.setColumns(10);
@@ -116,6 +124,24 @@ public class TestVue extends JFrame{
             panel.add(letabBord);
             return panel;
         }
+        public JPanel chargeTabMain() {
+            JPanel tabCarte=new JPanel();
+            JPanel panel=new JPanel();
+            main=new JPanel();
+            main.setLayout(new GridLayout(10,1));
+            tabCarte.setLayout(new BorderLayout());
+            main.add(new JLabel("Main du joueur"));
+            tabCarte.setLayout(new BorderLayout());
+            tabCarte.add((piocher), BorderLayout.NORTH);
+            tabCarte.add((main), BorderLayout.CENTER);
+            tabCarte.add((bonus), BorderLayout.SOUTH);
+            panel.add(tabCarte);
+            return panel;
+        }
+        public JLabel ajoutCarteMain(String carte) {
+            JLabel label = new JLabel(carte);
+            return label;
+        }
         public void ajouteJoueur(){
 
 
@@ -126,11 +152,13 @@ public class TestVue extends JFrame{
             button.addActionListener(listener);
             move.addActionListener(listener);
             commencer.addActionListener(listener);
+            piocher.addActionListener(listener);
         }
         public void actualise() {
             superPanneau.removeAll();
             superPanneau.add(chargePlateau());
             superPanneau.add(chargeTableauBord());
+            superPanneau.add(chargeTabMain());
             setContentPane(superPanneau);
             SwingUtilities.updateComponentTreeUI(this);
         }
