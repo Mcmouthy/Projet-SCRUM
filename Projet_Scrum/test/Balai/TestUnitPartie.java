@@ -113,4 +113,13 @@ public class TestUnitPartie {
 
     }
 
+    @Test
+    public void testUnitSetFin() {
+        Partie p = new Partie();
+
+        Assert.assertEquals(false , p.getFin());
+        p.setFin(true);
+        Assert.assertEquals(true, p.getFin());
+    }
+
 }

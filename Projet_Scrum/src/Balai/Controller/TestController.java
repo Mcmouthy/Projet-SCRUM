@@ -1,5 +1,6 @@
 package Balai.Controller;
 
+import Balai.CarteMagieNoire;
 import Balai.Joueur;
 import Balai.Partie;
 import Balai.SortieTableauException;
@@ -60,10 +61,25 @@ public class TestController implements ActionListener{
         }
 
         if (((((JButton)e.getSource()).getText()).equals("Piocher une carte"))) {
-            partie.piocher(partie.getlistejoueur().get(0));
-            String libelleCartePiochee=partie.getlistejoueur().get(0).getMain().get(partie.getlistejoueur().get(0).getMain().size()-1).toString();
-            //vue.main.setText(vue.main.getText()+"\n"+libelleCartePiochee);
-            vue.main.add(vue.ajoutCarteMain(libelleCartePiochee), BorderLayout.CENTER);
+            int nbCarteMain=partie.getlistejoueur().get(0).getMain().size();
+            int nbCarteMainAcrobatie=partie.getlistejoueur().get(0).getMainAcrobatie().size();
+            if (partie.getPioche().taille()!=0) {
+                partie.piocher(partie.getlistejoueur().get(0));
+                //vue.main.setText(vue.main.getText()+"\n"+libelleCartePiochee);
+                if (nbCarteMain < partie.getlistejoueur().get(0).getMain().size()) {
+                    CarteMagieNoire cartePiochee = partie.getlistejoueur().get(0).getMain().get(partie.getlistejoueur().get(0).getMain().size() - 1);
+                    vue.main.add(vue.ajoutCarteMain(cartePiochee.toString()), BorderLayout.CENTER);
+                } else if (nbCarteMainAcrobatie < partie.getlistejoueur().get(0).getMainAcrobatie().size()) {
+                    CarteMagieNoire carteAcrobatiePiochee = partie.getlistejoueur().get(0).getMainAcrobatie().get(partie.getlistejoueur().get(0).getMainAcrobatie().size() - 1);
+                    vue.mainAcrobatie.add(vue.ajoutCarteMain(carteAcrobatiePiochee.toString()), BorderLayout.CENTER);
+
+                }
+            }
+            else {
+                partie.getlistejoueur().get(0).calculerScoreAcrobatie();
+                vue.bonus.setText(vue.bonus.getText()+partie.getlistejoueur().get(0).getPoints());
+                SwingUtilities.updateComponentTreeUI(vue.bonus);
+            }
             SwingUtilities.updateComponentTreeUI(vue.main);
             SwingUtilities.updateComponentTreeUI(vue.superPanneau);
         }

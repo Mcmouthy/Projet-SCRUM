@@ -33,8 +33,9 @@ public class TestVue extends JFrame{
         public JTextPane position; //affiche la position actuelle du joueur
         public JButton move;
         public JPanel main;
+        public JPanel mainAcrobatie;
         public JButton piocher;
-        public JTextPane bonus;
+        public JLabel bonus;
 
     public TestVue(Partie partie){
             this.partie=partie;
@@ -42,7 +43,7 @@ public class TestVue extends JFrame{
 
             this.setTitle("Test Vue");
 
-            this.setSize(400, 500);
+            this.setSize(500, 720);
 
             this.setLocationRelativeTo(null);
 
@@ -69,7 +70,7 @@ public class TestVue extends JFrame{
             main=new JPanel();
             main.setSize(100,50);
             piocher=new JButton("Piocher une carte");
-            bonus=new JTextPane();
+            bonus=new JLabel();
 
 
             textField = new JTextField();
@@ -124,18 +125,37 @@ public class TestVue extends JFrame{
             panel.add(letabBord);
             return panel;
         }
-        public JPanel chargeTabMain() {
+        public JPanel chargeTabMainSortilege() {
             JPanel tabCarte=new JPanel();
             JPanel panel=new JPanel();
             main=new JPanel();
+            main.setBackground(Color.WHITE);
             main.setLayout(new GridLayout(10,1));
             tabCarte.setLayout(new BorderLayout());
             main.add(new JLabel("Main du joueur"));
             tabCarte.setLayout(new BorderLayout());
             tabCarte.add((piocher), BorderLayout.NORTH);
             tabCarte.add((main), BorderLayout.CENTER);
+            //tabCarte.add((bonus), BorderLayout.SOUTH);
+            panel.add(tabCarte);
+            panel.setSize(500,220);
+            return panel;
+        }
+        public JPanel chargeTabMainAcrobatie() {
+            JPanel tabCarte=new JPanel();
+            JPanel panel=new JPanel();
+            mainAcrobatie=new JPanel();
+            mainAcrobatie.setBackground(Color.WHITE);
+            mainAcrobatie.setLayout(new GridLayout(10,1));
+            tabCarte.setLayout(new BorderLayout());
+            mainAcrobatie.add(new JLabel("Cartes acrobatie du joueur"));
+            tabCarte.setLayout(new BorderLayout());
+            tabCarte.add((new JLabel("Bonus du joueur")),BorderLayout.NORTH);
+            tabCarte.add((mainAcrobatie), BorderLayout.CENTER);
+            bonus.setText("Points bonus : ");
             tabCarte.add((bonus), BorderLayout.SOUTH);
             panel.add(tabCarte);
+            panel.setSize(500,200);
             return panel;
         }
         public JLabel ajoutCarteMain(String carte) {
@@ -158,7 +178,8 @@ public class TestVue extends JFrame{
             superPanneau.removeAll();
             superPanneau.add(chargePlateau());
             superPanneau.add(chargeTableauBord());
-            superPanneau.add(chargeTabMain());
+            superPanneau.add(chargeTabMainSortilege());
+            superPanneau.add(chargeTabMainAcrobatie());
             setContentPane(superPanneau);
             SwingUtilities.updateComponentTreeUI(this);
         }
