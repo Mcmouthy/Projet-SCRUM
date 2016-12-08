@@ -72,7 +72,6 @@ public class TestController implements ActionListener{
                 } else if (nbCarteMainAcrobatie < partie.getlistejoueur().get(0).getMainAcrobatie().size()) {
                     CarteMagieNoire carteAcrobatiePiochee = partie.getlistejoueur().get(0).getMainAcrobatie().get(partie.getlistejoueur().get(0).getMainAcrobatie().size() - 1);
                     vue.mainAcrobatie.add(vue.ajoutCarteMain(carteAcrobatiePiochee.toString()), BorderLayout.CENTER);
-
                 }
             }
             else {

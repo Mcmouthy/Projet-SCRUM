@@ -25,7 +25,7 @@ public class TestVue extends JFrame{
         public JPanel panelInferieur;
         public JButton commencer;
         public JPanel plateau;
-        public JLabel[] nomJoueurs={new JLabel("Joueur 1 :"),new JLabel("Joueur 2 :"),new JLabel("Joueur 3 :"),new JLabel("Joueur 4 :"),new JLabel("Joueur 5 :"),new JLabel("Joueur 6 :")};
+        public JLabel[] nomJoueurs={new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/lachaudasse.png")),new JLabel(),new JLabel(),new JLabel(),new JLabel(),new JLabel()};
         public JPanel[] casePlateau;
         public List<JLabel> liste;
        // public JPanel tabBord; //le tableau de bord depuis lequel le joueur peut se deplacer
@@ -37,13 +37,30 @@ public class TestVue extends JFrame{
         public JButton piocher;
         public JLabel bonus;
 
+    //JLabel contenant les images des cartes
+    public JLabel attraction;
+    public JLabel blocage;
+    public JLabel brouillardmagique;
+    public JLabel decret;
+    public JLabel doublejeu;
+    public JLabel lachaudasse;
+    public JLabel looping;
+    public JLabel mauvaissort;
+    public JLabel oublirepare;
+    public JLabel rectification;
+    public JLabel tonneau;
+    public JLabel ventarriere;
+    public JLabel volinverse;
+
+
+
     public TestVue(Partie partie){
             this.partie=partie;
             controller=new TestController(this,partie);
 
             this.setTitle("Test Vue");
 
-            this.setSize(500, 720);
+            this.setSize(800, 860);
 
             this.setLocationRelativeTo(null);
 
@@ -52,8 +69,21 @@ public class TestVue extends JFrame{
             this.add(superPanneau);
             setController(controller);
 
+            attraction=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/attraction.png"));
+            blocage=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/blocage.png"));
+            brouillardmagique=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/brouillardmagiquepng"));
+            decret=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/decret.png"));
+            doublejeu=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
+            lachaudasse=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/lachaudasse.png"));
+            looping=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/looping.png"));
+            mauvaissort=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/mauvaissort.png"));
+            oublirepare=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/oublirepare.png"));
+            rectification=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/rectification.png"));
+            tonneau=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
+            ventarriere=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
+            volinverse=new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
 
-            this.setVisible(true);
+        this.setVisible(true);
 
         }
 
@@ -71,20 +101,53 @@ public class TestVue extends JFrame{
             main.setSize(100,50);
             piocher=new JButton("Piocher une carte");
             bonus=new JLabel();
-
-
+            commencer=new JButton("Commencer");
+            JLabel imPlateau = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/plateau.png"));
+            imPlateau.setSize(200,150);
+            JPanel intro = new JPanel();
+            intro.setLayout(new BorderLayout());
             textField = new JTextField();
-            textField.setColumns(10);
-            textField.setSize(10,2);
             panelInferieur.add(titre);
             panelInferieur.add(textField);
-            panelInferieur.add(button);
+            intro.add(button, BorderLayout.NORTH);
+            intro.add(imPlateau, BorderLayout.CENTER);
+            intro.add(commencer, BorderLayout.SOUTH);
+            //panelInferieur.add(textField);
+            //panelInferieur.add(button);
+            panelInferieur.add(intro);
             liste=new ArrayList<>();
             for (int i=0;i<6;i++){
+                switch(i) {
+                    case 0 :
+                        nomJoueurs[i].setOpaque(true);
+                        nomJoueurs[i].setBackground(Color.WHITE);
+                        break;
+                    case 1 :
+                        nomJoueurs[i].setOpaque(true);
+                        nomJoueurs[i].setBackground(Color.yellow);
+                        break;
+                    case 2 :
+                        nomJoueurs[i].setOpaque(true);
+                        nomJoueurs[i].setBackground(Color.cyan);
+                        break;
+                    case  3 :
+                        nomJoueurs[i].setOpaque(true);
+                        nomJoueurs[i].setBackground(Color.gray);
+                        break;
+                    case 4 :
+                        nomJoueurs[i].setOpaque(true);
+                        nomJoueurs[i].setBackground(Color.GREEN);
+                        break;
+                    case 5 :
+                        nomJoueurs[i].setOpaque(true);
+                        nomJoueurs[i].setBackground(Color.PINK);
+                        break;
+                }
                 panelInferieur.add(nomJoueurs[i]);
             }
-            commencer=new JButton("Commencer");
-            panelInferieur.add(commencer);
+
+            //panelInferieur.add(commencer);
+
 
             return panelInferieur;
         }
@@ -99,15 +162,16 @@ public class TestVue extends JFrame{
                 for (int j=0;j<partie.getlistejoueur().size();j++){
                     if(partie.getlistejoueur().get(j).getPosition()==i-2){
                         casePlateau[i].add(new JLabel(partie.getlistejoueur().get(j).getNom()));
-
+                        //lachaudasse.setPreferredSize(new Dimension(5, 15));
+                        //casePlateau[i].add(lachaudasse);
                     }
                 }
                 casePlateau[i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 plateau.add(casePlateau[i],SwingConstants.CENTER);
             }
             plateau.add(new JPanel().add(new JLabel("Arrivé"),SwingConstants.CENTER));
-            
-            plateau.setBackground(Color.RED);
+            plateau.setPreferredSize(new Dimension(800, 800));
+            plateau.setBackground(Color.MAGENTA);
             return plateau;
         }
 
@@ -159,6 +223,14 @@ public class TestVue extends JFrame{
             return panel;
         }
         public JLabel ajoutCarteMain(String carte) {
+           /* switch (carte) {
+                case "ATTRACTION" :
+                    main.add(attraction);
+                    break;
+            }
+            */
+
+
             JLabel label = new JLabel(carte);
             return label;
         }
@@ -189,8 +261,6 @@ public class TestVue extends JFrame{
 
         public static void main(String[] args){
             Partie partie=new Partie();
-            Joueur j= new Joueur("DIEU");
-            partie.ajouterJoueur(j);
             TestVue vue=new TestVue(partie);
 
 
