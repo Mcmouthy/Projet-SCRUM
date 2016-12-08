@@ -25,7 +25,7 @@ public class TestVue extends JFrame{
         public JPanel panelInferieur;
         public JButton commencer;
         public JPanel plateau;
-        public JLabel[] nomJoueurs={new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/lachaudasse.png")),new JLabel(),new JLabel(),new JLabel(),new JLabel(),new JLabel()};
+        public JLabel[] nomJoueurs={new JLabel(),new JLabel(),new JLabel(),new JLabel(),new JLabel(),new JLabel()};
         public JPanel[] casePlateau;
         public List<JLabel> liste;
        // public JPanel tabBord; //le tableau de bord depuis lequel le joueur peut se deplacer
@@ -51,6 +51,7 @@ public class TestVue extends JFrame{
     public JLabel tonneau;
     public JLabel ventarriere;
     public JLabel volinverse;
+    public JLabel imPlateau;
 
 
 
@@ -102,7 +103,7 @@ public class TestVue extends JFrame{
             piocher=new JButton("Piocher une carte");
             bonus=new JLabel();
             commencer=new JButton("Commencer");
-            JLabel imPlateau = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/plateau.png"));
+            imPlateau = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/plateau.png"));
             imPlateau.setSize(200,150);
             JPanel intro = new JPanel();
             intro.setLayout(new BorderLayout());
@@ -223,8 +224,11 @@ public class TestVue extends JFrame{
             return panel;
         }
         public JLabel ajoutCarteMain(String carte) {
-           /* switch (carte) {
+            /*switch (carte) {
                 case "ATTRACTION" :
+                    main.add(attraction);
+                    break;
+                default:
                     main.add(attraction);
                     break;
             }

@@ -69,6 +69,7 @@ public class TestController implements ActionListener{
                 if (nbCarteMain < partie.getlistejoueur().get(0).getMain().size()) {
                     CarteMagieNoire cartePiochee = partie.getlistejoueur().get(0).getMain().get(partie.getlistejoueur().get(0).getMain().size() - 1);
                     vue.main.add(vue.ajoutCarteMain(cartePiochee.toString()), BorderLayout.CENTER);
+                    //vue.ajoutCarteMain(cartePiochee.toString());
                 } else if (nbCarteMainAcrobatie < partie.getlistejoueur().get(0).getMainAcrobatie().size()) {
                     CarteMagieNoire carteAcrobatiePiochee = partie.getlistejoueur().get(0).getMainAcrobatie().get(partie.getlistejoueur().get(0).getMainAcrobatie().size() - 1);
                     vue.mainAcrobatie.add(vue.ajoutCarteMain(carteAcrobatiePiochee.toString()), BorderLayout.CENTER);
