@@ -3,6 +3,8 @@ package Balai;
 import org.junit.Assert;
 import org.junit.Test;
 
+import javax.accessibility.AccessibleStateSet;
+
 /**
  * Created by PC-Dylan on 22/11/2016.
  */
@@ -131,6 +133,26 @@ public class TestUnitCards {
     public void testUnitGetValueAcrobatie() {
         CarteMagieNoire c = new Acrobatie(Type.TONNEAU);
         Assert.assertEquals(((Acrobatie)c).getValue(), 2);
+    }
+
+    @Test
+    public void testUnitVentArriere(){
+        CarteMagieNoire c= new Sortilege(Type.VENTARRIERE);
+        Joueur j= new Joueur("oui");
+        j.setPosition(5);
+        j.setRangCourse(2);
+        Sortilege.sortVentArriere(j);
+        Assert.assertEquals(j.getPosition(),7);
+    }
+
+    @Test
+    public void testUnitMauvaisSort(){
+        CarteMagieNoire c= new Sortilege(Type.MAUVAISSORT);
+        Joueur j= new Joueur("toto");
+        j.setPosition(10);
+        j.setRangCourse(1);
+        Sortilege.sortMauvaisSort(j);
+        Assert.assertEquals(j.getPosition(),7);
     }
 
 }
