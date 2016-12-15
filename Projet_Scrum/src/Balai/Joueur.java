@@ -17,6 +17,7 @@ public class Joueur {
     private ArrayList<Sortilege> main = new ArrayList<>();
     private ArrayList<Acrobatie> mainAcrobatie = new ArrayList<>();
     private ArrayList<Des.symbole> formule= new ArrayList<>();
+    private ArrayList<Des.symbole> mainCarteFormule= new ArrayList<>();
 
 
     public Joueur(String nom) {
@@ -97,11 +98,24 @@ public class Joueur {
         return mainAcrobatie;
     }
 
-    public int prepareFormule() {
-        return 0;
-    }
-
     public void addToFormule(Des.symbole etoile) {
         getFormule().add(etoile);
+        getMainCarteFormule().remove(etoile);
+    }
+
+    public void setMainCarteFormule() {
+        getMainCarteFormule().add(Des.symbole.ECLAIR);
+        getMainCarteFormule().add(Des.symbole.ARAIGNEE);
+        getMainCarteFormule().add(Des.symbole.OREILLE);
+        getMainCarteFormule().add(Des.symbole.TETEDEMORT);
+        getMainCarteFormule().add(Des.symbole.CHOC);
+        getMainCarteFormule().add(Des.symbole.PLUIE);
+        getMainCarteFormule().add(Des.symbole.OEIL);
+        getMainCarteFormule().add(Des.symbole.TOILE);
+        getMainCarteFormule().add(Des.symbole.ETOILE);
+    }
+
+    public ArrayList<Des.symbole> getMainCarteFormule() {
+        return mainCarteFormule;
     }
 }

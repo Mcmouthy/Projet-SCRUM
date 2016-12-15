@@ -64,11 +64,29 @@ public class TestUnitJoueur {
     }
 
     @Test
+    public void testSetMainFormule(){
+        Joueur j=new Joueur("");
+        j.setMainCarteFormule();
+        Assert.assertEquals(j.getMainCarteFormule().size(),9);
+        Assert.assertEquals(j.getMainCarteFormule().get(0), Des.symbole.ECLAIR);
+        Assert.assertEquals(j.getMainCarteFormule().get(1), Des.symbole.ARAIGNEE);
+        Assert.assertEquals(j.getMainCarteFormule().get(2), Des.symbole.OREILLE);
+        Assert.assertEquals(j.getMainCarteFormule().get(3), Des.symbole.TETEDEMORT);
+        Assert.assertEquals(j.getMainCarteFormule().get(4), Des.symbole.CHOC);
+        Assert.assertEquals(j.getMainCarteFormule().get(5), Des.symbole.PLUIE);
+        Assert.assertEquals(j.getMainCarteFormule().get(6), Des.symbole.OEIL);
+        Assert.assertEquals(j.getMainCarteFormule().get(7), Des.symbole.TOILE);
+        Assert.assertEquals(j.getMainCarteFormule().get(8), Des.symbole.ETOILE);
+
+    }
+
+    @Test
     public void testAddToFormule(){
         Joueur j = new Joueur("toto");
+        j.setMainCarteFormule();
         j.addToFormule(Des.symbole.ARAIGNEE);
         Assert.assertEquals(j.getFormule().size(),1);
-
+        Assert.assertEquals(j.getMainCarteFormule().size(),8);
     }
 
 
