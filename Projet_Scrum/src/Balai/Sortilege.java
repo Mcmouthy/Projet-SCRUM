@@ -10,6 +10,9 @@ public class Sortilege extends CarteMagieNoire {
 
     public static Random loto=new Random();
 
+    @Deprecated
+    /* Plutôt utiliser la méthode statique CarteMagieNoire.carteFactory(Type type)
+     * */
     protected Sortilege(Type type)
     {
         this.type = type;

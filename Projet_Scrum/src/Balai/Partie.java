@@ -1,6 +1,8 @@
 package Balai;
 
-import java.awt.*;
+import Balai.Exceptions.PiocheVideException;
+import Balai.Exceptions.SortieTableauException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class Partie {
         }
     }
 
-    public void deplaceJoueur(Joueur j, int i) throws SortieTableauException{
+    public void deplaceJoueur(Joueur j, int i) throws SortieTableauException {
         if (j.getPosition()+i<-2) throw new SortieTableauException();
         else j.setPosition(j.getPosition() + i);
         if (j.getPosition()>22) {
@@ -79,7 +81,7 @@ public class Partie {
         return pioche;
     }
 
-    public CarteMagieNoire piocher(Joueur j) {
+    public CarteMagieNoire piocher(Joueur j) throws PiocheVideException {
         return j.addCarte(pioche.piocherCarte());
     }
 }

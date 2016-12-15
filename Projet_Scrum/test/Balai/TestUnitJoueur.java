@@ -1,9 +1,8 @@
 package Balai;
 
+import Balai.Exceptions.SortieTableauException;
 import org.junit.Assert;
 import org.junit.Test;
-
-import javax.naming.PartialResultException;
 
 import static org.junit.Assert.*;
 

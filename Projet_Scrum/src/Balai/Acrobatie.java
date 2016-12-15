@@ -6,7 +6,9 @@ package Balai;
 public class Acrobatie extends CarteMagieNoire {
 
     private int value;
-
+    @Deprecated
+     /* Plutôt utiliser la méthode statique CarteMagieNoire.carteFactory(Type type)
+     * */
     protected Acrobatie(Type type)  {
         super(type);
         switch (type) {

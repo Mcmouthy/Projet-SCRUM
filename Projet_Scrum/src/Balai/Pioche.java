@@ -1,5 +1,7 @@
 package Balai;
 
+import Balai.Exceptions.PiocheVideException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -71,11 +73,10 @@ public class Pioche {
         this.cartes=nouvelle;
     }
 
-    public CarteMagieNoire piocherCarte() {
-        int i = rand.nextInt(taille());
-        CarteMagieNoire c = cartes.get(i);
-        cartes.remove(i);
-        return c;
+    public CarteMagieNoire piocherCarte() throws PiocheVideException {
+        if (cartes.size() > 0)
+            return (cartes.remove(cartes.size() - 1));
+        else throw new PiocheVideException();
     }
 
     public int taille() {

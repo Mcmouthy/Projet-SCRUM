@@ -1,13 +1,13 @@
 package Balai.Controller;
 
 import Balai.CarteMagieNoire;
+import Balai.Exceptions.PiocheVideException;
 import Balai.Joueur;
 import Balai.Partie;
-import Balai.SortieTableauException;
+import Balai.Exceptions.SortieTableauException;
 import Balai.Vue.TestVue;
 
 import javax.swing.*;
-import javax.swing.text.JTextComponent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -64,7 +64,13 @@ public class TestController implements ActionListener{
             int nbCarteMain=partie.getlistejoueur().get(0).getMain().size();
             int nbCarteMainAcrobatie=partie.getlistejoueur().get(0).getMainAcrobatie().size();
             if (partie.getPioche().taille()!=0) {
-                partie.piocher(partie.getlistejoueur().get(0));
+                try {
+                    partie.piocher(partie.getlistejoueur().get(0));
+                } catch (PiocheVideException e1) {
+
+                    //ARG LA PIOCHE EST VIDE
+
+                }
                 //vue.main.setText(vue.main.getText()+"\n"+libelleCartePiochee);
                 if (nbCarteMain < partie.getlistejoueur().get(0).getMain().size()) {
                     CarteMagieNoire cartePiochee = partie.getlistejoueur().get(0).getMain().get(partie.getlistejoueur().get(0).getMain().size() - 1);

@@ -1,5 +1,7 @@
 package Balai;
 
+import Balai.Exceptions.PiocheVideException;
+import Balai.Exceptions.SortieTableauException;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -95,7 +97,7 @@ public class TestUnitPartie {
     }
 
     @Test
-    public void testUnitTireCarte(){
+    public void testUnitTireCarte() throws PiocheVideException {
         Partie partie=new Partie();
         Joueur j=new Joueur();
         CarteMagieNoire carte;
