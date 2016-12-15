@@ -12,12 +12,14 @@ public class Joueur {
     private int rangCourse;
     private boolean expert;
     private boolean novice;
+    private boolean maudit;
     private int points;
 
     private ArrayList<Sortilege> main = new ArrayList<>();
     private ArrayList<Acrobatie> mainAcrobatie = new ArrayList<>();
     private ArrayList<Des.symbole> formule= new ArrayList<>();
     private ArrayList<Des.symbole> mainCarteFormule= new ArrayList<>();
+    private boolean malediction;
 
 
     public Joueur(String nom) {
@@ -117,5 +119,14 @@ public class Joueur {
 
     public ArrayList<Des.symbole> getMainCarteFormule() {
         return mainCarteFormule;
+    }
+
+    public boolean getMalediction() {
+        return malediction;
+    }
+
+    public void setMalediction() {
+        if (this.getRangCourse()==1) this.malediction=true;
+        else this.malediction=false;
     }
 }

@@ -89,5 +89,17 @@ public class TestUnitJoueur {
         Assert.assertEquals(j.getMainCarteFormule().size(),8);
     }
 
+    @Test
+    public void testUnitSetMalediction(){
+        Joueur j= new Joueur("toto");
+        Joueur k = new Joueur("titi");
+        j.setRangCourse(1);
+        k.setRangCourse(3);
+        j.setMalediction();
+        k.setMalediction();
+        Assert.assertTrue(j.getMalediction());
+        Assert.assertFalse(k.getMalediction());
+    }
+
 
 }
