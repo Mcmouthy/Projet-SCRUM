@@ -63,7 +63,13 @@ public class TestUnitJoueur {
         assertTrue(j.getPoints()==3);
     }
 
+    @Test
+    public void testAddToFormule(){
+        Joueur j = new Joueur("toto");
+        j.addToFormule(Des.symbole.ARAIGNEE);
+        Assert.assertEquals(j.getFormule().size(),1);
 
+    }
 
 
 }

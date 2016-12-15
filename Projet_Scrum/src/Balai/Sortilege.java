@@ -1,9 +1,14 @@
 package Balai;
 
+import java.util.List;
+import java.util.Random;
+
 /**
  * Created by Sami on 22/11/2016.
  */
 public class Sortilege extends CarteMagieNoire {
+
+    public static Random loto=new Random();
 
     protected Sortilege(Type type)
     {
@@ -24,5 +29,18 @@ public class Sortilege extends CarteMagieNoire {
 
     public static void sortMauvaisSort(Joueur j) {
         j.setPosition(j.getPosition()-3);
+    }
+
+    public static int sortAttraction(Joueur j, List<Joueur> list) {
+        int nbcase=loto.nextInt(2)+1;
+        for (Joueur l:list){
+            if ((!l.equals(j)) && l.getRangCourse()>j.getRangCourse())l.setPosition(l.getPosition()-nbcase);
+            else if((!l.equals(j)) && l.getRangCourse()<j.getRangCourse())l.setPosition(l.getPosition()+nbcase);
+        }
+        return nbcase;
+    }
+
+    public static void sortOubliRepare(Joueur j, Des.symbole etoile) {
+        j.addToFormule(etoile);
     }
 }

@@ -16,6 +16,7 @@ public class Joueur {
 
     private ArrayList<Sortilege> main = new ArrayList<>();
     private ArrayList<Acrobatie> mainAcrobatie = new ArrayList<>();
+    private ArrayList<Des.symbole> formule= new ArrayList<>();
 
 
     public Joueur(String nom) {
@@ -64,6 +65,10 @@ public class Joueur {
         return points;
     }
 
+    public ArrayList<Des.symbole> getFormule() {
+        return formule;
+    }
+
     public void addMainAcrobatie(Acrobatie carte) {
         mainAcrobatie.add(carte);
     }
@@ -90,5 +95,13 @@ public class Joueur {
 
     public ArrayList<Acrobatie> getMainAcrobatie() {
         return mainAcrobatie;
+    }
+
+    public int prepareFormule() {
+        return 0;
+    }
+
+    public void addToFormule(Des.symbole etoile) {
+        getFormule().add(etoile);
     }
 }
