@@ -42,7 +42,7 @@ public class TestUnitPartie {
     }
 
     @Test
-    public void testUnitDeplacementValide() throws Exception{
+    public void testUnitDeplacementValide() throws Exception, SortieTableauException {
         Partie partie=new Partie();
         Joueur j=new Joueur("Polo");
         partie.ajouterJoueur(j);
@@ -122,6 +122,16 @@ public class TestUnitPartie {
         Assert.assertEquals(false , p.getFin());
         p.setFin(true);
         Assert.assertEquals(true, p.getFin());
+    }
+
+    @Test
+    public void testGenereFormuleJeu(){
+        Partie p= new Partie();
+        Assert.assertEquals(p.getFormuleJeu().size(),0);
+        p.genereFormuleJeu();
+        Assert.assertEquals(p.getFormuleJeu().size(),9);
+
+
     }
 
 }

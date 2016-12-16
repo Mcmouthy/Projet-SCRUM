@@ -1,17 +1,21 @@
 package Balai;
 
 import Balai.Exceptions.PiocheVideException;
+import Balai.Exceptions.SortieTableauException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by PC-Dylan on 22/11/2016.
  */
 public class Partie {
+    Random loto = new Random();
     private List<Joueur> listejoueur;
     private boolean fin;
     private Pioche pioche;
+    private List<Des.symbole[][]> formuleJeu;
 
     public Partie(){
         listejoueur= new ArrayList<>();
@@ -31,6 +35,7 @@ public class Partie {
         pioche.init();
         for (Joueur j:listejoueur){
             j.setPosition(0);
+            j.setRangCourse(1);
         }
     }
 
@@ -82,5 +87,21 @@ public class Partie {
 
     public CarteMagieNoire piocher(Joueur j) throws PiocheVideException {
         return j.addCarte(pioche.piocherCarte());
+    }
+
+    public List<Des.symbole[][]> getFormuleJeu() {
+        return formuleJeu;
+    }
+
+    public void genereFormuleJeu() {
+        Des.setListeDes();
+        for(Des.symbole[][] de:Des.listeDes){
+            int value=loto.nextInt(9);
+            Des.symbole[][] tab = new Des.symbole[2][1];
+            tab[0][0]=de[0][value];
+            tab[1][0]=de[1][value];
+            formuleJeu.add(tab);
+
+        }
     }
 }
