@@ -21,6 +21,7 @@ public class Partie {
         listejoueur= new ArrayList<>();
         fin=false;
         pioche = new Pioche();
+        formuleJeu = new ArrayList<>();
     }
 
     public void ajouterJoueur(Joueur j1) {
@@ -96,7 +97,7 @@ public class Partie {
     public void genereFormuleJeu() {
         Des.setListeDes();
         for(Des.symbole[][] de:Des.listeDes){
-            int value=loto.nextInt(9);
+            int value=loto.nextInt(6);
             Des.symbole[][] tab = new Des.symbole[2][1];
             tab[0][0]=de[0][value];
             tab[1][0]=de[1][value];
