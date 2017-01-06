@@ -3,9 +3,7 @@ package Balai;
 import Balai.Exceptions.PiocheVideException;
 import Balai.Exceptions.SortieTableauException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by PC-Dylan on 22/11/2016.
@@ -15,13 +13,19 @@ public class Partie {
     private List<Joueur> listejoueur;
     private boolean fin;
     private Pioche pioche;
-    private List<Des.symbole[][]> formuleJeu;
+    private ArrayList<Des.symbole[][]> formuleJeu;
+    private Set<Des.symbole> formuleNoire; //on utilise des set car on ne veut pas de doublons
+    private Set<Des.symbole> formuleOrange;
+    private Set<Des.symbole> formuleInterdit;
 
     public Partie(){
         listejoueur= new ArrayList<>();
         fin=false;
         pioche = new Pioche();
         formuleJeu = new ArrayList<>();
+        formuleNoire= new HashSet<>();
+        formuleOrange= new HashSet<>();
+        formuleInterdit=new HashSet<>();
     }
 
     public void ajouterJoueur(Joueur j1) {
@@ -94,7 +98,7 @@ public class Partie {
         return formuleJeu;
     }
 
-    public void genereFormuleJeu() {
+    public ArrayList<Des.symbole[][]> genereFormuleJeu() {
         Des.setListeDes();
         for(Des.symbole[][] de:Des.listeDes){
             int value=loto.nextInt(6);
@@ -102,7 +106,92 @@ public class Partie {
             tab[0][0]=de[0][value];
             tab[1][0]=de[1][value];
             formuleJeu.add(tab);
-
         }
+        return formuleJeu;
     }
+
+    public void genereFormulesFinales() {
+        for (Des.symbole[][] d:formuleJeu){
+            if (d[0][1]==Des.symbole.NOIR)formuleNoire.add(d[0][0]);
+            else formuleOrange.add(d[0][0]);
+            if (formuleNoire.contains(d[0][0]) && formuleOrange.contains(d[0][0])){
+                formuleInterdit.add(d[0][0]);
+                formuleNoire.remove(d[0][0]);
+                formuleOrange.remove(d[0][0]);
+            }
+        }
+        formuleJeu.removeAll(formuleJeu);
+    }
+
+    public void setFormuleJeu(ArrayList<Des.symbole[][]> formuleJeu) {
+        this.formuleJeu = formuleJeu;
+    }
+
+    public boolean parfaite(Set<Des.symbole> atester){
+        if (atester.equals(formuleNoire)){
+            return true;
+        }else if (atester.equals(formuleOrange)){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isformulefausse(Set<Des.symbole> test,Set<Des.symbole> form){
+        if (test.size()>form.size()) return true;
+        if (test.size()<form.size()){
+            for (Des.symbole symbole : test){
+                if (!form.contains(symbole)) return true;
+            }
+            return false; // on retourne 0 pour en fait dire que la formule n'est pas fausse
+        }
+        if (test.size()==form.size()){
+            if (parfaite(test)){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        return true;
+    }
+
+    public void reinitcomposant(List<Joueur> listejoueur){
+        for(Joueur j : listejoueur){
+            j.setParfaiteOrange(false);
+            j.setParfaiteNoire(false);
+            j.setFermecouvercle(false);
+            j.getFormule().removeAll(j.getFormule());
+            j.setMainCarteFormule();
+        }
+        formuleNoire.removeAll(formuleNoire);
+        formuleOrange.removeAll(formuleOrange);
+        formuleInterdit.removeAll(formuleInterdit);
+        formuleJeu.removeAll(formuleJeu);
+    }
+
+    public void tour() throws SortieTableauException, PiocheVideException {
+        setFormuleJeu(genereFormuleJeu());
+        genereFormulesFinales();
+        for (Joueur j : listejoueur){
+            //ici on fait les formules
+            //je pense que cette methode devra se mettre dans le controleur
+            j.setParfaiteNoire(parfaite(j.getFormule()));
+            j.setParfaiteOrange(parfaite(j.getFormule()));
+            if (isformulefausse(j.getFormule(),formuleOrange) && isformulefausse(j.getFormule(),formuleNoire)){
+                deplaceJoueur(j,0);
+            }else if(!isformulefausse(j.getFormule(),formuleOrange) && j.isParfaiteOrange()){
+                deplaceJoueur(j,j.getFormule().size()+2);
+            }else if (!isformulefausse(j.getFormule(),formuleOrange))deplaceJoueur(j,j.getFormule().size());
+            else if (!isformulefausse(j.getFormule(),formuleNoire)){
+                deplaceJoueur(j,j.getFormule().size());
+                if (j.isParfaiteNoire()){
+                    for (int i=0; i<j.getFormule().size();i++){
+                        j.addCarte(pioche.piocherCarte());
+                    }
+                }
+            }
+        }
+        //on applique les effets des cartes
+
+    }
+
 }

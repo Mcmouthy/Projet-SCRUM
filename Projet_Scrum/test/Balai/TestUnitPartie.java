@@ -6,6 +6,10 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.mockito.Mockito;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -126,12 +130,39 @@ public class TestUnitPartie {
 
     @Test
     public void testGenereFormuleJeu(){
+        List<Des.symbole[][]> listTest= new ArrayList<>();
+        listTest.add(new Des.symbole[][]{{Des.symbole.ECLAIR},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.ARAIGNEE},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.OREILLE},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.ECLAIR},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.TOILE},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.PLUIE},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.TETEDEMORT},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.OEIL},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.OREILLE},{Des.symbole.ORANGE}});
         Partie p= new Partie();
         Assert.assertEquals(p.getFormuleJeu().size(),0);
         p.genereFormuleJeu();
-        Assert.assertEquals(p.getFormuleJeu().size(),9);
+        Assert.assertEquals(p.getFormuleJeu().size(),listTest.size());
+    }
 
-
+    @Test
+    public void testGenereFormuleFinale(){
+        List<Des.symbole[][]> listTest= new ArrayList<>();
+        listTest.add(new Des.symbole[][]{{Des.symbole.ECLAIR},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.ARAIGNEE},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.OREILLE},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.ECLAIR},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.TOILE},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.PLUIE},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.TETEDEMORT},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.OEIL},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.OREILLE},{Des.symbole.ORANGE}});
+        Partie p= Mockito.mock(Partie.class);
+        p.setFormuleJeu(listTest);
+        Assert.assertEquals(listTest.size(),9);
+        p.genereFormuleFinale();
+        //Assert.assertEquals(p.getFormuleJeu().size(),6);
     }
 
 }

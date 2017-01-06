@@ -1,6 +1,8 @@
 package Balai;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by PC-Dylan on 22/11/2016.
@@ -14,17 +16,22 @@ public class Joueur {
     private boolean novice;
     private boolean maudit;
     private int points;
+    private boolean fermecouvercle;
+    private boolean parfaiteOrange;
+    private boolean parfaiteNoire;
 
     private ArrayList<Sortilege> main = new ArrayList<>();
     private ArrayList<Acrobatie> mainAcrobatie = new ArrayList<>();
-    private ArrayList<Des.symbole> formule= new ArrayList<>();
-    private ArrayList<Des.symbole> mainCarteFormule= new ArrayList<>();
+    private Set<Des.symbole> formule= new HashSet<>();
+    private Set<Des.symbole> mainCarteFormule= new HashSet<>();
     private boolean malediction;
 
 
     public Joueur(String nom) {
         this.nom=nom;
         points=0;
+        parfaiteOrange=false;
+        parfaiteNoire=false;
     }
 
     public Joueur() {
@@ -40,12 +47,32 @@ public class Joueur {
         this.position = position;
     }
 
+    public void setParfaiteNoire(boolean parfaiteNoire) {
+        this.parfaiteNoire = parfaiteNoire;
+    }
+
+    public void setParfaiteOrange(boolean parfaiteOrange) {
+        this.parfaiteOrange = parfaiteOrange;
+    }
+
+    public boolean isParfaiteNoire() {
+        return parfaiteNoire;
+    }
+
+    public boolean isParfaiteOrange() {
+        return parfaiteOrange;
+    }
+
     public String getNom() {
         return nom;
     }
 
     public int getPosition() {
         return position;
+    }
+
+    public boolean getFermecouvercle() {
+        return fermecouvercle;
     }
 
     public int getRangCourse() {
@@ -64,11 +91,15 @@ public class Joueur {
         points=pts;
     }
 
+    public void setFermecouvercle(boolean fermecouvercle) {
+        this.fermecouvercle = fermecouvercle;
+    }
+
     public int getPoints() {
         return points;
     }
 
-    public ArrayList<Des.symbole> getFormule() {
+    public Set<Des.symbole> getFormule() {
         return formule;
     }
 
@@ -106,24 +137,26 @@ public class Joueur {
     }
 
     public void setMainCarteFormule() {
-        getMainCarteFormule().add(Des.symbole.ECLAIR);
-        getMainCarteFormule().add(Des.symbole.ARAIGNEE);
-        getMainCarteFormule().add(Des.symbole.OREILLE);
-        getMainCarteFormule().add(Des.symbole.TETEDEMORT);
-        getMainCarteFormule().add(Des.symbole.CHOC);
-        getMainCarteFormule().add(Des.symbole.PLUIE);
-        getMainCarteFormule().add(Des.symbole.OEIL);
-        getMainCarteFormule().add(Des.symbole.TOILE);
-        getMainCarteFormule().add(Des.symbole.ETOILE);
+        mainCarteFormule.removeAll(mainCarteFormule);
+        mainCarteFormule.add(Des.symbole.ECLAIR);
+        mainCarteFormule.add(Des.symbole.ARAIGNEE);
+        mainCarteFormule.add(Des.symbole.OREILLE);
+        mainCarteFormule.add(Des.symbole.TETEDEMORT);
+        mainCarteFormule.add(Des.symbole.CHOC);
+        mainCarteFormule.add(Des.symbole.PLUIE);
+        mainCarteFormule.add(Des.symbole.OEIL);
+        mainCarteFormule.add(Des.symbole.TOILE);
+        mainCarteFormule.add(Des.symbole.ETOILE);
     }
 
-    public ArrayList<Des.symbole> getMainCarteFormule() {
+    public Set<Des.symbole> getMainCarteFormule() {
         return mainCarteFormule;
     }
 
     public boolean getMalediction() {
         return malediction;
     }
+
 
     public void setMalediction() {
         if (this.getRangCourse()==1) this.malediction=true;
