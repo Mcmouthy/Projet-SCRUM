@@ -13,7 +13,7 @@ public class Sortilege extends CarteMagieNoire {
     @Deprecated
     /* Plutôt utiliser la méthode statique CarteMagieNoire.carteFactory(Type type)
      * */
-    protected Sortilege(Type type)
+    public Sortilege(Type type)
     {
         this.type = type;
 

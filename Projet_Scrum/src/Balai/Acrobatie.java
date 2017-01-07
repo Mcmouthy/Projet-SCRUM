@@ -9,7 +9,7 @@ public class Acrobatie extends CarteMagieNoire {
     @Deprecated
      /* Plutôt utiliser la méthode statique CarteMagieNoire.carteFactory(Type type)
      * */
-    protected Acrobatie(Type type)  {
+    public Acrobatie(Type type)  {
         super(type);
         switch (type) {
             case TONNEAU:
