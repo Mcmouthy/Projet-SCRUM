@@ -275,11 +275,12 @@ public class View extends JFrame {
 
 
          */
+        /*
         addCarteToPanel(new Acrobatie(Balai.Type.TONNEAU));
         addCarteToPanel(new Sortilege(Balai.Type.ATTRACTION));
         addCarteToPanel(new Sortilege(Balai.Type.VOLINVERSE));
         addCarteToPanel(new Sortilege(Balai.Type.ATTRACTION));
-
+        */
 
 
 
@@ -296,13 +297,13 @@ public class View extends JFrame {
 
         switch (nomCarte) {
             case "TONNEAU" :
-                addMainSortFactory("tonneau");
+                addMainAcroFactory("tonneau");
                 break;
             case "RECTIFICATION" :
                 addMainSortFactory("rectif");
                 break;
             case "VOLINVERSE" :
-                addMainSortFactory("volinv");
+                addMainAcroFactory("volinv");
                 break;
             case "ATTRACTION" :
                 addMainSortFactory("attraction");
@@ -326,7 +327,7 @@ public class View extends JFrame {
                 addMainSortFactory("brouillagem");
                 break;
             case "LOOPING" :
-                addMainSortFactory("looping");
+                addMainAcroFactory("looping");
                 break;
         }
     }
@@ -334,10 +335,10 @@ public class View extends JFrame {
         int nbCartes=0;
         for (Component jb : this.panelMainSort.getComponents()) {
                 if (jb instanceof JButton) {
-                    System.out.println(((JButton) jb).getName());
                     if (((JButton) jb).getName() != null && ((JButton) jb).getName().equals(nomCarte)) {
                         nbCartes = 1;
-                    } else if (jb.getName() != null && jb.getName().equals(nomCarte + "2")) {
+                    }
+                    if (jb.getName() != null && jb.getName().equals(nomCarte + "2")) {
                         nbCartes = 2;
                     }
                 }
@@ -346,19 +347,50 @@ public class View extends JFrame {
         switch (nbCartes) {
             case 0 :
                 panelMainSort.add(getButtonByName(nomCarte));
-                System.out.println("nbCarte0 "+nomCarte);
                 break;
             case 1 :
                 panelMainSort.add(getButtonByName(nomCarte+'2'));
-                System.out.println("nbCarte1 "+nomCarte);
                 break;
             case 2 :
                 panelMainSort.add(getButtonByName(nomCarte+'3'));
-                System.out.println("nbCarte2 "+nomCarte);
                 break;
         }
 
         this.add(panelMainSort);
+        SwingUtilities.updateComponentTreeUI(this);
+    }
+    public void addMainAcroFactory(String nomCarte) {
+        int nbCartes=0;
+        for (Component jb : this.panelMainAcro.getComponents()) {
+            if (jb instanceof JButton) {
+                if (((JButton) jb).getName() != null && ((JButton) jb).getName().equals(nomCarte)) {
+                    nbCartes = 1;
+                }
+                if (jb.getName() != null && jb.getName().equals(nomCarte + "2")) {
+                    nbCartes = 2;
+                }
+                if (jb.getName() != null && jb.getName().equals(nomCarte + "3")) {
+                    nbCartes = 3;
+                }
+            }
+        }
+        System.out.println();
+        switch (nbCartes) {
+            case 0 :
+                panelMainAcro.add(getButtonByName(nomCarte));
+                break;
+            case 1 :
+                panelMainAcro.add(getButtonByName(nomCarte+'2'));
+                break;
+            case 2 :
+                panelMainAcro.add(getButtonByName(nomCarte+'3'));
+                break;
+            case 3 :
+                panelMainAcro.add(getButtonByName(nomCarte+'4'));
+                break;
+        }
+
+        this.add(panelMainAcro);
         SwingUtilities.updateComponentTreeUI(this);
     }
     public JButton getButtonByName(String name) {
@@ -449,44 +481,29 @@ public class View extends JFrame {
         return null;
     }
 
-    public void addMainAcroFactory(String nomCarte) {
-        Component[] lc = this.getContentPane().getComponents();
-        int nbCartes=0;
-        for (int i=0; i<this.getContentPane().getComponents().length;i++) {
-            if (lc[i] instanceof JButton) {
-                System.out.println(lc[i].getName());
-                if (lc[i].getName().equals(nomCarte)) {
-                    nbCartes = 1;
-                }
-                else if (lc[i].getName().equals(nomCarte+"2")) {
-                    nbCartes=2;
-                }
-
-            }
+    public void setMainSortPanel(List<Sortilege> lc) { //appelée quand changement de tour (prend en param main sortilege du joueur du tour
+        for (CarteMagieNoire c : lc) {
+            addCarteToPanel(c);
         }
-        switch (nbCartes) {
-            case 0 :
-                tonneau.setName(nomCarte);
-                panelMainAcro.add(tonneau);
-                break;
-            case 1 :
-                tonneau.setName(nomCarte+"2");
-                panelMainAcro.add(tonneau2);
-                break;
-            case 2 :
-                tonneau.setName(nomCarte+"3");
-                panelMainAcro.add(tonneau3);
-                break;
-        }
-
     }
-    public void setMainSortPanel(List<CarteMagieNoire> lc) { //appelée quand changement de tour (prend en param main sortilege du joueur du tour
+    public void setMainAcrobatiePanel(List<Acrobatie> lc) { //appelée quand changement de tour (prend en param main acrobatie du joueur du tour
         for (CarteMagieNoire c : lc) {
             addCarteToPanel(c);
         }
     }
     public static void main(String args[]) {
         Partie p = new Partie();
+        Joueur j = new Joueur();
+        j.addCarte(CarteMagieNoire.carteFactory(Balai.Type.TONNEAU));
+        j.addCarte(CarteMagieNoire.carteFactory(Balai.Type.VOLINVERSE));
+        j.addCarte(CarteMagieNoire.carteFactory(Balai.Type.VOLINVERSE));
+        j.addCarte(CarteMagieNoire.carteFactory(Balai.Type.DOUBLEJEU));
+        j.addCarte(CarteMagieNoire.carteFactory(Balai.Type.BLOCAGE));
+        j.addCarte(CarteMagieNoire.carteFactory(Balai.Type.BROUILLARDMAGIQUE));
+        p.ajouterJoueur(j);
         View v = new View(p);
+        v.setMainSortPanel(j.getMain());
+        v.setMainAcrobatiePanel(j.getMainAcrobatie());
+
     }
 }
