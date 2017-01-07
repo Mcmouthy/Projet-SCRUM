@@ -480,9 +480,10 @@ public class View extends JFrame {
         }
 
     }
-    public JPanel setMainSortPanel(List<CarteMagieNoire> lc) { //appelée quand changement de tour (prend en param main sortilege du joueur du tour
-        JPanel jp=new JPanel();
-        return jp;
+    public void setMainSortPanel(List<CarteMagieNoire> lc) { //appelée quand changement de tour (prend en param main sortilege du joueur du tour
+        for (CarteMagieNoire c : lc) {
+            addCarteToPanel(c);
+        }
     }
     public static void main(String args[]) {
         Partie p = new Partie();
