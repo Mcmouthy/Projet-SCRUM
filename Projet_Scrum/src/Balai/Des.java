@@ -44,5 +44,15 @@ public class Des {
         listeDes.add(de8);
         listeDes.add(de9);
     }
+    public static List<symbole> getSymbolesSansCouleur() { // a test
+        symbole[] tab = symbole.values();
+        List<symbole> ls = new ArrayList<>();
+        for (int i=0; i<tab.length;i++) {
+            ls.add(tab[i]);
+        }
+        ls.remove(symbole.ORANGE);
+        ls.remove(symbole.NOIR);
+        return ls;
+    }
 
 }

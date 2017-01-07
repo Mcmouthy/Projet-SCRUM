@@ -4,6 +4,9 @@ import Balai.Exceptions.SortieTableauException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Iterator;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -67,6 +70,7 @@ public class TestUnitJoueur {
         Joueur j=new Joueur("");
         j.setMainCarteFormule();
         Assert.assertEquals(j.getMainCarteFormule().size(),9);
+        /*
         Assert.assertEquals(j.getMainCarteFormule().get(0), Des.symbole.ECLAIR);
         Assert.assertEquals(j.getMainCarteFormule().get(1), Des.symbole.ARAIGNEE);
         Assert.assertEquals(j.getMainCarteFormule().get(2), Des.symbole.OREILLE);
@@ -76,7 +80,15 @@ public class TestUnitJoueur {
         Assert.assertEquals(j.getMainCarteFormule().get(6), Des.symbole.OEIL);
         Assert.assertEquals(j.getMainCarteFormule().get(7), Des.symbole.TOILE);
         Assert.assertEquals(j.getMainCarteFormule().get(8), Des.symbole.ETOILE);
-
+    */
+        List<Des.symbole> ls = Balai.Des.getSymbolesSansCouleur();
+        System.out.println(ls);
+        for (Iterator i = j.getMainCarteFormule().iterator(); i.hasNext();) {
+            Des.symbole symb = (Des.symbole) i.next();
+            System.out.println("REMOVE : "+symb.toString());
+            ls.remove(symb);
+        }
+        Assert.assertTrue(ls.isEmpty());
     }
 
     @Test

@@ -137,7 +137,7 @@ public class Joueur {
     }
 
     public void setMainCarteFormule() {
-        mainCarteFormule.removeAll(mainCarteFormule);
+        mainCarteFormule.clear();
         mainCarteFormule.add(Des.symbole.ECLAIR);
         mainCarteFormule.add(Des.symbole.ARAIGNEE);
         mainCarteFormule.add(Des.symbole.OREILLE);

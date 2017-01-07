@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.mockito.Mockito;
+import org.mockito.Mockito;;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -159,9 +159,9 @@ public class TestUnitPartie {
         listTest.add(new Des.symbole[][]{{Des.symbole.OEIL},{Des.symbole.NOIR}});
         listTest.add(new Des.symbole[][]{{Des.symbole.OREILLE},{Des.symbole.ORANGE}});
         Partie p= Mockito.mock(Partie.class);
-        p.setFormuleJeu(listTest);
+        p.setFormuleJeu((ArrayList<Balai.Des.symbole[][]>)listTest);
         Assert.assertEquals(listTest.size(),9);
-        p.genereFormuleFinale();
+        //p.genereFormuleFinale();
         //Assert.assertEquals(p.getFormuleJeu().size(),6);
     }
 
