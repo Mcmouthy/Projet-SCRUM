@@ -19,7 +19,7 @@ public class View extends JFrame {
     public JPanel plateau;
     public JPanel de1, de2, de3, de4, de5, de6, de7, de8, de9; // les symboles de 9 des
     public JPanel panelMainSort, panelMainAcro, panelSymboleDes, panelSymboleFormule, panelValidationFormule; //panel conteneurs
-    public JButton lancerDes, piocher, soumettreFormule; //boutons d'actions
+    public JButton lancerDes, cacherDes, piocher, soumettreFormule; //boutons d'actions
     public JButton pluie, eclair, etoile, oeil, toile, oreille, tetedemort, arraignee, choc;//symbole du joueur pour formules
     public JLabel symboleCache, formuleCourante;
     public JButton rectif, rectif2, attraction, attraction2, doublejeu, doublejeu2, doublejeu3, ventarriere, ventarriere2, ventarriere3, oublirep, oublirep2, decret, decret2, blocage, mauvaissort,brouillagem,brouillagem2; //sorts
@@ -43,33 +43,33 @@ public class View extends JFrame {
 
         setController(controller);
 
-        attraction=     new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/attraction.png"));
-        attraction2=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/attraction.png"));
-        blocage=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/blocage.png"));
-        brouillagem=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/brouillardmagique.png"));
-        brouillagem2=   new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/brouillardmagique.png"));
-        decret=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/decret.png"));
-        decret2=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/decret.png"));
-        doublejeu=      new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
-        doublejeu2=      new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
-        doublejeu3=      new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
-        looping=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/looping.png"));
-        looping2=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/looping.png"));
-        mauvaissort=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/mauvaissort.png"));
-        oublirep=       new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/oublirepare.png"));
-        oublirep2=       new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/oublirepare.png"));
-        rectif=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/rectification.png"));
-        rectif2=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/rectification.png"));
-        tonneau=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
-        tonneau2=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
-        tonneau3=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
-        ventarriere=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
-        ventarriere2=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
-        ventarriere3=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
-        volinv=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
-        volinv2=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
-        volinv3=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
-        volinv4=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
+        attraction=     new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/attraction.png"));
+        attraction2=    new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/attraction.png"));
+        blocage=        new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/blocage.png"));
+        brouillagem=    new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/brouillardmagique.png"));
+        brouillagem2=   new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/brouillardmagique.png"));
+        decret=         new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/decret.png"));
+        decret2=        new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/decret.png"));
+        doublejeu=      new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
+        doublejeu2=      new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
+        doublejeu3=      new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
+        looping=        new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/looping.png"));
+        looping2=        new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/looping.png"));
+        mauvaissort=    new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/mauvaissort.png"));
+        oublirep=       new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/oublirepare.png"));
+        oublirep2=       new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/oublirepare.png"));
+        rectif=         new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/rectification.png"));
+        rectif2=         new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/rectification.png"));
+        tonneau=        new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
+        tonneau2=        new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
+        tonneau3=        new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
+        ventarriere=    new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
+        ventarriere2=    new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
+        ventarriere3=    new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
+        volinv=         new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
+        volinv2=         new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
+        volinv3=         new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
+        volinv4=         new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
         this.add(attraction);
         this.add(attraction2);
         this.add(blocage);
@@ -100,37 +100,37 @@ public class View extends JFrame {
 
 
         sorc_rouge=new JPanel();
-        sorc_rouge.add(new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/lachaudasse.png")));
+        sorc_rouge.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/lachaudasse.png")));
         sorc_vert=new JPanel();
-        sorc_vert.add(new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/sorciere_verte.png")));
+        sorc_vert.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/sorciere_verte.png")));
         sorc_violette=new JPanel();
-        sorc_violette.add(new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/sorciere_violette.png")));
+        sorc_violette.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/sorciere_violette.png")));
         sorc_jaune=new JPanel();
-        sorc_jaune.add(new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/sorciere_jaune.png")));
+        sorc_jaune.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/sorciere_jaune.png")));
         sorc_bleu=new JPanel();
-        sorc_bleu.add(new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/sorciere_bleue.png")));
+        sorc_bleu.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/sorciere_bleue.png")));
         sorc_gris=new JPanel();
-        sorc_gris.add(new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/sorcier_gris.png")));
+        sorc_gris.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/sorcier_gris.png")));
 
-        pluie=      new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/biiih_pluie.png"));
+        pluie=      new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/biiih_pluie.png", "bîîîh"));
         pluie.setPreferredSize(new Dimension(86,127));
-        eclair=     new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/boulga_eclair.png"));
+        eclair=     new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/boulga_eclair.png", "boulgâ"));
         eclair.setPreferredSize(new Dimension(86,127));
-        etoile=     new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/foulz_etoile.png"));
+        etoile=     new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/foulz_etoile.png", "foulzz"));
         etoile.setPreferredSize(new Dimension(86,127));
-        oeil=       new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/glou_oeil.png"));
+        oeil=       new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/glou_oeil.png", "glou"));
         oeil.setPreferredSize(new Dimension(86,127));
-        toile=      new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/lashla_toile.png"));
+        toile=      new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/lashla_toile.png", "lashlâ"));
         toile.setPreferredSize(new Dimension(86,127));
-        oreille=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/meuf_oreille.png"));
+        oreille=    new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/meuf_oreille.png", "meuh"));
         oreille.setPreferredSize(new Dimension(86,127));
-        tetedemort= new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/minh_tetedemort.png"));
+        tetedemort= new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/minh_tetedemort.png", "mîîn"));
         tetedemort.setPreferredSize(new Dimension(86,127));
-        arraignee=  new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/sha_araignee.png"));
+        arraignee=  new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/sha_araignee.png", "shâââ"));
         arraignee.setPreferredSize(new Dimension(86,127));
-        choc=       new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/zaam_choc.png"));
+        choc=       new JButton(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/zaam_choc.png", "zââm"));
         choc.setPreferredSize(new Dimension(86,127));
-        symboleCache = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        symboleCache = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
 
         this.add(pluie);
         this.add(eclair);
@@ -152,7 +152,7 @@ public class View extends JFrame {
 
         // Placement du plateau
         plateau = new JPanel();
-        plateau.add(new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/plateau.png")));
+        plateau.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/plateau.png")));
         plateau.setPreferredSize(new Dimension(760,604));
         Dimension sizePlateau = plateau.getPreferredSize();
         plateau.setBounds(insets.left, insets.top, sizePlateau.width,  sizePlateau.height);
@@ -175,10 +175,16 @@ public class View extends JFrame {
         this.getContentPane().add(panelSymboleDes);
 
         //Placement du bouton lancer les dés
-        lancerDes = new JButton("Lancer dés");
+        lancerDes = new JButton("Lancer");
         lancerDes.setPreferredSize(new Dimension(200,50));
-        lancerDes.setBounds(insets.left+sizePlateau.width-200, insets.top+sizePlateau.height, 200, 50);
+        lancerDes.setBounds(insets.left+sizePlateau.width-200, insets.top+sizePlateau.height, 100, 50);
         this.add(lancerDes);
+
+        //Placement du bouton cacher les dés
+        cacherDes = new JButton("Cacher");
+        cacherDes.setPreferredSize(new Dimension(200,50));
+        cacherDes.setBounds(insets.left+sizePlateau.width-100, insets.top+sizePlateau.height, 100, 50);
+        this.add(cacherDes);
 
         //Placement du panel symbole formule joueur
         panelSymboleFormule = new JPanel();
@@ -310,21 +316,32 @@ public class View extends JFrame {
             add(arraignee);
             add(choc);
         }};
+        resetJLabelFormule();
         SwingUtilities.updateComponentTreeUI(this);
         return ljb;
     }
     public void setPanelSymbolFormule(JButton jbToRemove) { // appelée par le controleur quand appuie sur bouton jbToRemove
         panelSymboleFormule.removeAll();
         ArrayList<JButton> jlb = new ArrayList<>();
-        jlb=(ArrayList<JButton>)currentChoixRestantFormule.clone();
+        jlb=((ArrayList<JButton>)currentChoixRestantFormule.clone());
         for (JButton b : jlb) {
-            if (jbToRemove.getName().equals(b.getName())) currentChoixRestantFormule.remove(b);
+            if (jbToRemove.getName().equals(b.getName())) {
+                setJLabelFormule(jbToRemove);
+                currentChoixRestantFormule.remove(b);
+            }
         }
         for (JButton b : currentChoixRestantFormule) {
             panelSymboleFormule.add(b);
         }
         SwingUtilities.updateComponentTreeUI(this);
 
+    }
+    public void setJLabelFormule(JButton butonClicked) {
+        ImageIcon ii = (ImageIcon)butonClicked.getIcon();
+        formuleCourante.setText(formuleCourante.getText()+" "+ii.getDescription());
+    }
+    public void resetJLabelFormule() {
+        formuleCourante.setText("");
     }
 
     public void setController(Controller controller) {
@@ -531,18 +548,18 @@ public class View extends JFrame {
             addCarteToPanel(c);
         }
     }
-    private void hideDes() {
+    public void hideDes() {
         panelSymboleDes.removeAll();
         panelSymboleDes.add(new JLabel("LES DES "));
-        JLabel jl = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
-        JLabel jl2 = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
-        JLabel jl3 = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
-        JLabel jl4 = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
-        JLabel jl5 = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
-        JLabel jl6 = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
-        JLabel jl7 = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
-        JLabel jl8 = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
-        JLabel jl9 = new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl2 = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl3 = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl4 = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl5 = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl6 = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl7 = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl8 = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
+        JLabel jl9 = new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png"));
         JPanel jp = new JPanel();
         jp.add(jl);
         JPanel jp2 = new JPanel();
@@ -730,7 +747,7 @@ public class View extends JFrame {
     }
     public String pathFactory(String nomDe, String couleur) {
         System.out.println(nomDe.toLowerCase()+"_"+couleur.toLowerCase());
-        return "/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/"+nomDe.toLowerCase()+"_"+couleur.toLowerCase()+".png";
+        return "Projet_Scrum/src/Balai/Vue/Assets/"+nomDe.toLowerCase()+"_"+couleur.toLowerCase()+".png";
     }
 
     public void setActionListener(ActionListener l){
@@ -758,6 +775,10 @@ public class View extends JFrame {
         ventarriere3.addActionListener(l);
         piocher.setName("pioche");
         piocher.addActionListener(l);
+        lancerDes.setName("des");
+        lancerDes.addActionListener(l);
+        cacherDes.setName("cacher");
+        cacherDes.addActionListener(l);
 
     }
     public static void main(String args[]) {
@@ -768,32 +789,22 @@ public class View extends JFrame {
         v.setActionListener(v.controller);
         v.setMainSortPanel(j.getMain());
         v.setMainAcrobatiePanel(j.getMainAcrobatie());
-        try {
-            Thread.sleep((long)2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        v.updateDes(Des.lanceDes());
-        try {
-            Thread.sleep((long)2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        v.hideDes();
-        try {
-            Thread.sleep((long)2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        v.updateDes(Des.lanceDes());
-        try {
-            Thread.sleep((long)2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
         v.setPanelSymbolFormule(v.eclair);
         try {
-            Thread.sleep((long)2000);
+            Thread.sleep((long)1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        v.setPanelSymbolFormule(v.etoile);
+        try {
+            Thread.sleep((long)1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        v.setPanelSymbolFormule(v.arraignee);
+        try {
+            Thread.sleep((long)3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

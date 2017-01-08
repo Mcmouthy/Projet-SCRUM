@@ -1,6 +1,7 @@
 package Balai.Controller;
 
 import Balai.CarteMagieNoire;
+import Balai.Des;
 import Balai.Exceptions.PiocheVideException;
 import Balai.Partie;
 import Balai.Sortilege;
@@ -87,9 +88,13 @@ public class Controller implements ActionListener {
             } catch (PiocheVideException e1) {
                 e1.printStackTrace();
             }
+        }
 
-
-
+        if(((((JButton)e.getSource()).getName()).equals("des"))){
+            vue.updateDes(Des.lanceDes());
+        }
+        if(((((JButton)e.getSource()).getName()).equals("cacher"))){
+            vue.hideDes();
         }
 
 
