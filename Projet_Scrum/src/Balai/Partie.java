@@ -79,6 +79,7 @@ public class Partie {
     }
     public void setJoueurCourant(int i){joueurCourant=i;}
     public int getJoueurCourant(){return joueurCourant;}
+
     // compter le nb de joueur devant un autre
     public void comparePosition() {
         //au debut du jeu, tout les joueurs sont en 0 et sont classés premiers
@@ -111,6 +112,18 @@ public class Partie {
         return formuleJeu;
     }
 
+    public Set<Des.symbole> getFormuleOrange() {
+        return formuleOrange;
+    }
+
+    public Set<Des.symbole> getFormuleNoire() {
+        return formuleNoire;
+    }
+
+    public Set<Des.symbole> getFormuleInterdit() {
+        return formuleInterdit;
+    }
+
     public ArrayList<Des.symbole[][]> genereFormuleJeu() {
         Des.setListeDes();
         for(Des.symbole[][] de:Des.listeDes){
@@ -125,7 +138,7 @@ public class Partie {
 
     public void genereFormulesFinales() {
         for (Des.symbole[][] d:formuleJeu){
-            if (d[0][1]==Des.symbole.NOIR)formuleNoire.add(d[0][0]);
+            if (d[1][0]==Des.symbole.NOIR)formuleNoire.add(d[0][0]);
             else formuleOrange.add(d[0][0]);
             if (formuleNoire.contains(d[0][0]) && formuleOrange.contains(d[0][0])){
                 formuleInterdit.add(d[0][0]);
@@ -138,6 +151,18 @@ public class Partie {
 
     public void setFormuleJeu(ArrayList<Des.symbole[][]> formuleJeu) {
         this.formuleJeu = formuleJeu;
+    }
+
+    public void setFormuleNoire(Set<Des.symbole> formuleNoire) {
+        this.formuleNoire = formuleNoire;
+    }
+
+    public void setFormuleInterdit(Set<Des.symbole> formuleInterdit) {
+        this.formuleInterdit = formuleInterdit;
+    }
+
+    public void setFormuleOrange(Set<Des.symbole> formuleOrange) {
+        this.formuleOrange = formuleOrange;
     }
 
     public boolean parfaite(Set<Des.symbole> atester){
@@ -155,7 +180,7 @@ public class Partie {
             for (Des.symbole symbole : test){
                 if (!form.contains(symbole)) return true;
             }
-            return false; // on retourne 0 pour en fait dire que la formule n'est pas fausse
+            return false;
         }
         if (test.size()==form.size()){
             if (parfaite(test)){
