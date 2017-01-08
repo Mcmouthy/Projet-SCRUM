@@ -86,6 +86,10 @@ public class Joueur {
         this.rangCourse = rangCourse;
     }
 
+    public void setFormule(Set<Des.symbole> formule) {
+        this.formule = formule;
+    }
+
     public void attributionPointArrive() {
         setPoints(getPoints()+25-(getRangCourse()-1));
     }
