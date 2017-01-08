@@ -19,6 +19,7 @@ public class Partie {
     private Set<Des.symbole> formuleOrange;
     private Set<Des.symbole> formuleInterdit;
     private int NoJoueurBlocage;
+    private Des.symbole symbole[];
 
     public Partie(){
         joueurCourant=0;
@@ -46,7 +47,13 @@ public class Partie {
             j.setRangCourse(1);
         }
     }
+    public Des.symbole[] getDesSymboles(){
+        return symbole;
+    }
 
+    public void setDesSymbole(Des.symbole[] symboles){
+        symbole=symboles;
+    }
     public void deplaceJoueur(Joueur j, int i) throws SortieTableauException {
         if (j.getPosition()+i<-2) throw new SortieTableauException();
         //a tester (si la carte blocage est active)
