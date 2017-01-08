@@ -125,7 +125,7 @@ public class Partie {
 
     public void genereFormulesFinales() {
         for (Des.symbole[][] d:formuleJeu){
-            if (d[0][1]==Des.symbole.NOIR)formuleNoire.add(d[0][0]);
+            if (d[1][0]==Des.symbole.NOIR)formuleNoire.add(d[0][0]);
             else formuleOrange.add(d[0][0]);
             if (formuleNoire.contains(d[0][0]) && formuleOrange.contains(d[0][0])){
                 formuleInterdit.add(d[0][0]);
@@ -138,6 +138,18 @@ public class Partie {
 
     public void setFormuleJeu(ArrayList<Des.symbole[][]> formuleJeu) {
         this.formuleJeu = formuleJeu;
+    }
+
+    public void setFormuleOrange(Set<Des.symbole> formuleOrange) {
+        this.formuleOrange = formuleOrange;
+    }
+
+    public void setFormuleInterdit(Set<Des.symbole> formuleInterdit) {
+        this.formuleInterdit = formuleInterdit;
+    }
+
+    public void setFormuleNoire(Set<Des.symbole> formuleNoire) {
+        this.formuleNoire = formuleNoire;
     }
 
     public boolean parfaite(Set<Des.symbole> atester){
@@ -155,7 +167,7 @@ public class Partie {
             for (Des.symbole symbole : test){
                 if (!form.contains(symbole)) return true;
             }
-            return false; // on retourne 0 pour en fait dire que la formule n'est pas fausse
+            return false;
         }
         if (test.size()==form.size()){
             if (parfaite(test)){
