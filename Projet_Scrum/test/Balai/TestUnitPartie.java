@@ -220,6 +220,69 @@ public class TestUnitPartie {
         assertFalse(p.parfaite(testvalideOrange));
     }
 
+    @Test
+    public void testFormulefausseFormuleEgaleValide(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalide = new HashSet<>();
+        testvalide.add(Des.symbole.ECLAIR);
+        testvalide.add(Des.symbole.OEIL);
+        assertFalse(p.isformulefausse(testvalide,formuleOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleEgaleNonValide(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalide = new HashSet<>();
+        testvalide.add(Des.symbole.ECLAIR);
+        testvalide.add(Des.symbole.TOILE);
+        assertTrue(p.isformulefausse(testvalide,formuleOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleInferieurValide(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalide = new HashSet<>();
+        testvalide.add(Des.symbole.ECLAIR);
+        assertFalse(p.isformulefausse(testvalide,formuleOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleInferieurNonValide(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalide = new HashSet<>();
+        testvalide.add(Des.symbole.TOILE);
+        assertTrue(p.isformulefausse(testvalide,formuleOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleSuperieur(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testFausse = new HashSet<>();
+        testFausse.add(Des.symbole.ECLAIR);
+        testFausse.add(Des.symbole.OEIL);
+        testFausse.add(Des.symbole.TOILE);
+        assertTrue(p.isformulefausse(testFausse,formuleOrange));
+    }
 
 
 }
