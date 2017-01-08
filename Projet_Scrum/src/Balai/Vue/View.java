@@ -6,6 +6,7 @@ import Balai.Controller.Controller;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +25,8 @@ public class View extends JFrame {
     public JButton rectif, rectif2, attraction, attraction2, doublejeu, doublejeu2, doublejeu3, ventarriere, ventarriere2, ventarriere3, oublirep, oublirep2, decret, decret2, blocage, mauvaissort,brouillagem,brouillagem2; //sorts
     public JButton tonneau, tonneau2, tonneau3,  looping, looping2, volinv, volinv2, volinv3, volinv4; //acrobaties
     public JPanel sorc_rouge, sorc_vert, sorc_bleu, sorc_gris, sorc_jaune, sorc_violette;
+
+    public ArrayList<JButton> currentChoixRestantFormule;
 
     public int width, height;
     public Insets insets;
@@ -163,7 +166,7 @@ public class View extends JFrame {
 
         hideDes();
         //updateDes(Des.lanceDes());
-        
+
 
         panelSymboleDes.setPreferredSize(new Dimension(760,50));
         Dimension sizePanSymbDes = panelSymboleDes.getPreferredSize();
@@ -180,15 +183,7 @@ public class View extends JFrame {
         //Placement du panel symbole formule joueur
         panelSymboleFormule = new JPanel();
         panelSymboleFormule.setLayout(new BoxLayout(panelSymboleFormule, BoxLayout.X_AXIS));
-        panelSymboleFormule.add(pluie);
-        panelSymboleFormule.add(eclair);
-        panelSymboleFormule.add(etoile);
-        panelSymboleFormule.add(oeil);
-        panelSymboleFormule.add(toile);
-        panelSymboleFormule.add(oreille);
-        panelSymboleFormule.add(tetedemort);
-        panelSymboleFormule.add(arraignee);
-        panelSymboleFormule.add(choc);
+        currentChoixRestantFormule=initPanelSymboleFormule();
         panelSymboleFormule.setPreferredSize(new Dimension(this.width-200,130));
         Dimension panSymbFormSize = panelSymboleFormule.getPreferredSize();
         panelSymboleFormule.setBounds(insets.left,insets.top+sizePlateau.height+sizePanSymbDes.height,this.width-200,panSymbFormSize.height);
@@ -282,6 +277,54 @@ public class View extends JFrame {
 
 
         this.setVisible(true);
+    }
+
+    private ArrayList<JButton> initPanelSymboleFormule() {
+        pluie.setName("pluie");
+        panelSymboleFormule.add(pluie);
+        eclair.setName("eclair");
+        panelSymboleFormule.add(eclair);
+        etoile.setName("etoile");
+        panelSymboleFormule.add(etoile);
+        oeil.setName("oeil");
+        panelSymboleFormule.add(oeil);
+        toile.setName("toile");
+        panelSymboleFormule.add(toile);
+        oreille.setName("oreille");
+        panelSymboleFormule.add(oreille);
+        tetedemort.setName("tetedemort");
+        panelSymboleFormule.add(tetedemort);
+        arraignee.setName("arraignee");
+        panelSymboleFormule.add(arraignee);
+        choc.setName("choc");
+        panelSymboleFormule.add(choc);
+
+        ArrayList<JButton> ljb = new ArrayList<JButton>() {{
+            add(pluie);
+            add(eclair);
+            add(etoile);
+            add(oeil);
+            add(toile);
+            add(oreille);
+            add(tetedemort);
+            add(arraignee);
+            add(choc);
+        }};
+        SwingUtilities.updateComponentTreeUI(this);
+        return ljb;
+    }
+    public void setPanelSymbolFormule(JButton jbToRemove) { // appelée par le controleur quand appuie sur bouton jbToRemove
+        panelSymboleFormule.removeAll();
+        ArrayList<JButton> jlb = new ArrayList<>();
+        jlb=(ArrayList<JButton>)currentChoixRestantFormule.clone();
+        for (JButton b : jlb) {
+            if (jbToRemove.getName().equals(b.getName())) currentChoixRestantFormule.remove(b);
+        }
+        for (JButton b : currentChoixRestantFormule) {
+            panelSymboleFormule.add(b);
+        }
+        SwingUtilities.updateComponentTreeUI(this);
+
     }
 
     public void setController(Controller controller) {
@@ -743,5 +786,17 @@ public class View extends JFrame {
             e.printStackTrace();
         }
         v.updateDes(Des.lanceDes());
+        try {
+            Thread.sleep((long)2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        v.setPanelSymbolFormule(v.eclair);
+        try {
+            Thread.sleep((long)2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        v.initPanelSymboleFormule();
     }
 }
