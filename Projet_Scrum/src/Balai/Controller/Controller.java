@@ -91,9 +91,10 @@ public class Controller implements ActionListener {
         }
 
         if(((((JButton)e.getSource()).getName()).equals("des"))){
-            partie.setDesSymbole(Des.lanceDes());
-            vue.updateDes(partie.getDesSymboles());
-
+            vue.updateDes(Des.lanceDes());
+        }
+        if(((((JButton)e.getSource()).getName()).equals("cacher"))){
+            vue.hideDes();
         }
 
 
