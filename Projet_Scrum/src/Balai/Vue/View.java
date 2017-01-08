@@ -958,6 +958,17 @@ public class View extends JFrame {
         lancerDes.addActionListener(l);
         cacherDes.setName("cacher");
         cacherDes.addActionListener(l);
+        pluie.addActionListener(l);
+        eclair.addActionListener(l);
+        etoile.addActionListener(l);
+        oeil.addActionListener(l);
+        toile.addActionListener(l);
+        oreille.addActionListener(l);
+        tetedemort.addActionListener(l);
+        arraignee.addActionListener(l);
+        choc.addActionListener(l);
+        soumettreFormule.setName("soumettre");
+        soumettreFormule.addActionListener(l);
 
     }
     public static void main(String args[]) {
