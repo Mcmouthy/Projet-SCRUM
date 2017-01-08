@@ -8,7 +8,7 @@ import java.util.Set;
  * Created by PC-Dylan on 22/11/2016.
  */
 public class Joueur {
-
+    private boolean doubleJeuActive;
     private String nom;
     private int position;
     private int rangCourse;
@@ -19,6 +19,7 @@ public class Joueur {
     private boolean fermecouvercle;
     private boolean parfaiteOrange;
     private boolean parfaiteNoire;
+
 
     private ArrayList<Sortilege> main = new ArrayList<>();
     private ArrayList<Acrobatie> mainAcrobatie = new ArrayList<>();
@@ -32,13 +33,15 @@ public class Joueur {
         points=0;
         parfaiteOrange=false;
         parfaiteNoire=false;
+        doubleJeuActive=false;
     }
 
     public Joueur() {
         nom=null;
         points=0;
     }
-
+    public void setDoubleJeuActive(boolean b){doubleJeuActive=b;}
+    public boolean getDoubleJeuActive(){return doubleJeuActive;}
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -162,4 +165,6 @@ public class Joueur {
         if (this.getRangCourse()==1) this.malediction=true;
         else this.malediction=false;
     }
+
+
 }

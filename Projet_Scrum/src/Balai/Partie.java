@@ -11,14 +11,17 @@ import java.util.*;
 public class Partie {
     Random loto = new Random();
     private List<Joueur> listejoueur;
+    private int joueurCourant;
     private boolean fin;
     private Pioche pioche;
     private ArrayList<Des.symbole[][]> formuleJeu;
     private Set<Des.symbole> formuleNoire; //on utilise des set car on ne veut pas de doublons
     private Set<Des.symbole> formuleOrange;
     private Set<Des.symbole> formuleInterdit;
+    private int NoJoueurBlocage;
 
     public Partie(){
+        joueurCourant=0;
         listejoueur= new ArrayList<>();
         fin=false;
         pioche = new Pioche();
@@ -46,6 +49,8 @@ public class Partie {
 
     public void deplaceJoueur(Joueur j, int i) throws SortieTableauException {
         if (j.getPosition()+i<-2) throw new SortieTableauException();
+        //a tester (si la carte blocage est active)
+        else if(j.getPosition()+i>listejoueur.get(NoJoueurBlocage).getPosition() && j.getPosition()<listejoueur.get(NoJoueurBlocage).getPosition()){j.setPosition(listejoueur.get(NoJoueurBlocage).getPosition());}
         else j.setPosition(j.getPosition() + i);
         if (j.getPosition()>22) {
             setFinPartie();
@@ -65,7 +70,8 @@ public class Partie {
     public void setFin(boolean fin) {
         this.fin = fin;
     }
-
+    public void setJoueurCourant(int i){joueurCourant=i;}
+    public int getJoueurCourant(){return joueurCourant;}
     // compter le nb de joueur devant un autre
     public void comparePosition() {
         //au debut du jeu, tout les joueurs sont en 0 et sont classés premiers
@@ -193,5 +199,11 @@ public class Partie {
         //on applique les effets des cartes
 
     }
+
+    public void setBlocage(int blocage) {
+        this.NoJoueurBlocage = blocage;
+    }
+
+    public int getBlocage(){return NoJoueurBlocage;}
 
 }

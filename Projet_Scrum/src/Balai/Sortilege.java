@@ -43,6 +43,12 @@ public class Sortilege extends CarteMagieNoire {
         return nbcase;
     }
 
+    public static  void sortDoubleJeu(Joueur j){
+        j.setDoubleJeuActive(true);
+    }
+
+
+
     public static void sortOubliRepare(Joueur j, Des.symbole etoile) {
         j.addToFormule(etoile);
     }

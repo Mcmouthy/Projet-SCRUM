@@ -2,6 +2,7 @@ package Balai;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static Balai.Des.symbole.*;
 
@@ -34,6 +35,7 @@ public class Des {
     public static symbole[][] de9={{TOILE,OREILLE,ECLAIR,TETEDEMORT,ARAIGNEE,ETOILE},{ORANGE,ORANGE,ORANGE,NOIR,NOIR,NOIR}};
     public static List<symbole[][]> listeDes = new ArrayList<symbole[][]>();
     public static void setListeDes(){
+        listeDes.clear();
         listeDes.add(de1);
         listeDes.add(de2);
         listeDes.add(de3);
@@ -43,6 +45,20 @@ public class Des {
         listeDes.add(de7);
         listeDes.add(de8);
         listeDes.add(de9);
+    }
+    public static symbole[] lanceDes() {
+        ArrayList<symbole[]> lancer = new ArrayList<>();
+        symbole[] des = new symbole[18];
+        int i=0;
+        setListeDes();
+        for (symbole[][] de : listeDes) {
+            int rand = (int)Math.round(Math.random()*5);
+            des[i]=de[0][rand];
+            des[i+1]=de[1][rand];
+            i+=2;
+            //lancer.add(des);
+        }
+        return des;
     }
     public static List<symbole> getSymbolesSansCouleur() { // a test
         symbole[] tab = symbole.values();
