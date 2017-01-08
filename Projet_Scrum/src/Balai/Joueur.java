@@ -19,6 +19,7 @@ public class Joueur {
     private boolean fermecouvercle;
     private boolean parfaiteOrange;
     private boolean parfaiteNoire;
+    protected String nomFigurine; // nomFigurine est set quand le joueur choisi sa figurine (optionnel)
 
 
     private ArrayList<Sortilege> main = new ArrayList<>();
@@ -39,6 +40,12 @@ public class Joueur {
     public Joueur() {
         nom=null;
         points=0;
+    }
+    public void setNomFigurine(String nom) {
+        nomFigurine=nom;
+    }
+    public String getNomFigurine() {
+        return nomFigurine;
     }
     public void setDoubleJeuActive(boolean b){doubleJeuActive=b;}
     public boolean getDoubleJeuActive(){return doubleJeuActive;}

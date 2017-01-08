@@ -32,7 +32,28 @@ public class Partie {
         formuleInterdit=new HashSet<>();
     }
 
-    public void ajouterJoueur(Joueur j1) {
+    public void ajouterJoueur(Joueur j1) { // a test
+        switch (listejoueur.size()) {
+            case 0 :
+                j1.setNomFigurine("lachaudasse.png");
+                break;
+            case 1 :
+                j1.setNomFigurine("sorcier_gris.png");
+                break;
+            case 2 :
+                j1.setNomFigurine("sorciere_bleue.png");
+                break;
+            case 3 :
+                j1.setNomFigurine("sorciere_jaune.png");
+                break;
+            case 4 :
+                j1.setNomFigurine("sorciere_verte.png");
+                break;
+            case 5 :
+                j1.setNomFigurine("sorciere_violette.png");
+                break;
+
+        }
         listejoueur.add(j1);
     }
 
@@ -229,6 +250,16 @@ public class Partie {
         }
         //on applique les effets des cartes
 
+    }
+
+    public int nbJoueurAtSamePos(Joueur j) { //a test
+        int posJ = j.getPosition();
+        int cptNbJ=0;
+        for (int i=0; i<getlistejoueur().size(); i++) {
+            if (posJ==getlistejoueur().get(i).getPosition());
+            cptNbJ++;
+        }
+        return cptNbJ-1;
     }
 
     public void setBlocage(int blocage) {
