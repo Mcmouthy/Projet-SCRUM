@@ -126,6 +126,17 @@ public class Joueur {
         return carte;
     }
 
+    public void removeCarteFromMain(Type t){
+
+        for (int i=0;i<main.size();i++){
+            if(main.get(i).getType()==t){
+                main.remove(i).getType();
+            }
+        }
+
+
+    }
+
     public void calculerScoreAcrobatie() {
         for (Acrobatie bonus : mainAcrobatie) setPoints(getPoints()+bonus.getValue());
     }
