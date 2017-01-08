@@ -1,10 +1,7 @@
 package Balai.Controller;
 
-import Balai.CarteMagieNoire;
-import Balai.Des;
+import Balai.*;
 import Balai.Exceptions.PiocheVideException;
-import Balai.Partie;
-import Balai.Sortilege;
 import Balai.Vue.View;
 
 import javax.swing.*;
@@ -29,8 +26,10 @@ public class Controller implements ActionListener {
             System.out.print("rectif");
 
         }
-        if(((((JButton)e.getSource()).getName()).equals("attraction")) ||((((JButton)e.getSource()).getName()).equals("attraction2")) ){
+        if(((((JButton)e.getSource()).getName()).equals("attraction")) || ((((JButton)e.getSource()).getName()).equals("attraction2")) ){
             Sortilege.sortAttraction(partie.getlistejoueur().get(partie.getJoueurCourant()),partie.getlistejoueur());
+
+            vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.ATTRACTION));
             System.out.println("attraction");
 
         }

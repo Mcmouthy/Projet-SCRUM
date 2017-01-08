@@ -126,6 +126,17 @@ public class Joueur {
         return carte;
     }
 
+    public CarteMagieNoire removeCarteFromMain(Type t){
+        CarteMagieNoire c=null;
+        for (int i=0;i<main.size();i++){
+            if(main.get(i).getType()==t){
+                c=main.get(i);
+                main.remove(i);
+            }
+        }
+        return c;
+    }
+
     public void calculerScoreAcrobatie() {
         for (Acrobatie bonus : mainAcrobatie) setPoints(getPoints()+bonus.getValue());
     }
