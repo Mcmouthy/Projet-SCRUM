@@ -402,12 +402,18 @@ public class View extends JFrame {
         }
         switch (nbCartes) {
             case 0 :
+                System.out.println("ok");
+                System.out.println(nomCarte);
                 panelMainSort.add(getButtonByName(nomCarte));
                 break;
             case 1 :
+                System.out.println("ok");
+                System.out.println(nomCarte);
                 panelMainSort.add(getButtonByName(nomCarte+'2'));
                 break;
             case 2 :
+                System.out.println("ok");
+                System.out.println(nomCarte);
                 panelMainSort.add(getButtonByName(nomCarte+'3'));
                 break;
         }
@@ -541,6 +547,7 @@ public class View extends JFrame {
     public void setMainSortPanel(List<Sortilege> lc) { //appelée quand changement de tour (prend en param main sortilege du joueur du tour
         for (CarteMagieNoire c : lc) {
             addCarteToPanel(c);
+            setController(controller);
         }
     }
     public void setMainAcrobatiePanel(List<Acrobatie> lc) { //appelée quand changement de tour (prend en param main acrobatie du joueur du tour
@@ -791,23 +798,6 @@ public class View extends JFrame {
         v.setMainAcrobatiePanel(j.getMainAcrobatie());
 
         v.setPanelSymbolFormule(v.eclair);
-        try {
-            Thread.sleep((long)1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        v.setPanelSymbolFormule(v.etoile);
-        try {
-            Thread.sleep((long)1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        v.setPanelSymbolFormule(v.arraignee);
-        try {
-            Thread.sleep((long)3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        v.initPanelSymboleFormule();
+
     }
 }
