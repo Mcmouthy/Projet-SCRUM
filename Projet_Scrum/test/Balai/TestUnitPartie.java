@@ -9,9 +9,12 @@ import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -148,7 +151,7 @@ public class TestUnitPartie {
 
     @Test
     public void testGenereFormuleFinale(){
-        List<Des.symbole[][]> listTest= new ArrayList<>();
+        ArrayList<Des.symbole[][]> listTest= new ArrayList<>();
         listTest.add(new Des.symbole[][]{{Des.symbole.ECLAIR},{Des.symbole.NOIR}});
         listTest.add(new Des.symbole[][]{{Des.symbole.ARAIGNEE},{Des.symbole.ORANGE}});
         listTest.add(new Des.symbole[][]{{Des.symbole.OREILLE},{Des.symbole.NOIR}});
@@ -158,11 +161,171 @@ public class TestUnitPartie {
         listTest.add(new Des.symbole[][]{{Des.symbole.TETEDEMORT},{Des.symbole.ORANGE}});
         listTest.add(new Des.symbole[][]{{Des.symbole.OEIL},{Des.symbole.NOIR}});
         listTest.add(new Des.symbole[][]{{Des.symbole.OREILLE},{Des.symbole.ORANGE}});
-        Partie p= Mockito.mock(Partie.class);
-        p.setFormuleJeu((ArrayList<Balai.Des.symbole[][]>)listTest);
-        Assert.assertEquals(listTest.size(),9);
-        //p.genereFormuleFinale();
-        //Assert.assertEquals(p.getFormuleJeu().size(),6);
+        Partie p= new Partie();
+        p.setFormuleJeu(listTest);
+        p.genereFormulesFinales();
+        assertEquals(p.getFormuleOrange().size(),4);
+        assertEquals(p.getFormuleNoire().size(),2);
+        assertEquals(p.getFormuleInterdit().size(),1);
+        assertEquals(p.getFormuleJeu().size(),0);
     }
+
+    @Test
+    public void testFormuleParfaiteNoire(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleNoire = new HashSet<>();
+        formuleNoire.add(Des.symbole.ECLAIR);
+        formuleNoire.add(Des.symbole.OEIL);
+        p.setFormuleNoire(formuleNoire);
+        Set<Des.symbole> testvalideNoire = new HashSet<>();
+        testvalideNoire.add(Des.symbole.ECLAIR);
+        testvalideNoire.add(Des.symbole.OEIL);
+        assertTrue(p.parfaite(testvalideNoire));
+    }
+
+    @Test
+    public void testFormuleNonParfaiteNoire(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleNoire = new HashSet<>();
+        formuleNoire.add(Des.symbole.ECLAIR);
+        formuleNoire.add(Des.symbole.OEIL);
+        p.setFormuleNoire(formuleNoire);
+        Set<Des.symbole> testvalideNoire = new HashSet<>();
+        testvalideNoire.add(Des.symbole.ECLAIR);
+        assertFalse(p.parfaite(testvalideNoire));
+    }
+
+    @Test
+    public void testFormuleParfaiteOrange(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalideOrange = new HashSet<>();
+        testvalideOrange.add(Des.symbole.ECLAIR);
+        testvalideOrange.add(Des.symbole.OEIL);
+        assertTrue(p.parfaite(testvalideOrange));
+    }
+
+    @Test
+    public void testFormuleNonParfaiteOrange(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalideOrange = new HashSet<>();
+        testvalideOrange.add(Des.symbole.ECLAIR);
+        assertFalse(p.parfaite(testvalideOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleEgaleValide(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalide = new HashSet<>();
+        testvalide.add(Des.symbole.ECLAIR);
+        testvalide.add(Des.symbole.OEIL);
+        assertFalse(p.isformulefausse(testvalide,formuleOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleEgaleNonValide(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalide = new HashSet<>();
+        testvalide.add(Des.symbole.ECLAIR);
+        testvalide.add(Des.symbole.TOILE);
+        assertTrue(p.isformulefausse(testvalide,formuleOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleInferieurValide(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalide = new HashSet<>();
+        testvalide.add(Des.symbole.ECLAIR);
+        assertFalse(p.isformulefausse(testvalide,formuleOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleInferieurNonValide(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testvalide = new HashSet<>();
+        testvalide.add(Des.symbole.TOILE);
+        assertTrue(p.isformulefausse(testvalide,formuleOrange));
+    }
+
+    @Test
+    public void testFormulefausseFormuleSuperieur(){
+        Partie p = new Partie();
+        Set<Des.symbole> formuleOrange = new HashSet<>();
+        formuleOrange.add(Des.symbole.ECLAIR);
+        formuleOrange.add(Des.symbole.OEIL);
+        p.setFormuleOrange(formuleOrange);
+        Set<Des.symbole> testFausse = new HashSet<>();
+        testFausse.add(Des.symbole.ECLAIR);
+        testFausse.add(Des.symbole.OEIL);
+        testFausse.add(Des.symbole.TOILE);
+        assertTrue(p.isformulefausse(testFausse,formuleOrange));
+    }
+
+    @Test
+    public void testReinitComposants(){
+        Partie p = new Partie();
+        Joueur k = new Joueur("toto");
+        p.ajouterJoueur(k);
+        k.setParfaiteOrange(true);
+        k.setParfaiteNoire(true);
+        k.setFermecouvercle(true);
+        k.addToFormule(Des.symbole.ARAIGNEE);
+        k.addToFormule(Des.symbole.ETOILE);
+
+        Set<Des.symbole>formuleNoire = new HashSet<>();
+        formuleNoire.add(Des.symbole.ARAIGNEE);
+        Set<Des.symbole>formuleOrange = new HashSet<>();
+        formuleNoire.add(Des.symbole.ETOILE);
+        Set<Des.symbole>formuleInterdit = new HashSet<>();
+        formuleNoire.add(Des.symbole.OEIL);
+
+        ArrayList<Des.symbole[][]> listTest= new ArrayList<>();
+        listTest.add(new Des.symbole[][]{{Des.symbole.ECLAIR},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.ARAIGNEE},{Des.symbole.ORANGE}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.OREILLE},{Des.symbole.NOIR}});
+        listTest.add(new Des.symbole[][]{{Des.symbole.ECLAIR},{Des.symbole.NOIR}});
+
+        p.setFormuleOrange(formuleOrange);
+        p.setFormuleNoire(formuleNoire);
+        p.setFormuleInterdit(formuleInterdit);
+        p.setFormuleJeu(listTest);
+
+        p.reinitcomposant(p.getlistejoueur());
+
+        assertEquals(p.getFormuleJeu().size(),0);
+        assertEquals(p.getFormuleInterdit().size(),0);
+        assertEquals(p.getFormuleNoire().size(),0);
+        assertEquals(p.getFormuleOrange().size(),0);
+        assertEquals(k.getFormule().size(),0);
+        assertEquals(k.getMainCarteFormule().size(),9);
+
+        assertFalse(k.isParfaiteNoire());
+        assertFalse(k.isParfaiteOrange());
+        assertFalse(k.getFermecouvercle());
+    }
+
 
 }

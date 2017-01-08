@@ -86,6 +86,10 @@ public class Joueur {
         this.rangCourse = rangCourse;
     }
 
+    public void setFormule(Set<Des.symbole> formule) {
+        this.formule = formule;
+    }
+
     public void attributionPointArrive() {
         setPoints(getPoints()+25-(getRangCourse()-1));
     }
@@ -126,12 +130,13 @@ public class Joueur {
         return carte;
     }
 
-    public CarteMagieNoire removeCarteFromMain(Type t){
-        CarteMagieNoire c=null;
-        for (int i=0;i<main.size();i++){
-            if(main.get(i).getType()==t){
-                c=main.get(i);
+    public CarteMagieNoire removeCarteFromMain(Type t) {
+        CarteMagieNoire c = null;
+        for (int i = 0; i < main.size(); i++) {
+            if (main.get(i).getType() == t) {
+                c = main.get(i);
                 main.remove(i);
+                return c;
             }
         }
         return c;
