@@ -152,6 +152,18 @@ public class Partie {
         this.formuleNoire = formuleNoire;
     }
 
+    public Set<Des.symbole> getFormuleInterdit() {
+        return formuleInterdit;
+    }
+
+    public Set<Des.symbole> getFormuleNoire() {
+        return formuleNoire;
+    }
+
+    public Set<Des.symbole> getFormuleOrange() {
+        return formuleOrange;
+    }
+
     public boolean parfaite(Set<Des.symbole> atester){
         if (atester.equals(formuleNoire)){
             return true;
