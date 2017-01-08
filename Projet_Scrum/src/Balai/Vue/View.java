@@ -27,6 +27,7 @@ public class View extends JFrame {
 
     public int width, height;
     public Insets insets;
+    public final int[][] coordonnees={{103,565},{127,459},{228,257},{48,187},{172,150},{309,83},{344,151},{326,278},{453,215},{491,115},{582,102},{703,112},{704,228},{575,289},{400,322},{417,429},{535,351},{651,309},{724,346},{571,411},{692,435},{580,492},{512,514},{573,572},{696,587}};
 
     public View(Partie partie) {
         this.partie=partie;
@@ -148,7 +149,7 @@ public class View extends JFrame {
 
         // Placement du plateau
         plateau = new JPanel();
-        plateau.add(new JLabel(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM/Projet_Scrum/src/Balai/Vue/Assets/plateau.png")));
+        plateau.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/plateau.png")));
         plateau.setPreferredSize(new Dimension(760,604));
         Dimension sizePlateau = plateau.getPreferredSize();
         plateau.setBounds(insets.left, insets.top, sizePlateau.width,  sizePlateau.height);
@@ -163,6 +164,16 @@ public class View extends JFrame {
         hideDes();
         //updateDes(Des.lanceDes());
 
+        panelSymboleDes.add(new JLabel("LES DES "));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
+        panelSymboleDes.add(new JLabel(new ImageIcon("Projet_Scrum/src/Balai/Vue/Assets/symbole_cache.png")));
 
         panelSymboleDes.setPreferredSize(new Dimension(760,50));
         Dimension sizePanSymbDes = panelSymboleDes.getPreferredSize();
@@ -325,6 +336,7 @@ public class View extends JFrame {
                 addMainAcroFactory("looping");
                 break;
         }
+
     }
     public void addMainSortFactory(String nomCarte) {
         int nbCartes=0;
@@ -385,6 +397,7 @@ public class View extends JFrame {
         }
 
         this.add(panelMainAcro);
+
         SwingUtilities.updateComponentTreeUI(this);
     }
     public JButton getButtonByName(String name) {
@@ -686,7 +699,6 @@ public class View extends JFrame {
         System.out.println(nomDe.toLowerCase()+"_"+couleur.toLowerCase());
         return "Projet_Scrum/src/Balai/Vue/Assets/"+nomDe.toLowerCase()+"_"+couleur.toLowerCase()+".png";
     }
-
 
     public void setActionListener(ActionListener l){
         attraction.addActionListener(l);
