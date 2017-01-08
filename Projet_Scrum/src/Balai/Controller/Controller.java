@@ -98,7 +98,6 @@ public class Controller implements ActionListener {
         }
 
         if(((((JButton)e.getSource()).getName()).equals("des"))){
-
             vue.updateDes(Des.lanceDes());
         }
         if(((((JButton)e.getSource()).getName()).equals("cacher"))){
@@ -106,47 +105,47 @@ public class Controller implements ActionListener {
         }
 
         if(((((JButton)e.getSource()).getName()).equals("toile"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.TOILE);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.TOILE);
             vue.setPanelSymbolFormule(vue.toile);
         }
         if(((((JButton)e.getSource()).getName()).equals("eclair"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.ECLAIR);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.ECLAIR);
             vue.setPanelSymbolFormule(vue.eclair);
 
         }
         if(((((JButton)e.getSource()).getName()).equals("arraignee"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.ARAIGNEE);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.ARAIGNEE);
             vue.setPanelSymbolFormule(vue.arraignee);
 
         }
 
         if(((((JButton)e.getSource()).getName()).equals("pluie"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.PLUIE);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.PLUIE);
             vue.setPanelSymbolFormule(vue.pluie);
 
         }
         if(((((JButton)e.getSource()).getName()).equals("etoile"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.ETOILE);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.ETOILE);
             vue.setPanelSymbolFormule(vue.etoile);
 
         }
         if(((((JButton)e.getSource()).getName()).equals("oeil"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.OEIL);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.OEIL);
             vue.setPanelSymbolFormule(vue.oeil);
 
         }
         if(((((JButton)e.getSource()).getName()).equals("oreille"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.OREILLE);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.OREILLE);
             vue.setPanelSymbolFormule(vue.oreille);
 
         }
         if(((((JButton)e.getSource()).getName()).equals("tetedemort"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.TETEDEMORT);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.TETEDEMORT);
             vue.setPanelSymbolFormule(vue.tetedemort);
 
         }
         if(((((JButton)e.getSource()).getName()).equals("choc"))){
-            partie.getlistejoueur().get(partie.getJoueurCourant()).addFormule(Des.symbole.CHOC);
+            partie.getlistejoueur().get(partie.getJoueurCourant()).addToFormule(Des.symbole.CHOC);
             vue.setPanelSymbolFormule(vue.choc);
 
         }
