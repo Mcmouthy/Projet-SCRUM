@@ -2,7 +2,6 @@ package Balai.Vue;
 
 import Balai.*;
 import Balai.Controller.Controller;
-import Balai.Exceptions.SortieTableauException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,32 +44,32 @@ public class View extends JFrame {
         setController(controller);
 
         attraction=     new JButton(new ImageIcon("src/Balai/Vue/Assets/attraction.png"));
-        attraction2=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/attraction.png"));
-        blocage=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/blocage.png"));
-        brouillagem=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/brouillardmagique.png"));
-        brouillagem2=   new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/brouillardmagique.png"));
-        decret=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/decret.png"));
-        decret2=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/decret.png"));
-        doublejeu=      new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
-        doublejeu2=      new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
-        doublejeu3=      new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/doublejeu.png"));
-        looping=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/looping.png"));
-        looping2=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/looping.png"));
-        mauvaissort=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/mauvaissort.png"));
-        oublirep=       new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/oublirepare.png"));
-        oublirep2=       new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/oublirepare.png"));
-        rectif=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/rectification.png"));
-        rectif2=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/rectification.png"));
-        tonneau=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
-        tonneau2=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
-        tonneau3=        new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/tonneau.png"));
-        ventarriere=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
-        ventarriere2=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
-        ventarriere3=    new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/ventarriere.png"));
-        volinv=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
-        volinv2=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
-        volinv3=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
-        volinv4=         new JButton(new ImageIcon("/home/malonesk/LocalGit/Projet-SCRUM_View/Projet_Scrum/src/Balai/Vue/Assets/volinverse.png"));
+        attraction2=    new JButton(new ImageIcon("src/Balai/Vue/Assets/attraction.png"));
+        blocage=        new JButton(new ImageIcon("src/Balai/Vue/Assets/blocage.png"));
+        brouillagem=    new JButton(new ImageIcon("src/Balai/Vue/Assets/brouillardmagique.png"));
+        brouillagem2=   new JButton(new ImageIcon("src/Balai/Vue/Assets/brouillardmagique.png"));
+        decret=         new JButton(new ImageIcon("src/Balai/Vue/Assets/decret.png"));
+        decret2=        new JButton(new ImageIcon("src/Balai/Vue/Assets/decret.png"));
+        doublejeu=      new JButton(new ImageIcon("src/Balai/Vue/Assets/doublejeu.png"));
+        doublejeu2=      new JButton(new ImageIcon("src/Balai/Vue/Assets/doublejeu.png"));
+        doublejeu3=      new JButton(new ImageIcon("src/Balai/Vue/Assets/doublejeu.png"));
+        looping=        new JButton(new ImageIcon("src/Balai/Vue/Assets/looping.png"));
+        looping2=        new JButton(new ImageIcon("src/Balai/Vue/Assets/looping.png"));
+        mauvaissort=    new JButton(new ImageIcon("src/Balai/Vue/Assets/mauvaissort.png"));
+        oublirep=       new JButton(new ImageIcon("src/Balai/Vue/Assets/oublirepare.png"));
+        oublirep2=       new JButton(new ImageIcon("src/Balai/Vue/Assets/oublirepare.png"));
+        rectif=         new JButton(new ImageIcon("src/Balai/Vue/Assets/rectification.png"));
+        rectif2=         new JButton(new ImageIcon("src/Balai/Vue/Assets/rectification.png"));
+        tonneau=        new JButton(new ImageIcon("src/Balai/Vue/Assets/tonneau.png"));
+        tonneau2=        new JButton(new ImageIcon("src/Balai/Vue/Assets/tonneau.png"));
+        tonneau3=        new JButton(new ImageIcon("src/Balai/Vue/Assets/tonneau.png"));
+        ventarriere=    new JButton(new ImageIcon("src/Balai/Vue/Assets/ventarriere.png"));
+        ventarriere2=    new JButton(new ImageIcon("src/Balai/Vue/Assets/ventarriere.png"));
+        ventarriere3=    new JButton(new ImageIcon("src/Balai/Vue/Assets/ventarriere.png"));
+        volinv=         new JButton(new ImageIcon("src/Balai/Vue/Assets/volinverse.png"));
+        volinv2=         new JButton(new ImageIcon("src/Balai/Vue/Assets/volinverse.png"));
+        volinv3=         new JButton(new ImageIcon("src/Balai/Vue/Assets/volinverse.png"));
+        volinv4=         new JButton(new ImageIcon("src/Balai/Vue/Assets/volinverse.png"));
         this.add(attraction);
         this.add(attraction2);
         this.add(blocage);
@@ -397,9 +396,52 @@ public class View extends JFrame {
         }
     }
 
+    public void chargeMainCarteJoueur(){ //test pour changer les cartes en changeant de joueur
+        for(int i=0;i<partie.getlistejoueur().get(partie.getJoueurCourant()).getMain().size();i++){
+            String nomCarte=partie.getlistejoueur().get(partie.getJoueurCourant()).getMain().get(i).toString();
+            switch (nomCarte) {
+                case "TONNEAU" :
+                    addMainAcroFactory("tonneau");
+                    break;
+                case "RECTIFICATION" :
+                    addMainSortFactory("rectif");
+                    break;
+                case "VOLINVERSE" :
+                    addMainAcroFactory("volinv");
+                    break;
+                case "VENTARRIERE" :
+                    addMainSortFactory("ventarriere");
+                    break;
+                case "ATTRACTION" :
+                    addMainSortFactory("attraction");
+                    break;
+                case "DOUBLEJEU" :
+                    addMainSortFactory("doublejeu");
+                    break;
+                case "OUTILREPARE" :
+                    addMainSortFactory("oublirep");
+                    break;
+                case "DECRET" :
+                    addMainSortFactory("decret");
+                    break;
+                case "BLOCAGE" :
+                    addMainSortFactory("blocage");
+                    break;
+                case "MAUVAISSORT" :
+                    addMainSortFactory("mauvaissort");
+                    break;
+                case "BROUILLARDMAGIQUE" :
+                    addMainSortFactory("brouillagem");
+                    break;
+                case "LOOPING" :
+                    addMainAcroFactory("looping");
+                    break;
+            }
+
+        }
+    }
     public void addCarteToPanel(CarteMagieNoire carte) { //appelée quand clic sur boutton Piocher
         String nomCarte = carte.toString();
-
 
         switch (nomCarte) {
             case "TONNEAU" :
@@ -1002,7 +1044,33 @@ public class View extends JFrame {
         v.setActionListener(v.controller);
         v.setMainSortPanel(j.getMain());
         v.setMainAcrobatiePanel(j.getMainAcrobatie());
-        v.placerJoueur(p);
 
+        //v.setPanelSymbolFormule(v.eclair);
+        v.placerJoueur(p);
+        /*for (int i=0; i<20;i++) {
+            try {
+                Thread.sleep((long) 1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                p.deplaceJoueur(j, 1);
+            } catch (SortieTableauException e) {
+                e.printStackTrace();
+            }
+            v.placerJoueur(p);
+            try {
+                Thread.sleep((long) 1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                p.deplaceJoueur(j2, 1);
+                p.deplaceJoueur(j3, 1);
+            } catch (SortieTableauException e) {
+                e.printStackTrace();
+            }
+            v.placerJoueur(p);
+        }*/
     }
 }
