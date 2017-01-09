@@ -14,6 +14,19 @@ import static org.junit.Assert.*;
  */
 public class TestUnitJoueur {
     @Test
+    public void testRemoveCarteFromMain()
+    {
+        Joueur j = new Joueur();
+        CarteMagieNoire c = CarteMagieNoire.carteFactory(Type.ATTRACTION);
+        j.addCarte(c);
+        Assert.assertEquals(j.getMain().size(), 1);
+        j.removeCarteFromMain(Type.TONNEAU);
+        Assert.assertEquals(j.getMain().size(), 1);
+        j.removeCarteFromMain(Type.ATTRACTION);
+        Assert.assertEquals(j.getMain().size(), 0);
+    }
+
+    @Test
     public void testUnitSetNom(){
         Joueur j= new Joueur();
         j.setNom("toto");

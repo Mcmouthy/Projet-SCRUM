@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.mockito.Mockito;;
+//import org.mockito.Mockito;;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,6 +31,38 @@ public class TestUnitPartie {
         assertEquals(partie.getlistejoueur().get(0),j1);
     }
 
+    //bug : point virgule en trop dans la méthode nbJoueursAtSamePos()
+    @Test
+    public void testNombreJoueurAtSamePosition() throws SortieTableauException {
+        Joueur j = new Joueur("Robert");
+        Joueur j1 = new Joueur("Valérie");
+        Joueur j2 = new Joueur("Stéphanie");
+        Partie partie=new Partie();
+        partie.ajouterJoueur(j1);
+        partie.ajouterJoueur(j2);
+        partie.ajouterJoueur(j);
+        partie.init();
+
+        Assert.assertEquals(partie.nbJoueurAtSamePos(j), 2);
+        partie.deplaceJoueur(j1, 1);
+        Assert.assertEquals(partie.nbJoueurAtSamePos(j), 1);
+        partie.deplaceJoueur(j2, 2);
+        Assert.assertEquals(partie.nbJoueurAtSamePos(j), 0);
+    }
+
+    //On ajoute plein de joueurs
+    @Test
+    public void testLimiteAjoutJoueurs()
+    {
+        Joueur j = new Joueur("Robert");
+        Partie partie=new Partie();
+        for(int i = 0; i < 666; i++)
+            partie.ajouterJoueur(j);
+
+        //On ne devrait pas pouvoir avoir 666 joueurs
+        Assert.assertFalse(partie.getlistejoueur().size() == 666);
+
+    }
 
 
     @Test

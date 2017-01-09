@@ -52,6 +52,8 @@ public class Partie {
             case 5 :
                 j1.setNomFigurine("sorciere_violette.png");
                 break;
+            default:
+                return;
 
         }
         listejoueur.add(j1);
@@ -258,7 +260,7 @@ public class Partie {
         int posJ = j.getPosition();
         int cptNbJ=0;
         for (int i=0; i<getlistejoueur().size(); i++) {
-            if (posJ==getlistejoueur().get(i).getPosition());
+            if (posJ==getlistejoueur().get(i).getPosition())
             cptNbJ++;
         }
         return cptNbJ-1;
