@@ -197,7 +197,6 @@ public class Controller implements ActionListener {
                     }
                 }
             }
-            vue.resetJLabelFormule();
             vue.initPanelSymboleFormule();
             partie.reinitcomposant(partie.getlistejoueur());
             partie.setJoueurCourant(partie.getJoueurCourant()+1);
