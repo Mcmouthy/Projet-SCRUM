@@ -98,7 +98,7 @@ public class Partie {
     public void setFin(boolean fin) {
         this.fin = fin;
     }
-    public void setJoueurCourant(int i){joueurCourant=i;}
+    public void setJoueurCourant(int i){if (i<listejoueur.size())joueurCourant=i;else joueurCourant=0;}
     public int getJoueurCourant(){return joueurCourant;}
     // compter le nb de joueur devant un autre
     public void comparePosition() {
@@ -128,7 +128,7 @@ public class Partie {
         return j.addCarte(pioche.piocherCarte());
     }
 
-    public List<Des.symbole[][]> getFormuleJeu() {
+    public ArrayList<Des.symbole[][]> getFormuleJeu() {
         return formuleJeu;
     }
 
