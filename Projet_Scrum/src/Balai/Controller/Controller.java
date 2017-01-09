@@ -151,8 +151,11 @@ public class Controller implements ActionListener {
 
         }
         if(((((JButton)e.getSource()).getName()).equals("soumettre"))){
-            partie.setFormuleJeu(partie.getFormuleJeu());
+            //partie.setFormuleJeu(partie.getFormuleJeu());
+            System.out.println(partie.getFormuleJeu());
             partie.genereFormulesFinales();
+            System.out.println(partie.getFormuleNoire());
+            System.out.println(partie.getFormuleOrange());
             Joueur j=partie.getlistejoueur().get(partie.getJoueurCourant());
             j.setParfaiteNoire(partie.parfaite(j.getFormule(),j));
             j.setParfaiteOrange(partie.parfaite(j.getFormule(),j));
@@ -160,7 +163,6 @@ public class Controller implements ActionListener {
                 try {
                     partie.deplaceJoueur(j,0);
                     vue.placerJoueur(partie);
-                    partie.reinitcomposant(partie.getlistejoueur());
                     SwingUtilities.updateComponentTreeUI(vue);
                 } catch (SortieTableauException e1) {
                     e1.printStackTrace();
@@ -169,7 +171,6 @@ public class Controller implements ActionListener {
                 try {
                     partie.deplaceJoueur(j,j.getFormule().size()+2);
                     vue.placerJoueur(partie);
-                    partie.reinitcomposant(partie.getlistejoueur());
                     SwingUtilities.updateComponentTreeUI(vue);
                 } catch (SortieTableauException e1) {
                     e1.printStackTrace();
@@ -177,7 +178,6 @@ public class Controller implements ActionListener {
             }else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j)) try {
                 partie.deplaceJoueur(j,j.getFormule().size());
                 vue.placerJoueur(partie);
-                partie.reinitcomposant(partie.getlistejoueur());
                 SwingUtilities.updateComponentTreeUI(vue);
             } catch (SortieTableauException e1) {
                 e1.printStackTrace();
@@ -186,7 +186,6 @@ public class Controller implements ActionListener {
                 try {
                     partie.deplaceJoueur(j,j.getFormule().size());
                     vue.placerJoueur(partie);
-                    partie.reinitcomposant(partie.getlistejoueur());
                     SwingUtilities.updateComponentTreeUI(vue);
                 } catch (SortieTableauException e1) {
                     e1.printStackTrace();
@@ -201,7 +200,9 @@ public class Controller implements ActionListener {
                     }
                 }
             }
+            partie.reinitcomposant(partie.getlistejoueur());
             partie.setJoueurCourant(partie.getJoueurCourant()+1);
+            SwingUtilities.updateComponentTreeUI(vue);
         }
     }
 }

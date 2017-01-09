@@ -751,6 +751,12 @@ public class View extends JFrame {
             }
 
         }
+        ArrayList<Des.symbole[][]> liste = new ArrayList<>();
+        for (int k=0;k<listeTirageDes.length;k+=2){
+            Des.symbole[][] e = {{listeTirageDes[k]},{listeTirageDes[k+1]}};
+            liste.add(e);
+        }
+        partie.setFormuleJeu(liste);
         this.add(panelSymboleDes);
         SwingUtilities.updateComponentTreeUI(this);
     }
