@@ -990,7 +990,7 @@ public class View extends JFrame {
 
         v.setPanelSymbolFormule(v.eclair);
         v.placerJoueur(p);
-        for (int i=0; i<20;i++) {
+        /*for (int i=0; i<20;i++) {
             try {
                 Thread.sleep((long) 1500);
             } catch (InterruptedException e) {
@@ -1013,8 +1013,7 @@ public class View extends JFrame {
             } catch (SortieTableauException e) {
                 e.printStackTrace();
             }
-            //System.out.println(j.getPosition());
             v.placerJoueur(p);
-        }
+        }*/
     }
 }

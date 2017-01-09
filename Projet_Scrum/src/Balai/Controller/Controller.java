@@ -159,23 +159,27 @@ public class Controller implements ActionListener {
                 if (partie.isformulefausse(j.getFormule(),partie.getFormuleOrange()) && partie.isformulefausse(j.getFormule(),partie.getFormuleNoire())){
                     try {
                         partie.deplaceJoueur(j,0);
+                        vue.placerJoueur(partie);
                     } catch (SortieTableauException e1) {
                         e1.printStackTrace();
                     }
                 }else if(!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange()) && j.isParfaiteOrange()){
                     try {
                         partie.deplaceJoueur(j,j.getFormule().size()+2);
+                        vue.placerJoueur(partie);
                     } catch (SortieTableauException e1) {
                         e1.printStackTrace();
                     }
                 }else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange())) try {
                     partie.deplaceJoueur(j,j.getFormule().size());
+                    vue.placerJoueur(partie);
                 } catch (SortieTableauException e1) {
                     e1.printStackTrace();
                 }
                 else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleNoire())){
                     try {
                         partie.deplaceJoueur(j,j.getFormule().size());
+                        vue.placerJoueur(partie);
                     } catch (SortieTableauException e1) {
                         e1.printStackTrace();
                     }
