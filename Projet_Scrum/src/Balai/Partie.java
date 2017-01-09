@@ -185,16 +185,18 @@ public class Partie {
         return formuleOrange;
     }
 
-    public boolean parfaite(Set<Des.symbole> atester){
+    public boolean parfaite(Set<Des.symbole> atester,Joueur j){
         if (atester.equals(formuleNoire)){
+            j.setParfaiteNoire(true);
             return true;
         }else if (atester.equals(formuleOrange)){
+            j.setParfaiteOrange(true);
             return true;
         }
         return false;
     }
 
-    public boolean isformulefausse(Set<Des.symbole> test,Set<Des.symbole> form){
+    public boolean isformulefausse(Set<Des.symbole> test,Set<Des.symbole> form, Joueur j){
         if (test.size()>form.size()) return true;
         if (test.size()<form.size()){
             for (Des.symbole symbole : test){
@@ -203,7 +205,7 @@ public class Partie {
             return false;
         }
         if (test.size()==form.size()){
-            if (parfaite(test)){
+            if (parfaite(test,j)){
                 return false;
             }else{
                 return true;
@@ -232,14 +234,14 @@ public class Partie {
         for (Joueur j : listejoueur){
             //ici on fait les formules
             //je pense que cette methode devra se mettre dans le controleur
-            j.setParfaiteNoire(parfaite(j.getFormule()));
-            j.setParfaiteOrange(parfaite(j.getFormule()));
-            if (isformulefausse(j.getFormule(),formuleOrange) && isformulefausse(j.getFormule(),formuleNoire)){
+            j.setParfaiteNoire(parfaite(j.getFormule(),j));
+            j.setParfaiteOrange(parfaite(j.getFormule(),j));
+            if (isformulefausse(j.getFormule(),formuleOrange,j) && isformulefausse(j.getFormule(),formuleNoire,j)){
                 deplaceJoueur(j,0);
-            }else if(!isformulefausse(j.getFormule(),formuleOrange) && j.isParfaiteOrange()){
+            }else if(!isformulefausse(j.getFormule(),formuleOrange,j) && j.isParfaiteOrange()){
                 deplaceJoueur(j,j.getFormule().size()+2);
-            }else if (!isformulefausse(j.getFormule(),formuleOrange))deplaceJoueur(j,j.getFormule().size());
-            else if (!isformulefausse(j.getFormule(),formuleNoire)){
+            }else if (!isformulefausse(j.getFormule(),formuleOrange,j))deplaceJoueur(j,j.getFormule().size());
+            else if (!isformulefausse(j.getFormule(),formuleNoire,j)){
                 deplaceJoueur(j,j.getFormule().size());
                 if (j.isParfaiteNoire()){
                     for (int i=0; i<j.getFormule().size();i++){

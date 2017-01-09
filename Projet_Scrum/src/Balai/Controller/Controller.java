@@ -154,29 +154,29 @@ public class Controller implements ActionListener {
             partie.setFormuleJeu(partie.genereFormuleJeu());
             partie.genereFormulesFinales();
             for (Joueur j : partie.getlistejoueur()){
-                j.setParfaiteNoire(partie.parfaite(j.getFormule()));
-                j.setParfaiteOrange(partie.parfaite(j.getFormule()));
-                if (partie.isformulefausse(j.getFormule(),partie.getFormuleOrange()) && partie.isformulefausse(j.getFormule(),partie.getFormuleNoire())){
+                j.setParfaiteNoire(partie.parfaite(j.getFormule(),j));
+                j.setParfaiteOrange(partie.parfaite(j.getFormule(),j));
+                if (partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j) && partie.isformulefausse(j.getFormule(),partie.getFormuleNoire(),j)){
                     try {
                         partie.deplaceJoueur(j,0);
                         vue.placerJoueur(partie);
                     } catch (SortieTableauException e1) {
                         e1.printStackTrace();
                     }
-                }else if(!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange()) && j.isParfaiteOrange()){
+                }else if(!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j) && j.isParfaiteOrange()){
                     try {
                         partie.deplaceJoueur(j,j.getFormule().size()+2);
                         vue.placerJoueur(partie);
                     } catch (SortieTableauException e1) {
                         e1.printStackTrace();
                     }
-                }else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange())) try {
+                }else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j)) try {
                     partie.deplaceJoueur(j,j.getFormule().size());
                     vue.placerJoueur(partie);
                 } catch (SortieTableauException e1) {
                     e1.printStackTrace();
                 }
-                else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleNoire())){
+                else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleNoire(),j)){
                     try {
                         partie.deplaceJoueur(j,j.getFormule().size());
                         vue.placerJoueur(partie);
