@@ -152,10 +152,7 @@ public class Controller implements ActionListener {
         }
         if(((((JButton)e.getSource()).getName()).equals("soumettre"))){
             //partie.setFormuleJeu(partie.getFormuleJeu());
-            System.out.println(partie.getFormuleJeu());
             partie.genereFormulesFinales();
-            System.out.println(partie.getFormuleNoire());
-            System.out.println(partie.getFormuleOrange());
             Joueur j=partie.getlistejoueur().get(partie.getJoueurCourant());
             j.setParfaiteNoire(partie.parfaite(j.getFormule(),j));
             j.setParfaiteOrange(partie.parfaite(j.getFormule(),j));
@@ -200,6 +197,8 @@ public class Controller implements ActionListener {
                     }
                 }
             }
+            vue.resetJLabelFormule();
+            vue.initPanelSymboleFormule();
             partie.reinitcomposant(partie.getlistejoueur());
             partie.setJoueurCourant(partie.getJoueurCourant()+1);
             SwingUtilities.updateComponentTreeUI(vue);

@@ -287,7 +287,7 @@ public class View extends JFrame {
         this.setVisible(true);
     }
 
-    private ArrayList<JButton> initPanelSymboleFormule() {
+    public ArrayList<JButton> initPanelSymboleFormule() {
         pluie.setName("pluie");
         panelSymboleFormule.add(pluie);
         eclair.setName("eclair");
