@@ -757,6 +757,7 @@ public class View extends JFrame {
             liste.add(e);
         }
         partie.setFormuleJeu(liste);
+        partie.genereFormulesFinales();
         this.add(panelSymboleDes);
         SwingUtilities.updateComponentTreeUI(this);
     }
@@ -933,6 +934,10 @@ public class View extends JFrame {
                 break;
 
         }
+    }
+
+    public void afficheErrorLancerNonFait(){
+        JOptionPane.showMessageDialog(this,"Veuillez lancer les dés avant de soumettre une formule" , "Lancer les dés", JOptionPane.WARNING_MESSAGE);
     }
 
     public void setActionListener(ActionListener l){

@@ -47,7 +47,6 @@ public class Des {
         listeDes.add(de9);
     }
     public static symbole[] lanceDes() {
-        ArrayList<symbole[]> lancer = new ArrayList<>();
         symbole[] des = new symbole[18];
         int i=0;
         setListeDes();
@@ -56,7 +55,6 @@ public class Des {
             des[i]=de[0][rand];
             des[i+1]=de[1][rand];
             i+=2;
-            //lancer.add(des);
         }
         return des;
     }

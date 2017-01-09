@@ -151,56 +151,51 @@ public class Controller implements ActionListener {
 
         }
         if(((((JButton)e.getSource()).getName()).equals("soumettre"))){
-            //partie.setFormuleJeu(partie.getFormuleJeu());
-            partie.genereFormulesFinales();
-            Joueur j=partie.getlistejoueur().get(partie.getJoueurCourant());
-            j.setParfaiteNoire(partie.parfaite(j.getFormule(),j));
-            j.setParfaiteOrange(partie.parfaite(j.getFormule(),j));
-            if (partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j) && partie.isformulefausse(j.getFormule(),partie.getFormuleNoire(),j)){
-                try {
-                    partie.deplaceJoueur(j,0);
-                    vue.placerJoueur(partie);
-                    SwingUtilities.updateComponentTreeUI(vue);
-                } catch (SortieTableauException e1) {
-                    e1.printStackTrace();
-                }
-            }else if(!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j) && j.isParfaiteOrange()){
-                try {
-                    partie.deplaceJoueur(j,j.getFormule().size()+2);
-                    vue.placerJoueur(partie);
-                    SwingUtilities.updateComponentTreeUI(vue);
-                } catch (SortieTableauException e1) {
-                    e1.printStackTrace();
-                }
-            }else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j)) try {
-                partie.deplaceJoueur(j,j.getFormule().size());
-                vue.placerJoueur(partie);
-                SwingUtilities.updateComponentTreeUI(vue);
-            } catch (SortieTableauException e1) {
-                e1.printStackTrace();
-            }
-            else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleNoire(),j)){
-                try {
+            System.out.println(partie.getFormuleJeu());
+            if (partie.getFormuleOrange().size()!=0 || partie.getFormuleNoire().size()!=0){
+                Joueur j=partie.getlistejoueur().get(partie.getJoueurCourant());
+                j.setParfaiteNoire(partie.parfaite(j.getFormule(),j));
+                j.setParfaiteOrange(partie.parfaite(j.getFormule(),j));
+                if((!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j)) && j.isParfaiteOrange()){
+                    try {
+                        partie.deplaceJoueur(j,j.getFormule().size()+2);
+                        vue.placerJoueur(partie);
+                        SwingUtilities.updateComponentTreeUI(vue);
+                    } catch (SortieTableauException e1) {
+                        e1.printStackTrace();
+                    }
+                }else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j)) try {
                     partie.deplaceJoueur(j,j.getFormule().size());
                     vue.placerJoueur(partie);
                     SwingUtilities.updateComponentTreeUI(vue);
                 } catch (SortieTableauException e1) {
                     e1.printStackTrace();
                 }
-                if (j.isParfaiteNoire()){
-                    for (int i=0; i<j.getFormule().size();i++){
-                        try {
-                            j.addCarte(partie.getPioche().piocherCarte());
-                        } catch (PiocheVideException e1) {
-                            e1.printStackTrace();
+                else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleNoire(),j)){
+                    try {
+                        partie.deplaceJoueur(j,j.getFormule().size());
+                        vue.placerJoueur(partie);
+                        SwingUtilities.updateComponentTreeUI(vue);
+                    } catch (SortieTableauException e1) {
+                        e1.printStackTrace();
+                    }
+                    if (j.isParfaiteNoire()){
+                        for (int i=0; i<j.getFormule().size();i++){
+                            try {
+                                j.addCarte(partie.getPioche().piocherCarte());
+                            } catch (PiocheVideException e1) {
+                                e1.printStackTrace();
+                            }
                         }
                     }
                 }
+                vue.initPanelSymboleFormule();
+                if (partie.getJoueurCourant()==partie.getlistejoueur().size())partie.reinitcomposant(partie.getlistejoueur());
+                partie.setJoueurCourant(partie.getJoueurCourant()+1);
+                SwingUtilities.updateComponentTreeUI(vue);
+            }else{
+                vue.afficheErrorLancerNonFait();
             }
-            vue.initPanelSymboleFormule();
-            partie.reinitcomposant(partie.getlistejoueur());
-            partie.setJoueurCourant(partie.getJoueurCourant()+1);
-            SwingUtilities.updateComponentTreeUI(vue);
         }
     }
 }

@@ -228,7 +228,7 @@ public class Partie {
         formuleJeu.removeAll(formuleJeu);
     }
 
-    public void tour() throws SortieTableauException, PiocheVideException {
+    /*public void tour() throws SortieTableauException, PiocheVideException {
         setFormuleJeu(genereFormuleJeu());
         genereFormulesFinales();
         for (Joueur j : listejoueur){
@@ -252,7 +252,7 @@ public class Partie {
         }
         //on applique les effets des cartes
 
-    }
+    }*/
 
     public int nbJoueurAtSamePos(Joueur j) { //a test
         int posJ = j.getPosition();
