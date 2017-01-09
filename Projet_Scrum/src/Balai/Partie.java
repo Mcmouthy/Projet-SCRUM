@@ -233,32 +233,6 @@ public class Partie {
         formuleJeu.removeAll(formuleJeu);
     }
 
-    /*public void tour() throws SortieTableauException, PiocheVideException {
-        setFormuleJeu(genereFormuleJeu());
-        genereFormulesFinales();
-        for (Joueur j : listejoueur){
-            //ici on fait les formules
-            //je pense que cette methode devra se mettre dans le controleur
-            j.setParfaiteNoire(parfaite(j.getFormule(),j));
-            j.setParfaiteOrange(parfaite(j.getFormule(),j));
-            if (isformulefausse(j.getFormule(),formuleOrange,j) && isformulefausse(j.getFormule(),formuleNoire,j)){
-                deplaceJoueur(j,0);
-            }else if(!isformulefausse(j.getFormule(),formuleOrange,j) && j.isParfaiteOrange()){
-                deplaceJoueur(j,j.getFormule().size()+2);
-            }else if (!isformulefausse(j.getFormule(),formuleOrange,j))deplaceJoueur(j,j.getFormule().size());
-            else if (!isformulefausse(j.getFormule(),formuleNoire,j)){
-                deplaceJoueur(j,j.getFormule().size());
-                if (j.isParfaiteNoire()){
-                    for (int i=0; i<j.getFormule().size();i++){
-                        j.addCarte(pioche.piocherCarte());
-                    }
-                }
-            }
-        }
-        //on applique les effets des cartes
-
-    }*/
-
     public int nbJoueurAtSamePos(Joueur j) { //a test
         int posJ = j.getPosition();
         int cptNbJ=0;

@@ -1002,33 +1002,7 @@ public class View extends JFrame {
         v.setActionListener(v.controller);
         v.setMainSortPanel(j.getMain());
         v.setMainAcrobatiePanel(j.getMainAcrobatie());
-
-        v.setPanelSymbolFormule(v.eclair);
         v.placerJoueur(p);
-        /*for (int i=0; i<20;i++) {
-            try {
-                Thread.sleep((long) 1500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            try {
-                p.deplaceJoueur(j, 1);
-            } catch (SortieTableauException e) {
-                e.printStackTrace();
-            }
-            v.placerJoueur(p);
-            try {
-                Thread.sleep((long) 1500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            try {
-                p.deplaceJoueur(j2, 1);
-                p.deplaceJoueur(j3, 1);
-            } catch (SortieTableauException e) {
-                e.printStackTrace();
-            }
-            v.placerJoueur(p);
-        }*/
+
     }
 }
