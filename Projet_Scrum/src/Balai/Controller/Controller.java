@@ -2,6 +2,7 @@ package Balai.Controller;
 
 import Balai.*;
 import Balai.Exceptions.PiocheVideException;
+import Balai.Exceptions.SortieTableauException;
 import Balai.Vue.View;
 
 import javax.swing.*;
@@ -150,7 +151,45 @@ public class Controller implements ActionListener {
 
         }
         if(((((JButton)e.getSource()).getName()).equals("soumettre"))){
-
+            partie.setFormuleJeu(partie.genereFormuleJeu());
+            partie.genereFormulesFinales();
+            for (Joueur j : partie.getlistejoueur()){
+                j.setParfaiteNoire(partie.parfaite(j.getFormule()));
+                j.setParfaiteOrange(partie.parfaite(j.getFormule()));
+                if (partie.isformulefausse(j.getFormule(),partie.getFormuleOrange()) && partie.isformulefausse(j.getFormule(),partie.getFormuleNoire())){
+                    try {
+                        partie.deplaceJoueur(j,0);
+                    } catch (SortieTableauException e1) {
+                        e1.printStackTrace();
+                    }
+                }else if(!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange()) && j.isParfaiteOrange()){
+                    try {
+                        partie.deplaceJoueur(j,j.getFormule().size()+2);
+                    } catch (SortieTableauException e1) {
+                        e1.printStackTrace();
+                    }
+                }else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange())) try {
+                    partie.deplaceJoueur(j,j.getFormule().size());
+                } catch (SortieTableauException e1) {
+                    e1.printStackTrace();
+                }
+                else if (!partie.isformulefausse(j.getFormule(),partie.getFormuleNoire())){
+                    try {
+                        partie.deplaceJoueur(j,j.getFormule().size());
+                    } catch (SortieTableauException e1) {
+                        e1.printStackTrace();
+                    }
+                    if (j.isParfaiteNoire()){
+                        for (int i=0; i<j.getFormule().size();i++){
+                            try {
+                                j.addCarte(partie.getPioche().piocherCarte());
+                            } catch (PiocheVideException e1) {
+                                e1.printStackTrace();
+                            }
+                        }
+                    }
+                }
+            }
 
         }
 
