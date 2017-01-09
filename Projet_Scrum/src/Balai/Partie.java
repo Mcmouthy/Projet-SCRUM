@@ -135,6 +135,7 @@ public class Partie {
     }
 
     public ArrayList<Des.symbole[][]> genereFormuleJeu() {
+        formuleJeu.removeAll(formuleJeu);
         Des.setListeDes();
         for(Des.symbole[][] de:Des.listeDes){
             int value=loto.nextInt(6);
@@ -147,6 +148,8 @@ public class Partie {
     }
 
     public void genereFormulesFinales() {
+        formuleOrange.removeAll(formuleOrange);
+        formuleNoire.removeAll(formuleNoire);
         for (Des.symbole[][] d:formuleJeu){
             if (d[1][0]==Des.symbole.NOIR)formuleNoire.add(d[0][0]);
             else formuleOrange.add(d[0][0]);

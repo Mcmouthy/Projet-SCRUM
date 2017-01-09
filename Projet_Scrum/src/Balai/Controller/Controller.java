@@ -151,7 +151,6 @@ public class Controller implements ActionListener {
 
         }
         if(((((JButton)e.getSource()).getName()).equals("soumettre"))){
-            System.out.println(partie.getFormuleJeu());
             if (partie.getFormuleOrange().size()!=0 || partie.getFormuleNoire().size()!=0){
                 Joueur j=partie.getlistejoueur().get(partie.getJoueurCourant());
                 j.setParfaiteNoire(partie.parfaite(j.getFormule(),j));
@@ -190,7 +189,10 @@ public class Controller implements ActionListener {
                     }
                 }
                 vue.initPanelSymboleFormule();
-                if (partie.getJoueurCourant()==partie.getlistejoueur().size())partie.reinitcomposant(partie.getlistejoueur());
+                if (partie.getJoueurCourant()==partie.getlistejoueur().size()-1){
+                    partie.reinitcomposant(partie.getlistejoueur());
+                    vue.updateDes(Des.lanceDes());
+                }
                 partie.setJoueurCourant(partie.getJoueurCourant()+1);
                 SwingUtilities.updateComponentTreeUI(vue);
             }else{
