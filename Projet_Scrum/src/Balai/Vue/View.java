@@ -346,6 +346,10 @@ public class View extends JFrame {
         formuleCourante.setText("");
     }
 
+    public void resetCurrentChoixRestantFormule(){
+        currentChoixRestantFormule=initPanelSymboleFormule();
+    }
+
     public void setController(Controller controller) {
         this.controller = controller;
     }

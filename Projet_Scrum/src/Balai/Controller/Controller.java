@@ -189,6 +189,8 @@ public class Controller implements ActionListener {
                     }
                 }
                 vue.initPanelSymboleFormule();
+                vue.resetCurrentChoixRestantFormule();
+                vue.resetJLabelFormule();
                 if (partie.getJoueurCourant()==partie.getlistejoueur().size()-1){
                     partie.reinitcomposant(partie.getlistejoueur());
                     vue.updateDes(Des.lanceDes());
