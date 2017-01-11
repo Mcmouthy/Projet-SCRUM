@@ -8,8 +8,10 @@ import Balai.Vue.Start;
 import Balai.Vue.View;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 
 /**
  * Created by malonesk on 07/01/17.
@@ -35,46 +37,39 @@ public class Controller implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (((((JButton)e.getSource()).getName()).equals("rectif")) || ((((JButton)e.getSource()).getName()).equals("rectif2"))){ //il me faut la suite de vue pour faire
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.RECTIFICATION));
-            System.out.print("rectif");
 
         }
         if(((((JButton)e.getSource()).getName()).equals("attraction")) || ((((JButton)e.getSource()).getName()).equals("attraction2")) ){
             Sortilege.sortAttraction(partie.getlistejoueur().get(partie.getJoueurCourant()),partie.getlistejoueur());
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.ATTRACTION));
             vue.placerJoueur(partie);
-            System.out.println("attraction");
 
         }
 
         if(((((JButton)e.getSource()).getName()).equals("doublejeu")) || ((((JButton)e.getSource()).getName()).equals("doublejeu2")) || ((((JButton)e.getSource()).getName()).equals("doublejeu3"))){ //Ne pas oublier de faire la verif lors de l'entrée d'une formule pour double jeu
             Sortilege.sortDoubleJeu(partie.getlistejoueur().get(partie.getJoueurCourant()));
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.DOUBLEJEU));
-            System.out.println("doubleJeu");
 
 
         }
 
         if(((((JButton)e.getSource()).getName()).equals("oublirep")) || ((((JButton)e.getSource()).getName()).equals("oublirep2"))){ //il me faut la suite de vue pour faire
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.OUTILREPARE));
-            System.out.println("oublirep");
 
         }
 
         if(((((JButton)e.getSource()).getName()).equals("decret")) ||((((JButton)e.getSource()).getName()).equals("decret2")) ){ //peut pas faire sans la partie réseau
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.DECRET));
-            System.out.println("decret");
         }
         if(((((JButton)e.getSource()).getName()).equals("blocage"))){
             partie.setBlocage(partie.getlistejoueur().get(partie.getJoueurCourant()).getPosition());
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.BLOCAGE));
-            System.out.println("blocage");
         }
 
         if(((((JButton)e.getSource()).getName()).equals("ventarriere")) ||((((JButton)e.getSource()).getName()).equals("ventarriere2")) || ((((JButton)e.getSource()).getName()).equals("ventarriere3"))){
             Sortilege.sortVentArriere(partie.getlistejoueur().get(partie.getJoueurCourant()));
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.VENTARRIERE));
             SwingUtilities.updateComponentTreeUI(vue);
-            System.out.println("ventarriere");
 
         }
 
@@ -87,12 +82,10 @@ public class Controller implements ActionListener {
 
             }
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.MAUVAISSORT));
-            System.out.println("mauvaissort");
 
         }
         if(((((JButton)e.getSource()).getName()).equals("brouillagem")) || ((((JButton)e.getSource()).getName()).equals("brouillagem2"))){
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.BROUILLARDMAGIQUE));
-            System.out.println("brouillard");
 
 
         }
@@ -100,7 +93,6 @@ public class Controller implements ActionListener {
         if(((((JButton)e.getSource()).getName()).equals("pioche"))){
             try {
                 CarteMagieNoire carte = (partie.piocher(partie.getlistejoueur().get(partie.getJoueurCourant())));
-                System.out.println(carte.getType().toString());
                 vue.addCarteToPanel(carte);
 
             } catch (PiocheVideException e1) {
@@ -166,6 +158,8 @@ public class Controller implements ActionListener {
                 Joueur j=partie.getlistejoueur().get(partie.getJoueurCourant());
                 j.setParfaiteNoire(partie.parfaite(j.getFormule(),j));
                 j.setParfaiteOrange(partie.parfaite(j.getFormule(),j));
+                if(partie.isformulefausse(j.getFormule(),partie.getFormuleNoire(),j) && partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j)) vue.afficheFormuleFausse();
+
                 if((!partie.isformulefausse(j.getFormule(),partie.getFormuleOrange(),j)) && j.isParfaiteOrange()){
                     try {
                         partie.deplaceJoueur(j,j.getFormule().size()+2);
@@ -207,6 +201,7 @@ public class Controller implements ActionListener {
                     vue.updateDes(Des.lanceDes());
                 }
                 partie.setJoueurCourant(partie.getJoueurCourant()+1);
+                vue.afficheChangementTour();
                 //partie.comparePosition();
                 vue.setMainAcrobatiePanel(partie.getlistejoueur().get(partie.getJoueurCourant()).getMainAcrobatie());
                 vue.setMainSortPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).getMain());
@@ -250,7 +245,6 @@ public class Controller implements ActionListener {
 
 
                      */
-                    System.out.println(nomJoueurs[j]);
                     vue.setMainSortPanel(partie.getlistejoueur().get(j).getMain());
 
                     vue.setMainAcrobatiePanel(partie.getlistejoueur().get(j).getMainAcrobatie());

@@ -2,10 +2,13 @@ package Balai.Vue;
 
 import Balai.*;
 import Balai.Controller.Controller;
+import Balai.Exceptions.SortieTableauException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +33,7 @@ public class View extends JFrame {
 
     public int width, height;
     public Insets insets;
-    public final int[][] coordonnees={{103,565},{127,459},{228,257},{48,187},{172,150},{309,83},{344,151},{326,278},{453,215},{491,115},{582,102},{703,112},{704,228},{575,289},{400,322},{417,429},{535,351},{651,309},{724,346},{571,411},{692,435},{580,492},{512,514},{573,572},{696,587}};
+    public final int[][] coordonnees={{103-40,565},{127-40,459},{215-40,382},{228-40,257},{48-40,187},{172-40,150},{309-40,83},{344-40,151},{326-40,278},{453-40,215},{491-40,115},{582-40,102},{703-40,112},{704-40,228},{575-40,289},{400-40,322},{417-40,429},{535-40,351},{651-40,309},{724-40,346},{571-40,411},{692-40,435},{580-40,492},{512-40,514},{573-40,572},{696-40,587}};
 
     public View(Partie partie) {
         this.partie=partie;
@@ -527,18 +530,12 @@ public class View extends JFrame {
         }
         switch (nbCartes) {
             case 0 :
-                System.out.println("ok");
-                System.out.println(nomCarte);
                 panelMainSort.add(getButtonByName(nomCarte));
                 break;
             case 1 :
-                System.out.println("ok");
-                System.out.println(nomCarte);
                 panelMainSort.add(getButtonByName(nomCarte+'2'));
                 break;
             case 2 :
-                System.out.println("ok");
-                System.out.println(nomCarte);
                 panelMainSort.add(getButtonByName(nomCarte+'3'));
                 break;
         }
@@ -561,7 +558,6 @@ public class View extends JFrame {
                 }
             }
         }
-        System.out.println();
         switch (nbCartes) {
             case 0 :
                 panelMainAcro.add(getButtonByName(nomCarte));
@@ -665,7 +661,6 @@ public class View extends JFrame {
                 volinv4.setName("volinv4");
                 return volinv4;
         }
-        System.out.print("GetButtonByName - View");
         return null;
     }
 
@@ -740,7 +735,6 @@ public class View extends JFrame {
         //for (int j=0;j<listeTirageDes.size();j++) {
         int j=0;
         for (int i = 0; i < listeTirageDes.length; i += 2) {
-            System.out.println(listeTirageDes[i].toString() + listeTirageDes[i + 1].toString());
             switch (listeTirageDes[i].toString() + listeTirageDes[i + 1].toString()) {
                 case "ARAIGNEEORANGE":
                     setDeOnPanel(listeTirageDes[i].toString(), listeTirageDes[i + 1].toString(), i/2);
@@ -887,37 +881,18 @@ public class View extends JFrame {
         }
     }
     public String pathFactory(String nomDe, String couleur) {
-        System.out.println(nomDe.toLowerCase()+"_"+couleur.toLowerCase());
         return "src/Balai/Vue/Assets/"+nomDe.toLowerCase()+"_"+couleur.toLowerCase()+".png";
     }
 
     public void placerJoueur(Partie p) {
-        switch (p.getlistejoueur().size()) {
-            case 1 :
-                toCoordonneesOnPlateau(p.getlistejoueur().get(0).getPosition()+2, 0, p.getlistejoueur().get(0), p);
-                break;
-            case 2 :
-                toCoordonneesOnPlateau(p.getlistejoueur().get(0).getPosition()+2, 0, p.getlistejoueur().get(0), p);
-                toCoordonneesOnPlateau(p.getlistejoueur().get(1).getPosition()+2, 1, p.getlistejoueur().get(1), p);
-                break;
-            case 3 :
-                toCoordonneesOnPlateau(p.getlistejoueur().get(0).getPosition()+2, 0, p.getlistejoueur().get(0), p);
-                toCoordonneesOnPlateau(p.getlistejoueur().get(1).getPosition()+2, 1, p.getlistejoueur().get(1), p);
-                toCoordonneesOnPlateau(p.getlistejoueur().get(2).getPosition()+2, 2, p.getlistejoueur().get(2), p);
-                break;
-            case 4 :
-                break;
-            case 5 :
-                break;
-            case 6 :
-                break;
+        for (int i=0;i<p.getlistejoueur().size();i++) {
+            toCoordonneesOnPlateau(p.getlistejoueur().get(i).getPosition()+2, i, p.getlistejoueur().get(i), p); // +3 car 3 case avant le 1 (-1 -2 et départ)
         }
     }
 
     private void toCoordonneesOnPlateau(int position, int index, Joueur j, Partie p) {
         switch (index) {
             case 0 :
-                System.out.println(coordonnees[position][0]+" "+coordonnees[position][1]);
                 sorc_rouge.setBounds(coordonnees[position][0]-insets.left, coordonnees[position][1]-insets.top-100, sorc_rouge.getPreferredSize().width, sorc_rouge.getPreferredSize().height);
                 sorc_rouge.setOpaque(true);
                 sorc_rouge.setVisible(true);
@@ -927,8 +902,7 @@ public class View extends JFrame {
                 SwingUtilities.updateComponentTreeUI(this);
                 break;
             case 1 :
-                System.out.println(coordonnees[position][0]+" "+coordonnees[position][1]);
-                sorc_gris.setBounds(coordonnees[position][0]-insets.left, coordonnees[position][1]-insets.top-100, sorc_gris.getPreferredSize().width, sorc_gris.getPreferredSize().height);
+                sorc_gris.setBounds(coordonnees[position][0]-insets.left+index*sorc_bleu.getPreferredSize().width/5, coordonnees[position][1]-insets.top-100, sorc_gris.getPreferredSize().width, sorc_gris.getPreferredSize().height);
                 sorc_gris.setOpaque(true);
                 sorc_gris.setVisible(true);
                 this.remove(plateau);
@@ -937,8 +911,7 @@ public class View extends JFrame {
                 SwingUtilities.updateComponentTreeUI(this);
                 break;
             case 2 :
-                System.out.println(coordonnees[position][0]+" "+coordonnees[position][1]);
-                sorc_bleu.setBounds(coordonnees[position][0]-insets.left+p.nbJoueurAtSamePos(j)*sorc_bleu.getPreferredSize().width/10, coordonnees[position][1]-insets.top-100+p.nbJoueurAtSamePos(j)*sorc_bleu.getPreferredSize().height/10, sorc_bleu.getPreferredSize().width, sorc_bleu.getPreferredSize().height);
+                sorc_bleu.setBounds(coordonnees[position][0]-insets.left+index*sorc_bleu.getPreferredSize().width/5, coordonnees[position][1]-insets.top-100, sorc_bleu.getPreferredSize().width, sorc_bleu.getPreferredSize().height);
                 sorc_bleu.setOpaque(true);
                 sorc_bleu.setVisible(true);
                 this.remove(plateau);
@@ -948,8 +921,7 @@ public class View extends JFrame {
                 break;
 
             case 3 :
-                System.out.println(coordonnees[position][0]+" "+coordonnees[position][1]);
-                sorc_jaune.setBounds(coordonnees[position][0]-insets.left, coordonnees[position][1]-insets.top-100, sorc_jaune.getPreferredSize().width, sorc_jaune.getPreferredSize().height);
+                sorc_jaune.setBounds(coordonnees[position][0]-insets.left+index*sorc_bleu.getPreferredSize().width/5, coordonnees[position][1]-insets.top-100, sorc_jaune.getPreferredSize().width, sorc_jaune.getPreferredSize().height);
                 sorc_jaune.setOpaque(true);
                 sorc_jaune.setVisible(true);
                 this.remove(plateau);
@@ -961,8 +933,7 @@ public class View extends JFrame {
 
             case 4 :
 
-                System.out.println(coordonnees[position][0]+" "+coordonnees[position][1]);
-                sorc_vert.setBounds(coordonnees[position][0]-insets.left, coordonnees[position][1]-insets.top-100, sorc_vert.getPreferredSize().width, sorc_vert.getPreferredSize().height);
+                sorc_vert.setBounds(coordonnees[position][0]-insets.left+index*sorc_bleu.getPreferredSize().width/5, coordonnees[position][1]-insets.top-100, sorc_vert.getPreferredSize().width, sorc_vert.getPreferredSize().height);
                 sorc_vert.setOpaque(true);
                 sorc_vert.setVisible(true);
                 this.remove(plateau);
@@ -971,8 +942,7 @@ public class View extends JFrame {
                 SwingUtilities.updateComponentTreeUI(this);
                 break;
             case 5 :
-                System.out.println(coordonnees[position][0]+" "+coordonnees[position][1]);
-                sorc_violette.setBounds(coordonnees[position][0]-insets.left, coordonnees[position][1]-insets.top-100, sorc_violette.getPreferredSize().width, sorc_violette.getPreferredSize().height);
+                sorc_violette.setBounds(coordonnees[position][0]-insets.left+index*sorc_bleu.getPreferredSize().width/5, coordonnees[position][1]-insets.top-100, sorc_violette.getPreferredSize().width, sorc_violette.getPreferredSize().height);
                 sorc_violette.setOpaque(true);
                 sorc_violette.setVisible(true);
                 this.remove(plateau);
@@ -985,8 +955,22 @@ public class View extends JFrame {
     }
 
     public void afficheErrorLancerNonFait(){
+
         JOptionPane.showMessageDialog(this,"Veuillez lancer les dés avant de soumettre une formule" , "Lancer les dés", JOptionPane.WARNING_MESSAGE);
     }
+
+    public void afficheFormuleFausse(){
+
+        JOptionPane.showMessageDialog(this,"Formule fausse ! Lisez les règles ;)" , "Lancer les dés", JOptionPane.WARNING_MESSAGE);
+    }
+
+    public void afficheChangementTour(){
+        if (!partie.getFin()) {
+            JOptionPane.showMessageDialog(this,"Au tour de joueur "+(partie.getJoueurCourant()+1) , "Changement de tour", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }
+
 
     public void setActionListener(ActionListener l){
         attraction.addActionListener(l);
@@ -1032,32 +1016,7 @@ public class View extends JFrame {
 
     }
     public static void main(String args[]) {
-        //Partie p = new Partie();
         Start st = new Start();
-        /*for (int i=0; i<20;i++) {
-            try {
-                Thread.sleep((long) 1500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            try {
-                p.deplaceJoueur(j, 1);
-            } catch (SortieTableauException e) {
-                e.printStackTrace();
-            }
-            v.placerJoueur(p);
-            try {
-                Thread.sleep((long) 1500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            try {
-                p.deplaceJoueur(j2, 1);
-                p.deplaceJoueur(j3, 1);
-            } catch (SortieTableauException e) {
-                e.printStackTrace();
-            }
-            v.placerJoueur(p);
-        }*/
     }
 }
+

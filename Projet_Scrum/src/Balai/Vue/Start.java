@@ -24,11 +24,14 @@ public class Start extends JFrame {
     public Controller c;
     public Partie partie;
     public View vue;
+    public String[] couleurSorc;
     public Start() {
         partie=new Partie();
+        couleurSorc=new String[]{"rouge", "grise", "bleue", "jaune", "verte", "violette"};
         init();
         c= new Controller(this, partie);
         setActionListener(c);
+
     }
 
     private void init() {
@@ -55,7 +58,7 @@ public class Start extends JFrame {
         panNomJoueur = new JPanel();
         sorcieres=new JLabel[6];
         for (int i=1;i<7;i++) {
-            sorcieres[i-1]= new JLabel("Sorcière "+i+" ");
+            sorcieres[i-1]= new JLabel("Sorcière "+i+" "+"("+couleurSorc[i-1]+")");
         }
         titre = new JLabel("LE JEU DU BALAI !");
         instruc1 = new JLabel("Entrer les noms des joueurs");
@@ -118,16 +121,6 @@ public class Start extends JFrame {
         SwingUtilities.updateComponentTreeUI(this);
     }
 
-    public static void main(String args[]){
-        Start st = new Start();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        String[] noms = new String[]{"Antonin", "Jeremy", "Dylan", "Sami", "Le branleur", "Le baobab du branleur"};
-        st.setNomJoueurOnPanel(noms);
-    }
 
     public void setActionListener(ActionListener l) {
         ajouter.addActionListener(l);

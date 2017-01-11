@@ -42,19 +42,4 @@ public class End extends JFrame{
         this.setVisible(true);
 
     }
-
-    public static void main(String[] args) {
-        Partie p = new Partie();
-        Joueur j = new Joueur("lol");
-        Joueur j2 = new Joueur("mdr");
-
-
-        //j.attributionPointArrive();
-        p.ajouterJoueur(j);
-        p.ajouterJoueur(j2);
-        j.attributionPointArrive();
-
-        End e = new End(p);
-
-    }
 }

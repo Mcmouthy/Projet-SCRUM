@@ -85,7 +85,10 @@ public class Partie {
             j.setPosition(listejoueur.get(NoJoueurBlocage).getPosition());
         }
         else j.setPosition(j.getPosition() + i);
-        if (j.getPosition()>=22) {
+        if(j.getPosition()>22) {
+            j.setPosition(23);
+        }
+        if (j.getPosition()==23) {
             setFinPartie();
             j.attributionPointArrive();
         }
