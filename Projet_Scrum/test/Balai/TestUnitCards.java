@@ -1,8 +1,10 @@
 package Balai;
 
-import Balai.Exceptions.PiocheVideException;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by PC-Dylan on 22/11/2016.
@@ -57,7 +59,7 @@ public class TestUnitCards {
         Assert.assertEquals(j.getPosition(),7);
     }
 
-   /* @Test
+   @Test
     public void testUnitAttraction(){
         CarteMagieNoire c = new Sortilege(Type.ATTRACTION);
         Joueur j= new Joueur("toto");
@@ -70,14 +72,14 @@ public class TestUnitCards {
         j.setPosition(10);
         k.setPosition(5);
         l.setPosition(15);
-        Mockito.when(Sortilege.sortAttraction(j,list)).thenReturn(1);
-        Assert.assertEquals(k.getPosition(),6);
-        Assert.assertEquals(j.getPosition(),10);
-        Assert.assertEquals(l.getPosition(),14);
 
-        Ce test ne fonctionne pas mais bon j'ai fait la methode qui fait l'effet de attraction
-        avec
-    }*/
+        Sortilege.sortAttraction(j,list);
+        Assert.assertEquals(6,k.getPosition());
+        Assert.assertEquals(10,j.getPosition());
+        Assert.assertEquals(14,l.getPosition());
+
+
+    }
 
    @Test
    public void testUnitOubliRepare(){
@@ -89,4 +91,13 @@ public class TestUnitCards {
        Sortilege.sortOubliRepare(j,Des.symbole.ETOILE);
        Assert.assertEquals(j.getFormule().size(),5);
    }
+
+    @Test
+    public void testUnitDoubleJeu(){
+        Joueur j =new Joueur();
+        Assert.assertEquals(false,j.getDoubleJeuActive());
+        Sortilege.sortDoubleJeu(j);
+        Assert.assertEquals(true,j.getDoubleJeuActive());
+
+    }
 }

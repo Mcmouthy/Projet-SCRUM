@@ -91,6 +91,21 @@ public class TestUnitPartie {
         partie.deplaceJoueur(j,-1); //deplacement negatif
         assertEquals(j.getPosition(),2);
     }
+
+    @Test
+    public void TestUnitBlocage() throws Exception,SortieTableauException{
+        Partie partie=new Partie();
+        Joueur j=new Joueur("Polo");
+        Joueur p=new Joueur("jean");
+        partie.ajouterJoueur(j);
+        partie.ajouterJoueur(p);
+        partie.init();
+        partie.deplaceJoueur(j,3);
+        partie.setBlocage(0);
+        partie.deplaceJoueur(p,4);
+        assertEquals(p.getPosition(),3);
+
+    }
     @Rule
     public ExpectedException truc=ExpectedException.none();
     @Test
