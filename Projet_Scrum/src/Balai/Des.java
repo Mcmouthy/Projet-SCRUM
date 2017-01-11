@@ -2,7 +2,6 @@ package Balai;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static Balai.Des.symbole.*;
 
@@ -58,6 +57,8 @@ public class Des {
         }
         return des;
     }
+
+
     public static List<symbole> getSymbolesSansCouleur() { // a test
         symbole[] tab = symbole.values();
         List<symbole> ls = new ArrayList<>();

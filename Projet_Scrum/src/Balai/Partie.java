@@ -68,15 +68,17 @@ public class Partie {
         for (Joueur j:listejoueur){
             j.setPosition(0);
             j.setRangCourse(1);
+            setJoueurCourant(0);
         }
     }
+    /*
     public Des.symbole[] getDesSymboles(){
         return symbole;
-    }
-
+    }*/
+    /*
     public void setDesSymbole(Des.symbole[] symboles){
         symbole=symboles;
-    }
+    }*/
     public void deplaceJoueur(Joueur j, int i) throws SortieTableauException {
         if (j.getPosition()+i<-2) throw new SortieTableauException();
         else if(j.getPosition()+i>listejoueur.get(NoJoueurBlocage).getPosition() && j.getPosition()<listejoueur.get(NoJoueurBlocage).getPosition()){
@@ -205,20 +207,19 @@ public class Partie {
 
     public boolean isformulefausse(Set<Des.symbole> test,Set<Des.symbole> form, Joueur j){
         if (test.size()>form.size()) return true;
-        if (test.size()<form.size()){
+        else if (test.size()<form.size()){
             for (Des.symbole symbole : test){
                 if (!form.contains(symbole)) return true;
             }
             return false;
         }
-        if (test.size()==form.size()){
+        else{
             if (parfaite(test,j)){
                 return false;
             }else{
                 return true;
             }
         }
-        return true;
     }
 
     public void reinitcomposant(List<Joueur> listejoueur){
@@ -249,7 +250,7 @@ public class Partie {
         this.NoJoueurBlocage = NoJoueurbloque;
     }
 
-    public int getBlocage(){return NoJoueurBlocage;}
+    //public int getBlocage(){return NoJoueurBlocage;}
 
 
 }

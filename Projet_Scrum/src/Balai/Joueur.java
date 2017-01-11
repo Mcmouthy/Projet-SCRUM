@@ -44,9 +44,7 @@ public class Joueur {
     public void setNomFigurine(String nom) {
         nomFigurine=nom;
     }
-    public String getNomFigurine() {
-        return nomFigurine;
-    }
+
     public void setDoubleJeuActive(boolean b){doubleJeuActive=b;}
     public boolean getDoubleJeuActive(){return doubleJeuActive;}
     public void setNom(String nom) {
@@ -93,9 +91,7 @@ public class Joueur {
         this.rangCourse = rangCourse;
     }
 
-    public void setFormule(Set<Des.symbole> formule) {
-        this.formule = formule;
-    }
+
 
     public void attributionPointArrive() {
         setPoints(getPoints()+25);
