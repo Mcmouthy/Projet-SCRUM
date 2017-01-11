@@ -64,7 +64,27 @@ public class TestUnitPartie {
 
     }
 
+    @Test
+    public void testUnitJoueurCourant(){
+        Joueur j = new Joueur("OUI");
+        Joueur j1 = new Joueur("NON");
+        Joueur j2 = new Joueur("NOUI");
+        Partie partie=new Partie();
+        partie.ajouterJoueur(j);
+        partie.ajouterJoueur(j1);
+        partie.ajouterJoueur(j2);
+        partie.init();
+        Assert.assertEquals(partie.getlistejoueur().get(partie.getJoueurCourant()),j);
+        partie.setJoueurCourant(partie.getJoueurCourant()+1);
+        Assert.assertEquals(partie.getlistejoueur().get(partie.getJoueurCourant()),j1);
+        partie.setJoueurCourant(partie.getJoueurCourant()+1);
+        Assert.assertEquals(partie.getlistejoueur().get(partie.getJoueurCourant()),j2);
+        partie.setJoueurCourant(partie.getJoueurCourant()+1);
+        Assert.assertEquals(partie.getlistejoueur().get(partie.getJoueurCourant()),j);
 
+
+
+    }
     @Test
     public void testUnitPartieInit(){
         Joueur j = new Joueur("OUI");
