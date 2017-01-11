@@ -670,12 +670,14 @@ public class View extends JFrame {
     }
 
     public void setMainSortPanel(List<Sortilege> lc) { //appelée quand changement de tour (prend en param main sortilege du joueur du tour
+        panelMainSort.removeAll();
         for (CarteMagieNoire c : lc) {
             addCarteToPanel(c);
             setController(controller);
         }
     }
     public void setMainAcrobatiePanel(List<Acrobatie> lc) { //appelée quand changement de tour (prend en param main acrobatie du joueur du tour
+        panelMainAcro.removeAll();
         for (CarteMagieNoire c : lc) {
             addCarteToPanel(c);
         }
@@ -1030,23 +1032,8 @@ public class View extends JFrame {
 
     }
     public static void main(String args[]) {
-        Partie p = new Partie();
-        Joueur j = new Joueur();
-        j.setPosition(0);
-        Joueur j2 = new Joueur();
-        j2.setPosition(-1);
-        Joueur j3 = new Joueur();
-        j3.setPosition(-1);
-        p.ajouterJoueur(j);
-        p.ajouterJoueur(j2);
-        p.ajouterJoueur(j3);
-        View v = new View(p);
-        v.setActionListener(v.controller);
-        v.setMainSortPanel(j.getMain());
-        v.setMainAcrobatiePanel(j.getMainAcrobatie());
-
-        //v.setPanelSymbolFormule(v.eclair);
-        v.placerJoueur(p);
+        //Partie p = new Partie();
+        Start st = new Start();
         /*for (int i=0; i<20;i++) {
             try {
                 Thread.sleep((long) 1500);

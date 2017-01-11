@@ -37,8 +37,11 @@ public class Sortilege extends CarteMagieNoire {
     public static int sortAttraction(Joueur j, List<Joueur> list) {
         int nbcase=loto.nextInt(2)+1;
         for (Joueur l:list){
-            if ((!l.equals(j)) && l.getRangCourse()>j.getRangCourse())l.setPosition(l.getPosition()-nbcase);
-            else if((!l.equals(j)) && l.getRangCourse()<j.getRangCourse())l.setPosition(l.getPosition()+nbcase);
+            System.out.println(l.getRangCourse());
+            System.out.println((l.equals(j)) && l.getRangCourse()>j.getRangCourse());
+            if ((!l.equals(j)) && l.getRangCourse()<j.getRangCourse()) l.setPosition(l.getPosition()-nbcase);
+
+            else if((!l.equals(j)) && l.getRangCourse()>j.getRangCourse())l.setPosition(l.getPosition()+nbcase);
         }
         return nbcase;
     }

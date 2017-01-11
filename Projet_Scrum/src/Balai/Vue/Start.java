@@ -1,6 +1,8 @@
 package Balai.Vue;
 
+import Balai.Controller.Controller;
 import Balai.Joueur;
+import Balai.Partie;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,9 +21,14 @@ public class Start extends JFrame {
     public JLabel titre, instruc1, instruc2;
     public JLabel[] sorcieres;
     public Insets ins;
-
+    public Controller c;
+    public Partie partie;
+    public View vue;
     public Start() {
+        partie=new Partie();
         init();
+        c= new Controller(this, partie);
+        setActionListener(c);
     }
 
     private void init() {
@@ -33,8 +40,10 @@ public class Start extends JFrame {
         ins=this.getInsets();
         listJoueurs=new ArrayList<>();
         ajouter=new JButton("Ajouter");
+        ajouter.setName("add");
         this.add(ajouter);
         commencer = new JButton("Start");
+        commencer.setName("st");
         nomJoueurs = new JTextField[6];
         for (int i=0;i<6;i++) {
             nomJoueurs[i]=new JTextField();
@@ -118,5 +127,10 @@ public class Start extends JFrame {
         }
         String[] noms = new String[]{"Antonin", "Jeremy", "Dylan", "Sami", "Le branleur", "Le baobab du branleur"};
         st.setNomJoueurOnPanel(noms);
+    }
+
+    public void setActionListener(ActionListener l) {
+        ajouter.addActionListener(l);
+        commencer.addActionListener(l);
     }
 }

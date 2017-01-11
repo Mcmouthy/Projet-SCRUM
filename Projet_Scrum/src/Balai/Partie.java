@@ -82,10 +82,11 @@ public class Partie {
         //a tester (si la carte blocage est active)
         else if(j.getPosition()+i>listejoueur.get(NoJoueurBlocage).getPosition() && j.getPosition()<listejoueur.get(NoJoueurBlocage).getPosition()){j.setPosition(listejoueur.get(NoJoueurBlocage).getPosition());}
         else j.setPosition(j.getPosition() + i);
-        if (j.getPosition()>22) {
+        if (j.getPosition()>=22) {
             setFinPartie();
             j.attributionPointArrive();
         }
+        comparePosition();
     }
 
     private void setFinPartie() {
@@ -248,5 +249,6 @@ public class Partie {
     }
 
     public int getBlocage(){return NoJoueurBlocage;}
+
 
 }

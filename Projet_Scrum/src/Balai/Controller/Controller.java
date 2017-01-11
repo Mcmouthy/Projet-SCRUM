@@ -3,6 +3,8 @@ package Balai.Controller;
 import Balai.*;
 import Balai.Exceptions.PiocheVideException;
 import Balai.Exceptions.SortieTableauException;
+import Balai.Vue.End;
+import Balai.Vue.Start;
 import Balai.Vue.View;
 
 import javax.swing.*;
@@ -15,10 +17,18 @@ import java.awt.event.ActionListener;
 public class Controller implements ActionListener {
     private Partie partie;
     private View vue;
+    private Start st;
+    public boolean isAjouter, isCommencer;
     public Controller(View view, Partie partie) {
 
         this.partie=partie;
         this.vue=view;
+    }
+
+    public Controller(Start st, Partie partie) {
+
+        this.partie=partie;
+        this.st=st;
     }
 
     @Override
@@ -31,7 +41,7 @@ public class Controller implements ActionListener {
         if(((((JButton)e.getSource()).getName()).equals("attraction")) || ((((JButton)e.getSource()).getName()).equals("attraction2")) ){
             Sortilege.sortAttraction(partie.getlistejoueur().get(partie.getJoueurCourant()),partie.getlistejoueur());
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.ATTRACTION));
-
+            vue.placerJoueur(partie);
             System.out.println("attraction");
 
         }
@@ -63,6 +73,7 @@ public class Controller implements ActionListener {
         if(((((JButton)e.getSource()).getName()).equals("ventarriere")) ||((((JButton)e.getSource()).getName()).equals("ventarriere2")) || ((((JButton)e.getSource()).getName()).equals("ventarriere3"))){
             Sortilege.sortVentArriere(partie.getlistejoueur().get(partie.getJoueurCourant()));
             vue.removeCarteFromPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).removeCarteFromMain(Type.VENTARRIERE));
+            SwingUtilities.updateComponentTreeUI(vue);
             System.out.println("ventarriere");
 
         }
@@ -196,10 +207,63 @@ public class Controller implements ActionListener {
                     vue.updateDes(Des.lanceDes());
                 }
                 partie.setJoueurCourant(partie.getJoueurCourant()+1);
+                //partie.comparePosition();
+                vue.setMainAcrobatiePanel(partie.getlistejoueur().get(partie.getJoueurCourant()).getMainAcrobatie());
+                vue.setMainSortPanel(partie.getlistejoueur().get(partie.getJoueurCourant()).getMain());
                 SwingUtilities.updateComponentTreeUI(vue);
             }else{
                 vue.afficheErrorLancerNonFait();
+            };
+            if (partie.getFin()) {
+                End end = new End(partie);
             }
+        }
+
+        if (((((JButton)e.getSource()).getText()).equals("Commencer"))) {
+            if (isAjouter) {
+                vue.setActionListener(this);
+            }
+        }
+        if (((((JButton)e.getSource()).getText()).equals("Ajouter"))) {
+            vue= new View(partie);
+            String[] nomJoueurs = new String[6];
+            for (int i=0;i<st.nomJoueurs.length;i++) {
+                nomJoueurs[i]=st.nomJoueurs[i].getText();
+            }
+            st.setNomJoueurOnPanel(nomJoueurs);
+            for (int j=0;j<nomJoueurs.length;j++) {
+
+                if (!nomJoueurs[j].equals("")) {
+                    partie.ajouterJoueur(new Joueur(nomJoueurs[j]));
+                    /*
+
+
+
+
+
+                     */
+                    partie.getlistejoueur().get(j).setPosition(0);
+                    /*
+
+
+
+
+
+                     */
+                    System.out.println(nomJoueurs[j]);
+                    vue.setMainSortPanel(partie.getlistejoueur().get(j).getMain());
+
+                    vue.setMainAcrobatiePanel(partie.getlistejoueur().get(j).getMainAcrobatie());
+
+                    //v.setPanelSymbolFormule(v.eclair);
+
+                }
+
+
+            }
+            vue.placerJoueur(partie);
+            vue.setActionListener(this);
+            isAjouter=true;
         }
     }
 }

@@ -98,10 +98,10 @@ public class Joueur {
     }
 
     public void attributionPointArrive() {
-        setPoints(getPoints()+25-(getRangCourse()-1));
+        setPoints(getPoints()+25);
     }
 
-    private void setPoints(int pts) {
+    public void setPoints(int pts) {
         points=pts;
     }
 
@@ -188,6 +188,7 @@ public class Joueur {
         if (this.getRangCourse()==1) this.malediction=true;
         else this.malediction=false;
     }
+
 
 
 }
