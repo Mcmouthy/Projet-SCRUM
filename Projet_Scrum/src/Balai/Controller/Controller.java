@@ -236,12 +236,8 @@ public class Controller implements ActionListener {
                     partie.ajouterJoueur(new Joueur(nomJoueurs[j]));
                     /*
 
-
-
-
-
                      */
-                    partie.getlistejoueur().get(j).setPosition(j);
+                    partie.getlistejoueur().get(j).setPosition(0);
                     /*
 
 
