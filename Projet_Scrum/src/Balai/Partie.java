@@ -79,8 +79,9 @@ public class Partie {
     }
     public void deplaceJoueur(Joueur j, int i) throws SortieTableauException {
         if (j.getPosition()+i<-2) throw new SortieTableauException();
-        //a tester (si la carte blocage est active)
-        else if(j.getPosition()+i>listejoueur.get(NoJoueurBlocage).getPosition() && j.getPosition()<listejoueur.get(NoJoueurBlocage).getPosition()){j.setPosition(listejoueur.get(NoJoueurBlocage).getPosition());}
+        else if(j.getPosition()+i>listejoueur.get(NoJoueurBlocage).getPosition() && j.getPosition()<listejoueur.get(NoJoueurBlocage).getPosition()){
+            j.setPosition(listejoueur.get(NoJoueurBlocage).getPosition());
+        }
         else j.setPosition(j.getPosition() + i);
         if (j.getPosition()>=22) {
             setFinPartie();
@@ -244,8 +245,8 @@ public class Partie {
         return cptNbJ-1;
     }
 
-    public void setBlocage(int blocage) {
-        this.NoJoueurBlocage = blocage;
+    public void setBlocage(int NoJoueurbloque) {
+        this.NoJoueurBlocage = NoJoueurbloque;
     }
 
     public int getBlocage(){return NoJoueurBlocage;}
