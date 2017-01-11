@@ -13,7 +13,7 @@ public class Partie {
     private List<Joueur> listejoueur;
     private int joueurCourant;
     private boolean fin;
-    private Pioche pioche;
+    public Pioche pioche;
     private ArrayList<Des.symbole[][]> formuleJeu;
     private Set<Des.symbole> formuleNoire; //on utilise des set car on ne veut pas de doublons
     private Set<Des.symbole> formuleOrange;

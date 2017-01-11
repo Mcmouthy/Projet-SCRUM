@@ -964,6 +964,11 @@ public class View extends JFrame {
         JOptionPane.showMessageDialog(this,"Formule fausse ! Lisez les règles ;)" , "Lancer les dés", JOptionPane.WARNING_MESSAGE);
     }
 
+    public void affichePiocheVide(){
+
+        JOptionPane.showMessageDialog(this,"Pioche vide ! \n Pour les besoins de la démo, une nouvelle pioche va être générée" , "Piocher", JOptionPane.WARNING_MESSAGE);
+    }
+
     public void afficheChangementTour(){
         if (!partie.getFin()) {
             JOptionPane.showMessageDialog(this,"Au tour de joueur "+(partie.getJoueurCourant()+1) , "Changement de tour", JOptionPane.INFORMATION_MESSAGE);

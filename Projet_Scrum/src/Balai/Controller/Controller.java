@@ -91,6 +91,10 @@ public class Controller implements ActionListener {
         }
 
         if(((((JButton)e.getSource()).getName()).equals("pioche"))){
+            if (partie.getPioche().taille()==0) {
+                vue.affichePiocheVide();
+                partie.pioche.init();
+            }
             try {
                 CarteMagieNoire carte = (partie.piocher(partie.getlistejoueur().get(partie.getJoueurCourant())));
                 vue.addCarteToPanel(carte);
@@ -237,7 +241,7 @@ public class Controller implements ActionListener {
 
 
                      */
-                    partie.getlistejoueur().get(j).setPosition(0);
+                    partie.getlistejoueur().get(j).setPosition(j);
                     /*
 
 
